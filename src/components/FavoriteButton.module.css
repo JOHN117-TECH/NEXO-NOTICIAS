@@ -1,9 +1,16 @@
 .favorite {
-  font-size: 12px;
-  color: #884d29;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #d22b2b;
+}
+.icon {
+  flex-shrink: 0;
 }
 .favorite:hover {
-  color: #172554;
+  color: #dc143c;
 }
 .favoriteFull {
   border: 1px solid #b59b88;

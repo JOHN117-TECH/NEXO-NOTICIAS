@@ -5,6 +5,15 @@
   display: flex;
   flex-direction: column;
 }
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.readMoreIcon {
+  flex-shrink: 0;
+}
 .newsImage {
   width: 100%;
   height: 200px;
