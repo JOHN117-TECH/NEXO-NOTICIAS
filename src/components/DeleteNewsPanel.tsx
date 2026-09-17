@@ -166,7 +166,7 @@ export function DeleteNewsPanel({
           <div className="flex flex-wrap gap-4">
             <button
               type="button"
-              className="text-red-700"
+              className="text-[var(--danger)]"
               disabled={pending}
               onClick={() => void removeSelected()}
             >
@@ -185,7 +185,7 @@ export function DeleteNewsPanel({
           </div>
         </div>
       )}
-      <ul className="divide-y divide-gray-200">
+      <ul className="divide-y divide-[var(--border)]">
         {news.map((n) => (
           <li
             key={n.id}
@@ -216,7 +216,7 @@ export function DeleteNewsPanel({
                   type="button"
                   disabled={pending}
                   onClick={() => void remove(n.id)}
-                  className="text-red-700"
+                  className="text-[var(--danger)]"
                 >
                   {pending ? "Eliminando…" : "Confirmar eliminación"}
                 </button>
@@ -230,19 +230,19 @@ export function DeleteNewsPanel({
                   Cancelar
                 </button>
                 {!key.trim() && (
-                  <p className="w-full text-sm text-red-700">
+                  <p className="w-full text-sm text-[var(--danger)]">
                     Falta introducir la clave de administración.
                   </p>
                 )}
                 {status && statusAction === "delete" && key.trim() && (
-                  <p role="alert" className="w-full text-sm text-red-700">
+                  <p role="alert" className="w-full text-sm text-[var(--danger)]">
                     {status}
                   </p>
                 )}
               </div>
             ) : (
               <button
-                className="shrink-0 text-red-700"
+                className="shrink-0 text-[var(--danger)]"
                 disabled={pending || bulkConfirmation !== null}
                 onClick={() => {
                   setDeleting(n.id);
@@ -256,7 +256,7 @@ export function DeleteNewsPanel({
         ))}
       </ul>
       {news.length === 0 && (
-        <p className="text-gray-700">No hay noticias para eliminar.</p>
+        <p className="text-[var(--text-muted)]">No hay noticias para eliminar.</p>
       )}
       {status && statusAction === "delete" && !deleting && key.trim() && (
         <p role="status" className={noticeStyles.notice}>

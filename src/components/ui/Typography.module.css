@@ -5,7 +5,7 @@
 }
 .category {
   text-transform: uppercase;
-  color: #2563eb;
+  color: var(--link);
   font-size: 12px;
   font-weight: 700;
   margin-bottom: 5px;
@@ -19,6 +19,6 @@
   margin-bottom: 3px;
 }
 .pageIntro p {
-  color: #374151;
+  color: var(--text-muted);
   line-height: 1.3;
 }

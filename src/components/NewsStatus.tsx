@@ -1,12 +1,11 @@
 "use client";
 import buttonStyles from "./ui/Button.module.css";
 import { useNews } from "@/hooks/useNews";
+import { NewsLoader } from "./NewsLoader";
 export function NewsStatus() {
   const { loading, error, reload } = useNews();
   return loading ? (
-    <p role="status" className="py-8">
-      Cargando noticias…
-    </p>
+    <NewsLoader />
   ) : error ? (
     <div role="alert" className="py-8">
       <p>{error}</p>

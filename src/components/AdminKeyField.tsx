@@ -65,7 +65,7 @@ export function AdminKeyField({
         </div>
       </div>
       {keyStorageError && (
-        <p role="alert" className="text-sm text-red-700">
+        <p role="alert" className="text-sm text-[var(--danger)]">
           El navegador no permite guardar la clave en esta sesión. Puedes
           usarla, pero tendrás que introducirla nuevamente al recargar.
         </p>

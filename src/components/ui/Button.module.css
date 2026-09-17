@@ -16,6 +16,6 @@
 }
 .textLink {
   font-size: 14px;
-  color: #2563eb;
+  color: var(--link);
   font-weight: 700;
 }

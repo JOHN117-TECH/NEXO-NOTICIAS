@@ -18,17 +18,17 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border: 1px solid #1e305f;
+  border: 1px solid var(--text);
   border-radius: 50%;
-  color: #1e305f;
-  background: #fff;
+  color: var(--text);
+  background: var(--surface);
   font-weight: 700;
   cursor: help;
   margin-bottom: 2px;
 }
 .helpButton:hover,
 .helpButton:focus-visible {
-  background: #eff6ff;
+  background: var(--notice-bg);
   outline: 2px solid #2563eb;
   outline-offset: 3px;
 }

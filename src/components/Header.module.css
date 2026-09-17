@@ -1,6 +1,6 @@
 .siteHeader {
   min-height: 64px;
-  background: #172554;
+  background: var(--chrome-bg);
   color: white;
 }
 .brand {
@@ -51,6 +51,7 @@
     display: none;
     flex-basis: 100%;
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
   }
   .siteHeader nav[data-open='true'] {

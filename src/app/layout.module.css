@@ -2,7 +2,7 @@
   max-width: 100%;
   margin: auto;
   min-height: 100vh;
-  background: white;
+  background: var(--surface);
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +17,7 @@
   left: 12px;
   top: -100px;
   z-index: 99;
-  background: white;
+  background: var(--surface);
   padding: 10px;
 }
 .skipLink:focus {

@@ -4,6 +4,7 @@ import headerStyles from "@/components/Header.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   ["Home", "/"],
@@ -49,7 +50,7 @@ const Header = () => {
         id="main-navigation"
         data-open={menuOpen}
         aria-label="Navegación principal"
-        className="flex flex-wrap gap-x-7 gap-y-3"
+        className="flex flex-wrap items-center gap-x-7 gap-y-3"
       >
         {links.map(([name, href]) => (
           <Link
@@ -61,6 +62,7 @@ const Header = () => {
             {name}
           </Link>
         ))}
+        <ThemeToggle />
       </nav>
     </header>
   );

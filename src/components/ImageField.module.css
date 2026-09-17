@@ -19,17 +19,17 @@
   cursor: pointer;
 }
 .options input {
-  accent-color: #2563eb;
+  accent-color: var(--link);
 }
 .fieldset [hidden] {
   display: none;
 }
 .help {
-  color: #374151;
+  color: var(--text-muted);
   font-size: 13px;
 }
 .error {
-  color: #b91c1c;
+  color: var(--danger);
   margin-top: 8px;
 }
 .preview {
@@ -38,7 +38,7 @@
   max-width: 320px;
   height: 180px;
   object-fit: contain;
-  background: #f3f4f6;
+  background: var(--surface-muted);
   border-radius: 8px;
   margin-top: 12px;
 }

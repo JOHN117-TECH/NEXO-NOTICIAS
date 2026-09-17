@@ -1,23 +1,30 @@
 "use client";
-import { useEffect, useState, useCallback, type ReactNode } from "react";
+import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
 import { NewsContext } from "@/contexts/NewsContext";
 import type { News } from "@/lib/types";
 export function Providers({ children }: { children: ReactNode }) {
+  const latestRequest = useRef(0);
   const [news, setNews] = useState<News[]>([]),
     [loading, setLoading] = useState(true),
     [error, setError] = useState(""),
     [favorites, setFavorites] = useState<string[]>([]);
   const reload = useCallback(async () => {
+    const request = ++latestRequest.current;
+    const minimumDisplay = new Promise<void>((resolve) => setTimeout(resolve, 3000));
     setLoading(true);
     setError("");
     try {
       const res = await fetch("/api/noticias");
       if (!res.ok) throw Error();
-      setNews(await res.json());
+      const items: News[] = await res.json();
+      await minimumDisplay;
+      if (request === latestRequest.current) setNews(items);
     } catch {
-      setError("No pudimos cargar las noticias. Intenta nuevamente.");
+      if (request === latestRequest.current)
+        setError("No pudimos cargar las noticias. Intenta nuevamente.");
     } finally {
-      setLoading(false);
+      await minimumDisplay;
+      if (request === latestRequest.current) setLoading(false);
     }
   }, []);
   useEffect(() => {

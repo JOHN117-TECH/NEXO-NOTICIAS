@@ -1,7 +1,7 @@
 .notice {
   padding: 12px;
   border-radius: 8px;
-  background: #eff6ff;
+  background: var(--notice-bg);
   margin: 12px 0;
-  color: #172554;
+  color: var(--text);
 }

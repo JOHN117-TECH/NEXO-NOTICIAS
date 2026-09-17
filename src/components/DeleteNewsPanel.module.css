@@ -5,7 +5,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 .selectionLabel {
   display: flex;
@@ -20,11 +20,11 @@
   height: 16px;
   margin-top: 2px;
   flex-shrink: 0;
-  accent-color: #2563eb;
+  accent-color: var(--link);
 }
 .deleteSelected {
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
   border-radius: 8px;
   padding: 8px 12px;
 }
@@ -38,7 +38,7 @@
   }
 }
 .bulkConfirmation {
-  background: #fef2f2;
+  background: var(--danger-bg);
   border-radius: 8px;
   padding: 12px;
   margin: 12px 0;

@@ -1,5 +1,8 @@
 # Organización de estilos
 
+- `styles/theme.css`: paletas clara y oscura mediante variables CSS. Los módulos de cada componente consumen estas variables; evita añadir colores fijos para fondos, texto y bordes que deban cambiar con el tema.
+- `components/ThemeToggle.tsx` y su módulo CSS: botón de sol/luna. `hooks/useTheme.ts` conserva la preferencia en `localStorage`; `lib/theme.ts` aplica el tema antes de pintar la página. Sin una elección guardada, se utiliza la preferencia del sistema.
+
 - `app/globals.css`: Tailwind, tokens del tema y reglas base de accesibilidad e interacción. No contiene estilos de páginas ni componentes.
 - `app/layout.module.css`: estructura de la aplicación, enlace para saltar al contenido y disposición del footer en listados.
 - `app/page.module.css` y `app/<ruta>/page.module.css`: estilos propios de cada página, incluyendo sus reglas responsive.

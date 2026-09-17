@@ -23,7 +23,7 @@ export default function Detail({
         <article>
           <p className={typographyStyles.category}>{item.category}</p>
           <h1>{item.title}</h1>
-          <p className="text-[13px] text-gray-700">
+          <p className="text-[13px] text-[var(--text-muted)]">
             Fecha de publicación:{" "}
             {new Date(item.publishedAt).toLocaleDateString("es-CO", {
               month: "long",
