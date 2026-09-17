@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import cardStyles from "./NewsImage.module.css";
 import type { News } from "@/lib/types";
 export function NewsImage({
@@ -10,10 +11,12 @@ export function NewsImage({
   large?: boolean;
   home?: boolean;
 }) {
+  const { t } = useI18n();
+
   return news.image ? (
     <img
       src={news.image}
-      alt={news.title}
+      alt={t(news.title)}
       className={[
         cardStyles.newsImage,
         large ? cardStyles.largeImage : "",
@@ -23,14 +26,14 @@ export function NewsImage({
   ) : (
     <div
       role="img"
-      aria-label={`Imagen de referencia: ${news.title}`}
+      aria-label={t("Imagen de referencia: {title}", { title: t(news.title) })}
       className={[
         cardStyles.newsImage,
         large ? cardStyles.largeImage : "",
         home ? cardStyles.homeImage : "",
       ].join(" ")}
     >
-      [ {large ? "imagen principal" : "imagen"} ]
+      [ {t(large ? "imagen principal" : "imagen")} ]
     </div>
   );
 }

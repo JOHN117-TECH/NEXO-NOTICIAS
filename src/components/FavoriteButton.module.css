@@ -4,16 +4,16 @@
   justify-content: center;
   gap: 6px;
   font-size: 14px;
-  color: #d22b2b;
+  color: var(--favorite);
 }
 .icon {
   flex-shrink: 0;
 }
 .favorite:hover {
-  color: #dc143c;
+  color: var(--favorite-hover);
 }
 .favoriteFull {
-  border: 1px solid #b59b88;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
   padding: 11px 26px;
   font-size: 14px;

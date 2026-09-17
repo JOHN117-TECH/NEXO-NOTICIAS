@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import favoriteStyles from "./FavoriteButton.module.css";
 import { useNews } from "@/hooks/useNews";
 export function FavoriteButton({
@@ -8,6 +9,8 @@ export function FavoriteButton({
   id: string;
   full?: boolean;
 }) {
+  const { t } = useI18n();
+
   const { favorites, toggle } = useNews();
   const saved = favorites.includes(id);
   return (
@@ -15,7 +18,7 @@ export function FavoriteButton({
       type="button"
       onClick={() => toggle(id)}
       aria-pressed={saved}
-      aria-label={`${saved ? "Quitar de" : "Añadir a"} favoritos`}
+      aria-label={t(saved ? "Quitar de favoritos" : "Añadir a favoritos")}
       className={[
         favoriteStyles.favorite,
         full ? favoriteStyles.favoriteFull : "",
@@ -37,13 +40,15 @@ export function FavoriteButton({
         <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" />
       </svg>
       <span>
-        {saved
-          ? full
-            ? "Quitar de favoritos"
-            : "Quitar"
-          : full
-            ? "Añadir a favoritos"
-            : "Añadir a favoritos"}
+        {t(
+          saved
+            ? full
+              ? "Quitar de favoritos"
+              : "Quitar"
+            : full
+              ? "Añadir a favoritos"
+              : "Añadir a favoritos",
+        )}
       </span>
     </button>
   );

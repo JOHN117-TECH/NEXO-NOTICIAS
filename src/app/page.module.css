@@ -1,5 +1,5 @@
 .hero {
-  background: #f3f4f6;
+  background: var(--surface-muted);
   text-align: center;
   padding: 43px 24px 28px;
   min-height: 190px;
@@ -13,7 +13,7 @@
 .hero p {
   max-width: 590px;
   margin: 0 auto 16px;
-  color: #374151;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 .why {
@@ -27,13 +27,13 @@
 }
 .why p {
   font-size: 13px;
-  color: #374151;
+  color: var(--text-muted);
   max-width: 490px;
   margin: auto;
   line-height: 1.4;
 }
 .cta {
-  background: #f3f4f6;
+  background: var(--surface-muted);
   text-align: center;
   padding: 25px 24px 28px;
 }

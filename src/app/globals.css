@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "../styles/theme.css";
+@import "../styles/scrollbar.css";
 
 @theme {
   --color-navy: #172554;
@@ -7,8 +9,8 @@
 }
 
 :root {
-  color: #172554;
-  background: #f3f4f6;
+  color: var(--text);
+  background: var(--page-bg);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 }

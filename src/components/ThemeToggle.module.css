@@ -1,0 +1,24 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-self: center;
+  color: inherit;
+  background: transparent;
+  border: 1px solid #ffffff70;
+  border-radius: 50%;
+}
+.toggle:hover {
+  background: #ffffff20;
+}
+@media (max-width: 376px) {
+  .toggle {
+    align-self: flex-start;
+    width: 36px;
+    height: 36px;
+    margin-top: 0px;
+  }
+}

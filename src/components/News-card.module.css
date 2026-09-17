@@ -1,5 +1,5 @@
 .newsCard {
-  background: #f3f4f6;
+  background: var(--surface-muted);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -30,7 +30,7 @@
 .summary {
   font-size: 12px;
   line-height: 1.25;
-  color: #374151;
+  color: var(--text-muted);
 }
 @media (min-width: 768px) {
   .homeCard .cardBody {

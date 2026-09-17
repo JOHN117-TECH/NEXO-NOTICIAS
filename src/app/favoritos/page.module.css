@@ -8,6 +8,6 @@
   margin-bottom: 5px;
 }
 .empty p {
-  color: #374151;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }

@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #2563eb;
+  background: var(--button-bg);
   color: white;
   border-radius: 8px;
   padding: 10px 30px;
@@ -11,11 +11,11 @@
   line-height: 1.2;
 }
 .button:hover {
-  background: #1d4ed8;
+  background: var(--button-bg-hover);
   text-decoration: none;
 }
 .textLink {
   font-size: 14px;
-  color: #2563eb;
+  color: var(--link);
   font-weight: 700;
 }

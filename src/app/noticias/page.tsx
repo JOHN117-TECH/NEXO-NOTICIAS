@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import layoutStyles from "@/app/layout.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import { NewsFilters } from "@/components/NewsFilters";
@@ -9,6 +10,8 @@ import { NewsCard } from "@/components/News-card";
 import { NewsStatus } from "@/components/NewsStatus";
 import { NewsManager } from "@/components/News-manager";
 export default function Noticias() {
+  const { t } = useI18n();
+
   const { news, loading, error } = useNews();
   const [category, setCategory] = useState("Todas");
   const [page, setPage] = useState(1);
@@ -24,8 +27,10 @@ export default function Noticias() {
       className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
     >
       <div className={typographyStyles.pageIntro}>
-        <h1>Últimas noticias</h1>
-        <p>Mantente al día de tecnología, educación, turismo y actualidad.</p>
+        <h1>{t("Últimas noticias")}</h1>
+        <p>
+          {t("Mantente al día de tecnología, educación, turismo y actualidad.")}
+        </p>
       </div>
       <NewsFilters
         category={category}
@@ -54,7 +59,7 @@ export default function Noticias() {
       />
       {!loading && !error && filtered.length === 0 && (
         <p className="py-10" role="status">
-          No hay noticias en esta categoría.
+          {t("No hay noticias en esta categoría.")}
         </p>
       )}
       <NewsManager />

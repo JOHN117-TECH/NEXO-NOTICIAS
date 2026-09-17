@@ -1,14 +1,14 @@
 .newsImage {
   width: 100%;
   height: 200px;
-  background: #b3d3ee;
+  background: var(--image-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   object-fit: cover;
   font-size: 14px;
   font-weight: 400;
-  color: #172554;
+  color: var(--text);
 }
 .largeImage {
   height: 192px;

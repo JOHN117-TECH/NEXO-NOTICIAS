@@ -1,5 +1,5 @@
 .siteFooter {
-  background: #172554;
+  background: var(--chrome-bg);
   color: #fff;
   flex: 1;
   min-height: 100px;

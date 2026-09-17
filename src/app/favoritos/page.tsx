@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import layoutStyles from "@/app/layout.module.css";
 import favoritesStyles from "@/app/favoritos/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
@@ -8,6 +9,8 @@ import { useNews } from "@/hooks/useNews";
 import { NewsCard } from "@/components/News-card";
 import { NewsStatus } from "@/components/NewsStatus";
 export default function Favoritos() {
+  const { t, href: localizedHref } = useI18n();
+
   const { news, favorites, loading, error } = useNews();
   const saved = news.filter((n) => favorites.includes(n.id));
   return (
@@ -16,9 +19,11 @@ export default function Favoritos() {
       className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
     >
       <div className={typographyStyles.pageIntro}>
-        <h1>Mis noticias favoritas</h1>
+        <h1>{t("Mis noticias favoritas")}</h1>
         <p>
-          Consulta las noticias que has guardado para leerlas posteriormente.
+          {t(
+            "Consulta las noticias que has guardado para leerlas posteriormente.",
+          )}
         </p>
       </div>
       <NewsStatus />
@@ -29,10 +34,17 @@ export default function Favoritos() {
       </div>
       {!loading && !error && saved.length === 0 && (
         <section className={favoritesStyles.empty}>
-          <h2>Todavía no tienes noticias favoritas.</h2>
-          <p>Explora nuestras publicaciones y guarda las que más te gusten.</p>
-          <Link href="/noticias" className={buttonStyles.button}>
-            Explorar noticias
+          <h2>{t("Todavía no tienes noticias favoritas.")}</h2>
+          <p>
+            {t(
+              "Explora nuestras publicaciones y guarda las que más te gusten.",
+            )}
+          </p>
+          <Link
+            href={localizedHref("/noticias")}
+            className={buttonStyles.button}
+          >
+            {t("Explorar noticias")}
           </Link>
         </section>
       )}

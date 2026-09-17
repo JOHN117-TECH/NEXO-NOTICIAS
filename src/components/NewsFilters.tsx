@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import newsStyles from "./NewsFilters.module.css";
 import { categories } from "@/lib/types";
 const pageSizes = [2, 3, 4, 6, 8, 10];
@@ -14,11 +15,13 @@ export function NewsFilters({
   onCategoryChange,
   onPageSizeChange,
 }: Props) {
+  const { t, locale } = useI18n();
+
   return (
     <div className={newsStyles.toolbar}>
       <div
-        id="categorias"
-        aria-label="Filtrar noticias por categoría"
+        id={locale === "en" ? "categories" : "categorias"}
+        aria-label={t("Filtrar noticias por categoría")}
         className="flex flex-wrap gap-2"
       >
         {["Todas", ...categories].map((c) => (
@@ -30,12 +33,12 @@ export function NewsFilters({
               onCategoryChange(c);
             }}
           >
-            {c}
+            {t(c)}
           </button>
         ))}
       </div>
       <label className={newsStyles.pageSize}>
-        Noticias por página
+        {t("Noticias por página")}
         <select
           value={pageSize}
           onChange={(event) => {

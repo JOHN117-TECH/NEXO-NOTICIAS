@@ -9,11 +9,11 @@
 .field select,
 .field textarea {
   font: 400 14px Arial;
-  color: #374151;
-  border: 1px solid #aaa;
+  color: var(--text-muted);
+  border: 1px solid var(--input-border);
   border-radius: 9px;
   padding: 9px 11px;
-  background: white;
+  background: var(--surface);
   width: 100%;
   min-height: 36px;
 }
@@ -22,5 +22,5 @@
   resize: vertical;
 }
 .field select:invalid {
-  color: #777;
+  color: var(--placeholder);
 }

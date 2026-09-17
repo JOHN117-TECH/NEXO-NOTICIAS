@@ -1,0 +1,25 @@
+:root:not([data-theme="dark"]) {
+  scrollbar-color: var(--chrome-bg) var(--surface-muted);
+}
+
+/* Fallback for browsers without the standard scrollbar-color property. */
+@supports not (scrollbar-color: auto) {
+  :root:not([data-theme="dark"])::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  :root:not([data-theme="dark"])::-webkit-scrollbar-track {
+    background: var(--surface-muted);
+  }
+  :root:not([data-theme="dark"])::-webkit-scrollbar-thumb {
+    background: var(--chrome-bg);
+    border: 3px solid var(--surface-muted);
+    border-radius: 8px;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    scrollbar-color: auto;
+  }
+}
