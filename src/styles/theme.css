@@ -17,14 +17,16 @@
   --favorite-hover: #dc143c;
   --image-bg: #b3d3ee;
   --chrome-bg: #172554;
+  --button-bg: #2563eb;
   --nav-hover-bg: #2b4075;
+  --button-bg-hover: #1d4ed8;
   --nav-hover-text: #dbeafe;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   color-scheme: dark;
   --page-bg: #0b1120;
-  --surface: #111827;
+  --surface: #00203d;
   --surface-muted: #1e293b;
   --text: #e5edff;
   --text-muted: #cbd5e1;
@@ -40,6 +42,8 @@
   --favorite-hover: #fecdd3;
   --image-bg: #294361;
   --chrome-bg: #0f172a;
+  --button-bg: #00468a;
   --nav-hover-bg: #243449;
+  --button-bg-hover: #00376b;
   --nav-hover-text: #93c5fd;
 }
