@@ -14,6 +14,7 @@ export function NewsCard({
   news: News;
   home?: boolean;
 }) {
+
   const { t, href: localizedHref } = useI18n();
 
   return (
