@@ -39,7 +39,7 @@
 .menuButton {
   display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .siteHeader {
     padding: 20px;
   }
@@ -51,7 +51,7 @@
     font-size: 13px;
   }
 }
-@media (max-width: 376px) {
+@media (max-width: 426px) {
   .siteHeader {
     gap: 12px;
   }
@@ -103,5 +103,18 @@
 
     gap: 10px !important;
     column-gap: 10px !important;
+  }
+}
+
+@media (max-width: 376px) {
+  .siteHeader nav[data-open='true'] {
+    display: flex;
+    align-items: center;
+  }
+
+  .preferences {
+    margin-top: 4px;
+    align-self: center;
+    justify-content: center;
   }
 }
