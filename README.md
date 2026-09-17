@@ -80,3 +80,11 @@ Las pruebas de API necesitan el backend iniciado. Crean y eliminan una noticia d
 - POST `/api/contacto`
 
 Next.js conecta con NestJS mediante un rewrite; la clave nunca se incorpora al bundle del frontend. Consultas SQL parametrizadas, DTOs con límites y validación, UUIDs validados y seed aplicado solo una vez. La configuración local está excluida de Git.
+
+### Eliminación múltiple
+
+En Administrar noticias, la columna Eliminación de noticias permite seleccionar filas o marcar Seleccionar todas. La selección abarca todas las noticias de administración, independientemente del filtro y la paginación del listado superior. El botón Eliminar seleccionadas muestra la cantidad y solicita una única confirmación. Conserva la clave de administrador y la eliminación individual.
+
+La petición DELETE /api/noticias recibe { ids: [...] } y la cabecera X-Admin-Key. El servidor valida los UUIDs y elimina únicamente esos identificadores en una sola operación SQL; devuelve la cantidad realmente eliminada. Las noticias que ya no existan se omiten.
+
+La prueba Backend/test/bulk-delete.test.cjs usa una tabla temporal y revierte la transacción, sin modificar las noticias existentes. Ejecutarla desde Backend después de compilar: node --test test/bulk-delete.test.cjs.
