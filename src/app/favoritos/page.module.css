@@ -1,0 +1,13 @@
+.empty {
+  text-align: center;
+  padding: 50px 24px;
+}
+.empty h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.empty p {
+  color: #374151;
+  margin-bottom: 20px;
+}

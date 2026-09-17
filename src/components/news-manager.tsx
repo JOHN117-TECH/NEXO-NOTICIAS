@@ -1,11 +1,18 @@
 "use client";
+import managerStyles from "@/components/News-manager.module.css";
+import buttonStyles from "@/components/ui/Button.module.css";
+import formStyles from "@/components/ui/FormField.module.css";
+import noticeStyles from "@/components/ui/Notice.module.css";
+import typographyStyles from "@/components/ui/Typography.module.css";
 import { useRef, useState, type FormEvent } from "react";
 import { categories } from "@/lib/types";
 import { useNews } from "./Providers";
 export function NewsManager() {
   const { news, reload } = useNews();
   const keyInput = useRef<HTMLInputElement>(null);
-  const [statusAction, setStatusAction] = useState<"create" | "delete">("create");
+  const [statusAction, setStatusAction] = useState<"create" | "delete">(
+    "create",
+  );
   const [key, setKey] = useState(""),
     [status, setStatus] = useState(""),
     [pending, setPending] = useState(false),
@@ -42,7 +49,9 @@ export function NewsManager() {
   async function remove(id: string) {
     setStatusAction("delete");
     if (!key.trim()) {
-      setStatus("Introduce la clave de administración para eliminar la noticia.");
+      setStatus(
+        "Introduce la clave de administración para eliminar la noticia.",
+      );
       keyInput.current?.focus();
       return;
     }
@@ -71,10 +80,10 @@ export function NewsManager() {
     }
   }
   return (
-    <details className="management">
+    <details className={managerStyles.management}>
       <summary>Administrar noticias</summary>
       <div className="mt-4 max-w-xl">
-        <label className="field">
+        <label className={formStyles.field}>
           Clave de administración
           <input
             ref={keyInput}
@@ -89,16 +98,22 @@ export function NewsManager() {
           La clave es necesaria para crear y eliminar noticias. Debes volver a
           introducirla si recargas la página.
         </p>
-        {status && !key.trim() && <p role="alert" className="notice">{status}</p>}
+        {status && !key.trim() && (
+          <p role="alert" className={noticeStyles.notice}>
+            {status}
+          </p>
+        )}
       </div>
-      <div className="management-columns">
+      <div className={managerStyles.managementColumns}>
         <form onSubmit={create}>
-          <h2 className="section-title mb-4">Crear noticia</h2>
-          <label className="field">
+          <h2 className={[typographyStyles.sectionTitle, "mb-4"].join(" ")}>
+            Crear noticia
+          </h2>
+          <label className={formStyles.field}>
             Título
             <input name="title" required minLength={5} maxLength={180} />
           </label>
-          <label className="field">
+          <label className={formStyles.field}>
             Categoría
             <select name="category">
               {categories.map((c) => (
@@ -106,27 +121,39 @@ export function NewsManager() {
               ))}
             </select>
           </label>
-          <label className="field">
+          <label className={formStyles.field}>
             Resumen
             <textarea name="summary" required minLength={10} maxLength={400} />
           </label>
-          <label className="field">
+          <label className={formStyles.field}>
             Contenido
-            <textarea name="content" required minLength={30} maxLength={20000} />
+            <textarea
+              name="content"
+              required
+              minLength={30}
+              maxLength={20000}
+            />
           </label>
-          <label className="field">
+          <label className={formStyles.field}>
             URL de imagen (opcional)
             <input name="image" type="url" placeholder="https://..." />
           </label>
-          <button disabled={pending || !key} className="button">
+          <button disabled={pending || !key} className={buttonStyles.button}>
             {pending ? "Guardando…" : "Crear noticia"}
           </button>
           {status && statusAction === "create" && key.trim() && (
-            <p role="status" className="notice">{status}</p>
+            <p role="status" className={noticeStyles.notice}>
+              {status}
+            </p>
           )}
         </form>
         <section aria-labelledby="delete-news-title" className="min-w-0">
-          <h2 id="delete-news-title" className="section-title mb-4">Eliminación de noticias</h2>
+          <h2
+            id="delete-news-title"
+            className={[typographyStyles.sectionTitle, "mb-4"].join(" ")}
+          >
+            Eliminación de noticias
+          </h2>
           <ul className="divide-y divide-gray-200">
             {news.map((n) => (
               <li
@@ -145,15 +172,34 @@ export function NewsManager() {
                     >
                       {pending ? "Eliminando…" : "Confirmar eliminación"}
                     </button>
-                    <button disabled={pending} onClick={() => { setDeleting(""); setStatus(""); }}>Cancelar</button>
-                    {!key.trim() && <p className="w-full text-sm text-red-700">Falta introducir la clave de administración.</p>}
-                    {status && statusAction === "delete" && key.trim() && <p role="alert" className="w-full text-sm text-red-700">{status}</p>}
+                    <button
+                      disabled={pending}
+                      onClick={() => {
+                        setDeleting("");
+                        setStatus("");
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                    {!key.trim() && (
+                      <p className="w-full text-sm text-red-700">
+                        Falta introducir la clave de administración.
+                      </p>
+                    )}
+                    {status && statusAction === "delete" && key.trim() && (
+                      <p role="alert" className="w-full text-sm text-red-700">
+                        {status}
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <button
                     className="shrink-0 text-red-700"
                     disabled={pending}
-                    onClick={() => { setDeleting(n.id); setStatus(""); }}
+                    onClick={() => {
+                      setDeleting(n.id);
+                      setStatus("");
+                    }}
                   >
                     Eliminar
                   </button>
@@ -161,9 +207,11 @@ export function NewsManager() {
               </li>
             ))}
           </ul>
-          {news.length === 0 && <p className="text-gray-700">No hay noticias para eliminar.</p>}
+          {news.length === 0 && (
+            <p className="text-gray-700">No hay noticias para eliminar.</p>
+          )}
           {status && statusAction === "delete" && !deleting && key.trim() && (
-            <p role="status" className="notice">
+            <p role="status" className={noticeStyles.notice}>
               {status}
             </p>
           )}

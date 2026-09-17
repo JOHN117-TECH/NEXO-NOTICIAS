@@ -1,3 +1,4 @@
+import layoutStyles from "@/app/layout.module.css";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
@@ -17,11 +18,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <a className="skip-link" href="#contenido">
+        <a className={layoutStyles.skipLink} href="#contenido">
           Saltar al contenido
         </a>
         <Providers>
-          <div className="site-shell">
+          <div className={layoutStyles.siteShell}>
             <Header />
             {children}
             <Footer />

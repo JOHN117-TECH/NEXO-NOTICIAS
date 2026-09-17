@@ -1,0 +1,25 @@
+.siteShell {
+  max-width: 100%;
+  margin: auto;
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.siteShell > .listingPage {
+  flex: 1 0 auto;
+}
+.listingPage + footer {
+  flex: 0 0 auto;
+}
+.skipLink {
+  position: fixed;
+  left: 12px;
+  top: -100px;
+  z-index: 99;
+  background: white;
+  padding: 10px;
+}
+.skipLink:focus {
+  top: 12px;
+}

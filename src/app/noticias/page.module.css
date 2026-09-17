@@ -1,0 +1,11 @@
+.filter {
+  border-radius: 999px;
+  padding: 7px 15px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 13px;
+}
+.filter[aria-pressed="true"] {
+  background: #2563eb;
+  color: white;
+}

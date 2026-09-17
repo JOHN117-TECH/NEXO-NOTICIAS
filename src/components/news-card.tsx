@@ -1,4 +1,8 @@
 "use client";
+import cardStyles from "@/components/News-card.module.css";
+import favoriteStyles from "@/components/FavoriteButton.module.css";
+import buttonStyles from "@/components/ui/Button.module.css";
+import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
 import type { News } from "@/lib/types";
 import { useNews } from "./Providers";
@@ -13,13 +17,19 @@ export function NewsImage({
     <img
       src={news.image}
       alt={news.title}
-      className={`news-image ${large ? "large-image" : ""}`}
+      className={[
+        cardStyles.newsImage,
+        large ? cardStyles.largeImage : "",
+      ].join(" ")}
     />
   ) : (
     <div
       role="img"
       aria-label={`Imagen de referencia: ${news.title}`}
-      className={`news-image ${large ? "large-image" : ""}`}
+      className={[
+        cardStyles.newsImage,
+        large ? cardStyles.largeImage : "",
+      ].join(" ")}
     >
       [ {large ? "imagen principal" : "imagen"} ]
     </div>
@@ -40,7 +50,10 @@ export function FavoriteButton({
       onClick={() => toggle(id)}
       aria-pressed={saved}
       aria-label={`${saved ? "Quitar de" : "Añadir a"} favoritos`}
-      className={`favorite ${full ? "favorite-full" : ""}`}
+      className={[
+        favoriteStyles.favorite,
+        full ? favoriteStyles.favoriteFull : "",
+      ].join(" ")}
     >
       {saved ? "♥" : "♡"}{" "}
       {saved
@@ -61,14 +74,18 @@ export function NewsCard({
   home?: boolean;
 }) {
   return (
-    <article className={`news-card ${home ? "home-card" : ""}`}>
+    <article
+      className={[cardStyles.newsCard, home ? cardStyles.homeCard : ""].join(
+        " ",
+      )}
+    >
       <NewsImage news={news} />
-      <div className="card-body">
-        <p className="category">{news.category}</p>
+      <div className={cardStyles.cardBody}>
+        <p className={typographyStyles.category}>{news.category}</p>
         <h3>{news.title}</h3>
-        <p className="summary">{news.summary}</p>
+        <p className={cardStyles.summary}>{news.summary}</p>
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <Link className="text-link" href={`/noticias/${news.id}`}>
+          <Link className={buttonStyles.textLink} href={`/noticias/${news.id}`}>
             Ver más<span className="sr-only">: {news.title}</span>
           </Link>
           {!home && <FavoriteButton id={news.id} />}
@@ -86,7 +103,10 @@ export function NewsStatus() {
   ) : error ? (
     <div role="alert" className="py-8">
       <p>{error}</p>
-      <button className="button mt-3" onClick={() => void reload()}>
+      <button
+        className={[buttonStyles.button, "mt-3"].join(" ")}
+        onClick={() => void reload()}
+      >
         Reintentar
       </button>
     </div>

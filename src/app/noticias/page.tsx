@@ -1,4 +1,8 @@
 "use client";
+import layoutStyles from "@/app/layout.module.css";
+import newsStyles from "@/app/noticias/page.module.css";
+import buttonStyles from "@/components/ui/Button.module.css";
+import typographyStyles from "@/components/ui/Typography.module.css";
 import { useState } from "react";
 import { categories } from "@/lib/types";
 import { useNews } from "@/components/Providers";
@@ -14,8 +18,11 @@ export default function Noticias() {
   const pages = Math.max(1, Math.ceil(filtered.length / 3));
   const currentPage = Math.min(page, pages);
   return (
-    <main id="contenido" className="listing-page px-6 pb-7 pt-6">
-      <div className="page-intro">
+    <main
+      id="contenido"
+      className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
+    >
+      <div className={typographyStyles.pageIntro}>
         <h1>Últimas noticias</h1>
         <p>Mantente al día de tecnología, educación, turismo y actualidad.</p>
       </div>
@@ -26,7 +33,7 @@ export default function Noticias() {
       >
         {["Todas", ...categories].map((c) => (
           <button
-            className="filter"
+            className={newsStyles.filter}
             key={c}
             aria-pressed={category === c}
             onClick={() => {
@@ -52,7 +59,7 @@ export default function Noticias() {
           <button
             disabled={currentPage === 1}
             onClick={() => setPage(currentPage - 1)}
-            className="text-link disabled:opacity-40"
+            className={[buttonStyles.textLink, "disabled:opacity-40"].join(" ")}
           >
             Anterior
           </button>
@@ -62,7 +69,7 @@ export default function Noticias() {
           <button
             disabled={currentPage === pages}
             onClick={() => setPage(currentPage + 1)}
-            className="text-link disabled:opacity-40"
+            className={[buttonStyles.textLink, "disabled:opacity-40"].join(" ")}
           >
             Siguiente
           </button>

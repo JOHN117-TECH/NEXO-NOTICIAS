@@ -1,4 +1,8 @@
 "use client";
+import contactStyles from "@/app/contacto/page.module.css";
+import buttonStyles from "@/components/ui/Button.module.css";
+import formStyles from "@/components/ui/FormField.module.css";
+import noticeStyles from "@/components/ui/Notice.module.css";
 import { useState, type FormEvent } from "react";
 import { categories } from "@/lib/types";
 export default function Contact() {
@@ -32,14 +36,14 @@ export default function Contact() {
     }
   }
   return (
-    <main id="contenido" className="contact">
+    <main id="contenido" className={contactStyles.contact}>
       <h1>Contáctanos</h1>
-      <p className="intro">
+      <p className={contactStyles.intro}>
         ¿Tienes alguna pregunta, recomendación o noticia que quieras compartir?
         Escríbenos mediante el siguiente formulario.
       </p>
       <form onSubmit={submit}>
-        <label className="field">
+        <label className={formStyles.field}>
           Nombre completo
           <input
             name="name"
@@ -50,7 +54,7 @@ export default function Contact() {
             maxLength={100}
           />
         </label>
-        <label className="field">
+        <label className={formStyles.field}>
           Correo electrónico
           <input
             name="email"
@@ -61,7 +65,7 @@ export default function Contact() {
             maxLength={254}
           />
         </label>
-        <label className="field">
+        <label className={formStyles.field}>
           Asunto
           <input
             name="subject"
@@ -71,7 +75,7 @@ export default function Contact() {
             maxLength={150}
           />
         </label>
-        <label className="field">
+        <label className={formStyles.field}>
           Categoría de la consulta
           <select name="category" required defaultValue="">
             <option value="" disabled>
@@ -82,7 +86,7 @@ export default function Contact() {
             ))}
           </select>
         </label>
-        <label className="field">
+        <label className={formStyles.field}>
           Mensaje
           <textarea
             name="message"
@@ -92,11 +96,17 @@ export default function Contact() {
             maxLength={5000}
           />
         </label>
-        <button className="button mt-2 w-full" disabled={pending}>
+        <button
+          className={[buttonStyles.button, "mt-2 w-full"].join(" ")}
+          disabled={pending}
+        >
           {pending ? "Enviando…" : "Enviar mensaje"}
         </button>
         {status && (
-          <p role={success ? "status" : "alert"} className="notice">
+          <p
+            role={success ? "status" : "alert"}
+            className={noticeStyles.notice}
+          >
             {status}
           </p>
         )}

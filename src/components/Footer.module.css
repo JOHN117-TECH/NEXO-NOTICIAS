@@ -1,0 +1,9 @@
+.siteFooter {
+  background: #172554;
+  color: #fff;
+  flex: 1;
+  min-height: 100px;
+}
+.siteFooter p {
+  color: #cbd5e1;
+}
