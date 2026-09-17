@@ -4,14 +4,14 @@ import homeStyles from "@/app/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
-import { useNews } from "@/hooks/useNews";
+
 
 import { NewsStatus } from "@/components/NewsStatus";
-import { NewsCard } from "@/components/News-card";
+import { HomeNewsGrid } from "@/components/HomeNewsGrid";
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
 
-  const { news } = useNews();
+
   return (
     <main id="contenido">
       <section className={homeStyles.hero}>
@@ -30,14 +30,7 @@ export default function Home() {
           {t("Noticias principales")}
         </h2>
         <NewsStatus />
-        <div className="grid gap-[18px] md:grid-cols-3">
-          {news
-            .filter((n) => n.featured)
-            .slice(0, 3)
-            .map((n) => (
-              <NewsCard key={n.id} news={n} home />
-            ))}
-        </div>
+        <HomeNewsGrid />
       </section>
       <section className={homeStyles.why}>
         <h2>{t("¿Por qué utilizar Nexo Noticias?")}</h2>

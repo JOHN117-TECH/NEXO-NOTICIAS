@@ -10,16 +10,18 @@ import { FavoriteButton } from "./FavoriteButton";
 export function NewsCard({
   news,
   home = false,
+  lead = false,
 }: {
   news: News;
   home?: boolean;
+  lead?: boolean;
 }) {
 
   const { t, href: localizedHref } = useI18n();
 
   return (
     <article
-      className={[cardStyles.newsCard, home ? cardStyles.homeCard : ""].join(
+      className={[cardStyles.newsCard, home ? cardStyles.homeCard : "", home && lead ? cardStyles.leadCard : ""].join(
         " ",
       )}
     >
@@ -28,6 +30,13 @@ export function NewsCard({
         <p className={typographyStyles.category}>{t(news.category)}</p>
         <h3>{t(news.title)}</h3>
         <p className={cardStyles.summary}>{t(news.summary)}</p>
+        {home && lead && (
+          <div className={cardStyles.content}>
+            {news.content.split(/\r?\n\s*\r?\n/).filter((paragraph) => paragraph.trim()).map((paragraph, index) => (
+              <p key={index}>{t(paragraph)}</p>
+            ))}
+          </div>
+        )}
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
           <Link
             className={`no-underline! ${[buttonStyles.textLink, cardStyles.readMore].join(" ")}`}
