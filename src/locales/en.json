@@ -22,7 +22,7 @@
   "No se pudo crear la noticia. Revisa los campos y la imagen e intenta nuevamente.": "The article could not be created. Check the fields and image, then try again.",
   "Noticia creada correctamente.": "Article created successfully.",
   "No se pudo conectar con el servidor.": "Could not connect to the server.",
-  "Crear noticia": "Create article",
+  "Crear noticia": "Create news item",
   "Título": "Title",
   "Categoría": "Category",
   "Resumen": "Summary",
