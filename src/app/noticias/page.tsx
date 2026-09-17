@@ -8,14 +8,16 @@ import { categories } from "@/lib/types";
 import { useNews } from "@/components/Providers";
 import { NewsCard, NewsStatus } from "@/components/News-card";
 import { NewsManager } from "@/components/News-manager";
+const pageSizes = [2, 3, 4, 6, 8, 10];
 export default function Noticias() {
   const { news, loading, error } = useNews();
   const [category, setCategory] = useState("Todas");
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(3);
   const filtered = news
     .filter((n) => category === "Todas" || n.category === category)
     .sort((a, b) => Number(a.featured) - Number(b.featured));
-  const pages = Math.max(1, Math.ceil(filtered.length / 3));
+  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const currentPage = Math.min(page, pages);
   return (
     <main
@@ -26,30 +28,53 @@ export default function Noticias() {
         <h1>Últimas noticias</h1>
         <p>Mantente al día de tecnología, educación, turismo y actualidad.</p>
       </div>
-      <div
-        id="categorias"
-        aria-label="Filtrar noticias por categoría"
-        className="mb-5 flex flex-wrap gap-2"
-      >
-        {["Todas", ...categories].map((c) => (
-          <button
-            className={newsStyles.filter}
-            key={c}
-            aria-pressed={category === c}
-            onClick={() => {
-              setCategory(c);
-              setPage(1);
+      <div className={newsStyles.toolbar}>
+        <div
+          id="categorias"
+          aria-label="Filtrar noticias por categoría"
+          className="flex flex-wrap gap-2"
+        >
+          {["Todas", ...categories].map((c) => (
+            <button
+              className={newsStyles.filter}
+              key={c}
+              aria-pressed={category === c}
+              onClick={() => {
+                setCategory(c);
+                setPage(1);
+              }}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+        <label className={newsStyles.pageSize}>
+          Noticias por página
+          <select
+            value={pageSize}
+            onChange={(event) => {
+              const size = Number(event.target.value);
+              if (pageSizes.includes(size)) {
+                setPageSize(size);
+                setPage(1);
+              }
             }}
           >
-            {c}
-          </button>
-        ))}
+            {pageSizes.map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <NewsStatus />
       <div className="grid gap-5 md:grid-cols-3">
-        {filtered.slice((currentPage - 1) * 3, currentPage * 3).map((n) => (
-          <NewsCard key={n.id} news={n} />
-        ))}
+        {filtered
+          .slice((currentPage - 1) * pageSize, currentPage * pageSize)
+          .map((n) => (
+            <NewsCard key={n.id} news={n} />
+          ))}
       </div>
       {pages > 1 && (
         <nav
