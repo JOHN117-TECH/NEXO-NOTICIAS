@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useNews } from "@/components/providers";
-import { NewsCard, NewsStatus } from "@/components/news-card";
+import { useNews } from "@/components/Providers";
+import { NewsCard, NewsStatus } from "@/components/News-card";
 export default function Home() {
   const { news } = useNews();
   return (

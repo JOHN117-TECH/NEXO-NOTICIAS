@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "@/components/providers";
-import { Header, Footer } from "@/components/layout";
+import { Providers } from "@/components/Providers";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 export const metadata: Metadata = {
   title: { default: "Nexo Noticias", template: "%s | Nexo Noticias" },
   description:

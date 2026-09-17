@@ -1,8 +1,8 @@
 "use client";
 import { use } from "react";
 import Link from "next/link";
-import { useNews } from "@/components/providers";
-import { NewsImage, FavoriteButton, NewsStatus } from "@/components/news-card";
+import { useNews } from "@/components/Providers";
+import { NewsImage, FavoriteButton, NewsStatus } from "@/components/News-card";
 export default function Detail({
   params,
 }: {

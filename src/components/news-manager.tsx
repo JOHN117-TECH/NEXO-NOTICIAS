@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, type FormEvent } from "react";
 import { categories } from "@/lib/types";
-import { useNews } from "./providers";
+import { useNews } from "./Providers";
 export function NewsManager() {
   const { news, reload } = useNews();
   const keyInput = useRef<HTMLInputElement>(null);
@@ -92,82 +92,82 @@ export function NewsManager() {
         {status && !key.trim() && <p role="alert" className="notice">{status}</p>}
       </div>
       <div className="management-columns">
-      <form onSubmit={create}>
-        <h2 className="section-title mb-4">Crear noticia</h2>
-        <label className="field">
-          Título
-          <input name="title" required minLength={5} maxLength={180} />
-        </label>
-        <label className="field">
-          Categoría
-          <select name="category">
-            {categories.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
-        </label>
-        <label className="field">
-          Resumen
-          <textarea name="summary" required minLength={10} maxLength={400} />
-        </label>
-        <label className="field">
-          Contenido
-          <textarea name="content" required minLength={30} maxLength={20000} />
-        </label>
-        <label className="field">
-          URL de imagen (opcional)
-          <input name="image" type="url" placeholder="https://..." />
-        </label>
-        <button disabled={pending || !key} className="button">
-          {pending ? "Guardando…" : "Crear noticia"}
-        </button>
-        {status && statusAction === "create" && key.trim() && (
-          <p role="status" className="notice">{status}</p>
-        )}
-      </form>
-      <section aria-labelledby="delete-news-title" className="min-w-0">
-      <h2 id="delete-news-title" className="section-title mb-4">Eliminación de noticias</h2>
-      <ul className="divide-y divide-gray-200">
-        {news.map((n) => (
-          <li
-            key={n.id}
-            className="flex flex-wrap items-center justify-between gap-3 py-3"
-          >
-            <span className="min-w-0 flex-1 break-words">{n.title}</span>
-            {deleting === n.id ? (
-              <div className="flex w-full flex-wrap items-center gap-4">
-                <span>¿Eliminar esta noticia?</span>
-                <button
-                  type="button"
-                  disabled={pending}
-                  onClick={() => void remove(n.id)}
-                  className="text-red-700"
-                >
-                  {pending ? "Eliminando…" : "Confirmar eliminación"}
-                </button>
-                <button disabled={pending} onClick={() => { setDeleting(""); setStatus(""); }}>Cancelar</button>
-                {!key.trim() && <p className="w-full text-sm text-red-700">Falta introducir la clave de administración.</p>}
-                {status && statusAction === "delete" && key.trim() && <p role="alert" className="w-full text-sm text-red-700">{status}</p>}
-              </div>
-            ) : (
-              <button
-                className="shrink-0 text-red-700"
-                disabled={pending}
-                onClick={() => { setDeleting(n.id); setStatus(""); }}
+        <form onSubmit={create}>
+          <h2 className="section-title mb-4">Crear noticia</h2>
+          <label className="field">
+            Título
+            <input name="title" required minLength={5} maxLength={180} />
+          </label>
+          <label className="field">
+            Categoría
+            <select name="category">
+              {categories.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+          </label>
+          <label className="field">
+            Resumen
+            <textarea name="summary" required minLength={10} maxLength={400} />
+          </label>
+          <label className="field">
+            Contenido
+            <textarea name="content" required minLength={30} maxLength={20000} />
+          </label>
+          <label className="field">
+            URL de imagen (opcional)
+            <input name="image" type="url" placeholder="https://..." />
+          </label>
+          <button disabled={pending || !key} className="button">
+            {pending ? "Guardando…" : "Crear noticia"}
+          </button>
+          {status && statusAction === "create" && key.trim() && (
+            <p role="status" className="notice">{status}</p>
+          )}
+        </form>
+        <section aria-labelledby="delete-news-title" className="min-w-0">
+          <h2 id="delete-news-title" className="section-title mb-4">Eliminación de noticias</h2>
+          <ul className="divide-y divide-gray-200">
+            {news.map((n) => (
+              <li
+                key={n.id}
+                className="flex flex-wrap items-center justify-between gap-3 py-3"
               >
-                Eliminar
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
-      {news.length === 0 && <p className="text-gray-700">No hay noticias para eliminar.</p>}
-      {status && statusAction === "delete" && !deleting && key.trim() && (
-        <p role="status" className="notice">
-          {status}
-        </p>
-      )}
-      </section>
+                <span className="min-w-0 flex-1 break-words">{n.title}</span>
+                {deleting === n.id ? (
+                  <div className="flex w-full flex-wrap items-center gap-4">
+                    <span>¿Eliminar esta noticia?</span>
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => void remove(n.id)}
+                      className="text-red-700"
+                    >
+                      {pending ? "Eliminando…" : "Confirmar eliminación"}
+                    </button>
+                    <button disabled={pending} onClick={() => { setDeleting(""); setStatus(""); }}>Cancelar</button>
+                    {!key.trim() && <p className="w-full text-sm text-red-700">Falta introducir la clave de administración.</p>}
+                    {status && statusAction === "delete" && key.trim() && <p role="alert" className="w-full text-sm text-red-700">{status}</p>}
+                  </div>
+                ) : (
+                  <button
+                    className="shrink-0 text-red-700"
+                    disabled={pending}
+                    onClick={() => { setDeleting(n.id); setStatus(""); }}
+                  >
+                    Eliminar
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+          {news.length === 0 && <p className="text-gray-700">No hay noticias para eliminar.</p>}
+          {status && statusAction === "delete" && !deleting && key.trim() && (
+            <p role="status" className="notice">
+              {status}
+            </p>
+          )}
+        </section>
       </div>
     </details>
   );

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import type { News } from "@/lib/types";
-import { useNews } from "./providers";
+import { useNews } from "./Providers";
 export function NewsImage({
   news,
   large = false,

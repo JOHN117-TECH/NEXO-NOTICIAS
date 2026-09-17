@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import { categories } from "@/lib/types";
-import { useNews } from "@/components/providers";
-import { NewsCard, NewsStatus } from "@/components/news-card";
-import { NewsManager } from "@/components/news-manager";
+import { useNews } from "@/components/Providers";
+import { NewsCard, NewsStatus } from "@/components/News-card";
+import { NewsManager } from "@/components/News-manager";
 export default function Noticias() {
   const { news, loading, error } = useNews();
   const [category, setCategory] = useState("Todas");
