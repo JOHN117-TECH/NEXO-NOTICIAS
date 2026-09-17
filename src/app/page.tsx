@@ -5,8 +5,9 @@ import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
 import { useNews } from "@/hooks/useNews";
-import { NewsCard } from "@/components/News-card";
+
 import { NewsStatus } from "@/components/NewsStatus";
+import { NewsCard } from "@/components/News-card";
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
 
