@@ -24,7 +24,9 @@ const Footer = () => {
                     |
                   </span>
                 )}
-                <Link href={href}>{name}</Link>
+                <Link className="no-underline!" href={href}>
+                  {name}
+                </Link>
               </span>
             ))}
           </nav>

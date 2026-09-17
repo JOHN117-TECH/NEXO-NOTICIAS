@@ -17,6 +17,8 @@
   --favorite-hover: #dc143c;
   --image-bg: #b3d3ee;
   --chrome-bg: #172554;
+  --nav-hover-bg: #2b4075;
+  --nav-hover-text: #dbeafe;
 }
 
 :root[data-theme="dark"] {
@@ -38,4 +40,6 @@
   --favorite-hover: #fecdd3;
   --image-bg: #294361;
   --chrome-bg: #0f172a;
+  --nav-hover-bg: #243449;
+  --nav-hover-text: #93c5fd;
 }

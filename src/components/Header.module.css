@@ -10,6 +10,21 @@
 .siteHeader nav {
   font-size: 14px;
 }
+.siteHeader nav a {
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.siteHeader nav a:hover,
+.siteHeader nav a:focus-visible {
+  color: var(--nav-hover-text);
+  background: var(--nav-hover-bg);
+  box-shadow: 0 0 0 8px var(--nav-hover-bg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .siteHeader nav a {
+    transition: none;
+  }
+}
 .menuButton {
   display: none;
 }

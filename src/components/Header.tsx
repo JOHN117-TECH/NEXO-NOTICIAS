@@ -30,8 +30,8 @@ const Header = () => {
         "flex flex-wrap items-center justify-between gap-5 px-6 py-5",
       ].join(" ")}
     >
-      <Link className={headerStyles.brand} href="/" onClick={() => setMenuOpen(false)}>
-        Nexo Noticias
+      <Link className={`no-underline! ${headerStyles.brand}`} href="/" onClick={() => setMenuOpen(false)}>
+        Nexo Noticias 📰
       </Link>
       <button
         ref={menuButton}
@@ -54,6 +54,7 @@ const Header = () => {
       >
         {links.map(([name, href]) => (
           <Link
+            className="no-underline!"
             key={name}
             href={href}
             onClick={() => setMenuOpen(false)}
