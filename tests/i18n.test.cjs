@@ -112,7 +112,7 @@ test("English administration translates fields and removal controls", () => {
   for (const text of [
     "Manage articles",
     "Administration key",
-    "Create article",
+    "Create news item",
     "Title",
     "Summary",
     "Content",

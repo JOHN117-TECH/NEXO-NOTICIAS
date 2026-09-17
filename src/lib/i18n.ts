@@ -1,8 +1,9 @@
 import english from "@/locales/en.json";
 import articles from "@/locales/articles.en.json";
+import videos from "@/locales/videos.en.json";
 export type Locale = "es" | "en";
 export const LANGUAGE_KEY = "nexo-language";
-const catalog: Record<string, string> = { ...english, ...articles };
+const catalog: Record<string, string> = { ...english, ...articles, ...videos };
 function lookup(text: string, locale: Locale): string {
   if (locale === "es") return text;
   const key = text.replace(/\s+/g, " ").trim();

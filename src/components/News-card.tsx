@@ -16,14 +16,15 @@ export function NewsCard({
   home?: boolean;
   lead?: boolean;
 }) {
-
   const { t, href: localizedHref } = useI18n();
 
   return (
     <article
-      className={[cardStyles.newsCard, home ? cardStyles.homeCard : "", home && lead ? cardStyles.leadCard : ""].join(
-        " ",
-      )}
+      className={[
+        cardStyles.newsCard,
+        home ? cardStyles.homeCard : "",
+        home && lead ? cardStyles.leadCard : "",
+      ].join(" ")}
     >
       <NewsImage news={news} home={home} />
       <div className={cardStyles.cardBody}>
@@ -32,9 +33,12 @@ export function NewsCard({
         <p className={cardStyles.summary}>{t(news.summary)}</p>
         {home && lead && (
           <div className={cardStyles.content}>
-            {news.content.split(/\r?\n\s*\r?\n/).filter((paragraph) => paragraph.trim()).map((paragraph, index) => (
-              <p key={index}>{t(paragraph)}</p>
-            ))}
+            {news.content
+              .split(/\r?\n\s*\r?\n/)
+              .filter((paragraph) => paragraph.trim())
+              .map((paragraph, index) => (
+                <p key={index}>{t(paragraph)}</p>
+              ))}
           </div>
         )}
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">

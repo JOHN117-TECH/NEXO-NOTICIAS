@@ -23,7 +23,7 @@
   --nav-hover-text: #dbeafe;
 }
 
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
   color-scheme: dark;
   --page-bg: #0b1120;
   --surface: #00203d;

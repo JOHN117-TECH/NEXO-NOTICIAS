@@ -30,13 +30,13 @@ Abrir http://127.0.0.1:3000. No sobrescribir los archivos `.env` existentes si y
 
 ## Las cinco rutas
 
-| Ruta | Vista |
-| --- | --- |
-| `/` | Bienvenida, tres noticias principales y llamados a la acción |
-| `/noticias` | Listado, filtros y mini CRUD desplegable |
-| `/noticias/[id]` | Lectura completa y favoritos |
-| `/favoritos` | Noticias guardadas y estado vacío condicional |
-| `/contacto` | Formulario validado |
+| Ruta             | Vista                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| `/`              | Bienvenida, tres noticias principales y llamados a la acción |
+| `/noticias`      | Listado, filtros y mini CRUD desplegable                     |
+| `/noticias/[id]` | Lectura completa y favoritos                                 |
+| `/favoritos`     | Noticias guardadas y estado vacío condicional                |
+| `/contacto`      | Formulario validado                                          |
 
 Categorías dirige al filtro del listado, sin agregar una sexta ruta. Los favoritos persisten por navegador en localStorage. Las noticias y los mensajes persisten en PostgreSQL. El formulario registra mensajes en la base de datos; no envía correos electrónicos.
 

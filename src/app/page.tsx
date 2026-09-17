@@ -5,12 +5,11 @@ import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
 
-
 import { NewsStatus } from "@/components/NewsStatus";
+import { VideoSlider } from "@/components/VideoSlider";
 import { HomeNewsGrid } from "@/components/HomeNewsGrid";
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
-
 
   return (
     <main id="contenido">
@@ -40,6 +39,7 @@ export default function Home() {
           )}
         </p>
       </section>
+      <VideoSlider />
       <section className={homeStyles.cta}>
         <h2>{t("¿Te gustaría conocer todas nuestras noticias?")}</h2>
         <Link className={buttonStyles.button} href={localizedHref("/noticias")}>

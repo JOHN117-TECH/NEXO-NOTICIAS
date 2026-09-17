@@ -84,7 +84,7 @@
     gap: 0;
   }
 
-  .siteHeader nav[data-open='true'] {
+  .siteHeader nav[data-open="true"] {
     display: flex;
   }
 
@@ -107,7 +107,7 @@
 }
 
 @media (max-width: 376px) {
-  .siteHeader nav[data-open='true'] {
+  .siteHeader nav[data-open="true"] {
     display: flex;
     align-items: center;
   }

@@ -1,0 +1,51 @@
+.section {
+  padding: 24px;
+  color: var(--text);
+  background: var(--surface);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-block: 1px solid var(--border);
+  padding-block: 12px;
+  margin-bottom: 20px;
+}
+.header h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+}
+.controls button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  border-radius: 50%;
+  background: var(--surface-muted);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.controls button:hover {
+  background: var(--notice-bg);
+  color: var(--link);
+}
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 16px;
+}
+.retry {
+  margin-top: 12px;
+  color: var(--link);
+  cursor: pointer;
+  font-weight: 700;
+}
