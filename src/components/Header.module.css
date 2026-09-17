@@ -10,6 +10,9 @@
 .siteHeader nav {
   font-size: 14px;
 }
+.menuButton {
+  display: none;
+}
 @media (max-width: 767px) {
   .siteHeader {
     padding: 20px;
@@ -20,5 +23,40 @@
   .siteHeader nav {
     gap: 16px;
     font-size: 13px;
+  }
+}
+@media (max-width: 320px) {
+  .siteHeader {
+    gap: 12px;
+  }
+  .menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #ffffff80;
+    border-radius: 6px;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+  .menuButton:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+  }
+  .siteHeader nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+  .siteHeader nav[data-open="true"] {
+    display: flex;
+  }
+  .siteHeader nav a {
+    padding: 12px 0;
   }
 }

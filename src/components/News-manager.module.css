@@ -79,6 +79,12 @@
 .deleteSelected:disabled {
   cursor: not-allowed;
 }
+@media (max-width: 320px) {
+  .selectionToolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 .bulkConfirmation {
   background: #fef2f2;
   border-radius: 8px;
