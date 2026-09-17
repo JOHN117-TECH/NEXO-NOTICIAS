@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: { default: "Nexo Noticias", template: "%s | Nexo Noticias" },
+  title: { default: "Nexo Noticias 📰", template: "%s | Nexo Noticias 📰" },
   description:
     "Información que te conecta con el mundo. Noticias de tecnología, educación, turismo y actualidad.",
 };

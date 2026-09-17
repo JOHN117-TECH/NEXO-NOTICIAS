@@ -7,9 +7,12 @@ import typographyStyles from "@/components/ui/Typography.module.css";
 import { useRef, useState, type FormEvent } from "react";
 import { categories } from "@/lib/types";
 import { useNews } from "./Providers";
+import { ImageField, readImage } from "./ImageField";
 export function NewsManager() {
   const { news, reload } = useNews();
   const keyInput = useRef<HTMLInputElement>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFieldVersion, setImageFieldVersion] = useState(0);
   const [statusAction, setStatusAction] = useState<"create" | "delete">(
     "create",
   );
@@ -24,18 +27,26 @@ export function NewsManager() {
     setPending(true);
     setStatus("");
     try {
+      const formData = new FormData(form);
+      formData.delete("imageSource");
+      const payload = Object.fromEntries(formData);
+      if (imageFile) payload.imageData = await readImage(imageFile);
       const response = await fetch("/api/noticias", {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-Admin-Key": key },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        body: JSON.stringify(payload),
       });
       if (!response.ok)
         throw Error(
           response.status === 401
             ? "La clave de administración no es válida."
-            : "No se pudo crear la noticia. Revisa los campos e intenta nuevamente.",
+            : response.status === 413
+              ? "La imagen es demasiado grande. Selecciona una de hasta 2 MB."
+              : "No se pudo crear la noticia. Revisa los campos y la imagen e intenta nuevamente.",
         );
       form.reset();
+      setImageFile(null);
+      setImageFieldVersion((version) => version + 1);
       await reload();
       setStatus("Noticia creada correctamente.");
     } catch (e) {
@@ -134,10 +145,11 @@ export function NewsManager() {
               maxLength={20000}
             />
           </label>
-          <label className={formStyles.field}>
-            URL de imagen (opcional)
-            <input name="image" type="url" placeholder="https://..." />
-          </label>
+          <ImageField
+            key={imageFieldVersion}
+            onFileChange={setImageFile}
+            disabled={pending}
+          />
           <button disabled={pending || !key} className={buttonStyles.button}>
             {pending ? "Guardando…" : "Crear noticia"}
           </button>
