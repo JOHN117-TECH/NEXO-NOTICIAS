@@ -69,15 +69,21 @@ textarea:focus-visible {
   background: #172554;
   color: #fff;
   flex: 1;
-  min-height: 150px;
+  min-height: 100px;
 }
 .site-footer p {
   color: #cbd5e1;
 }
+.site-shell > .listing-page {
+  flex: 1 0 auto;
+}
+.listing-page + .site-footer {
+  flex: 0 0 auto;
+}
 .hero {
   background: #f3f4f6;
   text-align: center;
-  padding: 43px 24px 4px;
+  padding: 43px 24px 28px;
   min-height: 190px;
 }
 .hero h1 {
@@ -195,7 +201,7 @@ textarea:focus-visible {
 .cta {
   background: #f3f4f6;
   text-align: center;
-  padding: 25px 24px 11px;
+  padding: 25px 24px 28px;
 }
 .cta h2 {
   font-weight: 700;
@@ -318,9 +324,22 @@ textarea:focus-visible {
   color: #374151;
   font-size: 13px;
 }
-.management form {
-  max-width: 600px;
-  margin: 20px 0;
+.management-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  margin-top: 24px;
+}
+.management-columns form {
+  min-width: 0;
+  margin: 0;
+}
+@media (min-width: 1024px) {
+  .management-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
 }
 .empty {
   text-align: center;

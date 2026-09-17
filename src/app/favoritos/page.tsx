@@ -6,7 +6,7 @@ export default function Favoritos() {
   const { news, favorites, loading, error } = useNews();
   const saved = news.filter((n) => favorites.includes(n.id));
   return (
-    <main id="contenido" className="px-6 pb-7 pt-6">
+    <main id="contenido" className="listing-page px-6 pb-7 pt-6">
       <div className="page-intro">
         <h1>Mis noticias favoritas</h1>
         <p>

@@ -14,7 +14,7 @@ export default function Noticias() {
   const pages = Math.max(1, Math.ceil(filtered.length / 3));
   const currentPage = Math.min(page, pages);
   return (
-    <main id="contenido" className="px-6 pb-7 pt-6">
+    <main id="contenido" className="listing-page px-6 pb-7 pt-6">
       <div className="page-intro">
         <h1>Últimas noticias</h1>
         <p>Mantente al día de tecnología, educación, turismo y actualidad.</p>

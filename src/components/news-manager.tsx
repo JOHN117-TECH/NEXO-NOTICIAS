@@ -5,12 +5,14 @@ import { useNews } from "./providers";
 export function NewsManager() {
   const { news, reload } = useNews();
   const keyInput = useRef<HTMLInputElement>(null);
+  const [statusAction, setStatusAction] = useState<"create" | "delete">("create");
   const [key, setKey] = useState(""),
     [status, setStatus] = useState(""),
     [pending, setPending] = useState(false),
     [deleting, setDeleting] = useState("");
   async function create(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setStatusAction("create");
     const form = e.currentTarget;
     setPending(true);
     setStatus("");
@@ -38,6 +40,7 @@ export function NewsManager() {
     }
   }
   async function remove(id: string) {
+    setStatusAction("delete");
     if (!key.trim()) {
       setStatus("Introduce la clave de administración para eliminar la noticia.");
       keyInput.current?.focus();
@@ -88,6 +91,7 @@ export function NewsManager() {
         </p>
         {status && !key.trim() && <p role="alert" className="notice">{status}</p>}
       </div>
+      <div className="management-columns">
       <form onSubmit={create}>
         <h2 className="section-title mb-4">Crear noticia</h2>
         <label className="field">
@@ -117,16 +121,21 @@ export function NewsManager() {
         <button disabled={pending || !key} className="button">
           {pending ? "Guardando…" : "Crear noticia"}
         </button>
+        {status && statusAction === "create" && key.trim() && (
+          <p role="status" className="notice">{status}</p>
+        )}
       </form>
+      <section aria-labelledby="delete-news-title" className="min-w-0">
+      <h2 id="delete-news-title" className="section-title mb-4">Eliminación de noticias</h2>
       <ul className="divide-y divide-gray-200">
         {news.map((n) => (
           <li
             key={n.id}
             className="flex flex-wrap items-center justify-between gap-3 py-3"
           >
-            <span>{n.title}</span>
+            <span className="min-w-0 flex-1 break-words">{n.title}</span>
             {deleting === n.id ? (
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex w-full flex-wrap items-center gap-4">
                 <span>¿Eliminar esta noticia?</span>
                 <button
                   type="button"
@@ -138,11 +147,11 @@ export function NewsManager() {
                 </button>
                 <button disabled={pending} onClick={() => { setDeleting(""); setStatus(""); }}>Cancelar</button>
                 {!key.trim() && <p className="w-full text-sm text-red-700">Falta introducir la clave de administración.</p>}
-                {status && key.trim() && <p role="alert" className="w-full text-sm text-red-700">{status}</p>}
+                {status && statusAction === "delete" && key.trim() && <p role="alert" className="w-full text-sm text-red-700">{status}</p>}
               </div>
             ) : (
               <button
-                className="text-red-700"
+                className="shrink-0 text-red-700"
                 disabled={pending}
                 onClick={() => { setDeleting(n.id); setStatus(""); }}
               >
@@ -152,11 +161,14 @@ export function NewsManager() {
           </li>
         ))}
       </ul>
-      {status && !deleting && key.trim() && (
+      {news.length === 0 && <p className="text-gray-700">No hay noticias para eliminar.</p>}
+      {status && statusAction === "delete" && !deleting && key.trim() && (
         <p role="status" className="notice">
           {status}
         </p>
       )}
+      </section>
+      </div>
     </details>
   );
 }
