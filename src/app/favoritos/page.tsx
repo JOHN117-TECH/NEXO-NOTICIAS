@@ -4,8 +4,9 @@ import favoritesStyles from "@/app/favoritos/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
-import { useNews } from "@/components/Providers";
-import { NewsCard, NewsStatus } from "@/components/News-card";
+import { useNews } from "@/hooks/useNews";
+import { NewsCard } from "@/components/News-card";
+import { NewsStatus } from "@/components/NewsStatus";
 export default function Favoritos() {
   const { news, favorites, loading, error } = useNews();
   const saved = news.filter((n) => favorites.includes(n.id));

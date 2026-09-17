@@ -1,28 +1,7 @@
 "use client";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-  type ReactNode,
-} from "react";
+import { useEffect, useState, useCallback, type ReactNode } from "react";
+import { NewsContext } from "@/contexts/NewsContext";
 import type { News } from "@/lib/types";
-const Context = createContext<{
-  news: News[];
-  loading: boolean;
-  error: string;
-  reload: () => Promise<void>;
-  favorites: string[];
-  toggle: (id: string) => void;
-}>({
-  news: [],
-  loading: true,
-  error: "",
-  reload: async () => {},
-  favorites: [],
-  toggle: () => {},
-});
 export function Providers({ children }: { children: ReactNode }) {
   const [news, setNews] = useState<News[]>([]),
     [loading, setLoading] = useState(true),
@@ -73,11 +52,10 @@ export function Providers({ children }: { children: ReactNode }) {
       return next;
     });
   return (
-    <Context.Provider
+    <NewsContext.Provider
       value={{ news, loading, error, reload, favorites, toggle }}
     >
       {children}
-    </Context.Provider>
+    </NewsContext.Provider>
   );
 }
-export const useNews = () => useContext(Context);

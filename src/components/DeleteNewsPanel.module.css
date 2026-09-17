@@ -1,0 +1,48 @@
+.selectionToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.selectionLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+.selectionLabel input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+}
+.deleteSelected {
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.deleteSelected:disabled {
+  cursor: not-allowed;
+}
+@media (max-width: 320px) {
+  .selectionToolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.bulkConfirmation {
+  background: #fef2f2;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+.bulkConfirmation p {
+  margin-bottom: 10px;
+}

@@ -4,8 +4,10 @@ import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import { use } from "react";
 import Link from "next/link";
-import { useNews } from "@/components/Providers";
-import { NewsImage, FavoriteButton, NewsStatus } from "@/components/News-card";
+import { useNews } from "@/hooks/useNews";
+import { NewsImage } from "@/components/NewsImage";
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { NewsStatus } from "@/components/NewsStatus";
 export default function Detail({
   params,
 }: {

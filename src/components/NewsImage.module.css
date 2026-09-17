@@ -1,0 +1,29 @@
+.newsImage {
+  width: 100%;
+  height: 200px;
+  background: #b3d3ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  font-size: 14px;
+  font-weight: 400;
+  color: #172554;
+}
+.largeImage {
+  height: 192px;
+  border-radius: 10px;
+  margin: 16px 0 24px;
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  .newsImage {
+    height: 160px;
+  }
+}
+@media (min-width: 768px) {
+  .homeImage {
+    height: 90px;
+  }
+}

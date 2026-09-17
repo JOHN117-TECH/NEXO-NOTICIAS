@@ -14,18 +14,6 @@
 .readMoreIcon {
   flex-shrink: 0;
 }
-.newsImage {
-  width: 100%;
-  height: 200px;
-  background: #b3d3ee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  object-fit: cover;
-  font-size: 14px;
-  font-weight: 400;
-  color: #172554;
-}
 .cardBody {
   padding: 12px 14px 9px;
   display: flex;
@@ -44,16 +32,7 @@
   line-height: 1.25;
   color: #374151;
 }
-.largeImage {
-  height: 192px;
-  border-radius: 10px;
-  margin: 16px 0 24px;
-  font-size: 16px;
-}
 @media (min-width: 768px) {
-  .homeCard .newsImage {
-    height: 90px;
-  }
   .homeCard .cardBody {
     min-height: 122px;
   }
@@ -62,9 +41,6 @@
   }
 }
 @media (max-width: 767px) {
-  .newsImage {
-    height: 160px;
-  }
   .cardBody {
     min-height: 125px;
   }
