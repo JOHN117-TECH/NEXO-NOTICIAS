@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import { useState, type RefObject } from "react";
 import managerStyles from "./AdminKeyField.module.css";
 import formStyles from "./ui/FormField.module.css";
@@ -17,12 +18,14 @@ export function AdminKeyField({
   keyStorageError,
   status,
 }: Props) {
+  const { t } = useI18n();
+
   const [keyHelpOpen, setKeyHelpOpen] = useState(false);
   return (
     <div className="mt-4 max-w-xl">
       <div className={managerStyles.keyRow}>
         <label className={formStyles.field}>
-          Clave de administración
+          {t("Clave de administración")}
           <input
             ref={keyInput}
             type="password"
@@ -46,7 +49,7 @@ export function AdminKeyField({
           <button
             type="button"
             className={managerStyles.helpButton}
-            aria-label="Ayuda sobre la clave de administración"
+            aria-label={t("Ayuda sobre la clave de administración")}
             aria-describedby="admin-key-help"
             onClick={() => setKeyHelpOpen(true)}
           >
@@ -58,21 +61,22 @@ export function AdminKeyField({
             hidden={!keyHelpOpen}
             className={managerStyles.keyTooltip}
           >
-            La clave es necesaria para crear y eliminar noticias. Se conserva al
-            recargar durante la sesión de esta pestaña. Vacía el campo para
-            olvidarla.
+            {t(
+              "La clave es necesaria para crear y eliminar noticias. Se conserva al recargar durante la sesión de esta pestaña. Vacía el campo para olvidarla.",
+            )}
           </p>
         </div>
       </div>
       {keyStorageError && (
         <p role="alert" className="text-sm text-[var(--danger)]">
-          El navegador no permite guardar la clave en esta sesión. Puedes
-          usarla, pero tendrás que introducirla nuevamente al recargar.
+          {t(
+            "El navegador no permite guardar la clave en esta sesión. Puedes usarla, pero tendrás que introducirla nuevamente al recargar.",
+          )}
         </p>
       )}
       {status && !key.trim() && (
         <p role="alert" className={noticeStyles.notice}>
-          {status}
+          {t(status)}
         </p>
       )}
     </div>

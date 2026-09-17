@@ -1,6 +1,6 @@
 "use client";
-
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useI18n } from "@/hooks/useI18n";
+import { useEffect, useState, useRef, type ChangeEvent } from "react";
 import styles from "./ImageField.module.css";
 import formStyles from "./ui/FormField.module.css";
 
@@ -14,10 +14,16 @@ export function ImageField({
   onFileChange: (file: File | null) => void;
   disabled: boolean;
 }) {
+  const { t } = useI18n();
+
+  const fileInput = useRef<HTMLInputElement>(null);
   const [mode, setMode] = useState("url");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [error, setError] = useState("");
+  useEffect(() => {
+    fileInput.current?.setCustomValidity(t(error));
+  }, [error, t]);
 
   useEffect(() => {
     if (!file) {
@@ -37,7 +43,7 @@ export function ImageField({
         : selected && selected.size > maxSize
           ? "La imagen debe pesar como máximo 2 MB."
           : "";
-    event.target.setCustomValidity(message);
+    event.target.setCustomValidity(t(message));
     setError(message);
     setFile(message ? null : selected);
     onFileChange(message ? null : selected);
@@ -45,7 +51,7 @@ export function ImageField({
 
   return (
     <fieldset className={styles.fieldset} disabled={disabled}>
-      <legend>Imagen de la noticia (opcional)</legend>
+      <legend>{t("Imagen de la noticia (opcional)")}</legend>
       <div className={styles.options}>
         <label>
           <input
@@ -60,7 +66,7 @@ export function ImageField({
               onFileChange(null);
             }}
           />{" "}
-          URL de imagen
+          {t("URL de imagen")}
         </label>
         <label>
           <input
@@ -70,11 +76,11 @@ export function ImageField({
             checked={mode === "file"}
             onChange={() => setMode("file")}
           />{" "}
-          Imagen del computador
+          {t("Imagen del computador")}
         </label>
       </div>
       <label className={formStyles.field} hidden={mode !== "url"}>
-        URL de imagen
+        {t("URL de imagen")}
         <input
           name="image"
           type="url"
@@ -85,8 +91,9 @@ export function ImageField({
       {mode === "file" && (
         <>
           <label className={formStyles.field}>
-            Seleccionar imagen
+            {t("Seleccionar imagen")}
             <input
+              ref={fileInput}
               type="file"
               accept="image/jpeg,image/png,image/webp"
               onChange={selectFile}
@@ -94,18 +101,18 @@ export function ImageField({
             />
           </label>
           <p id="image-file-help" className={styles.help}>
-            JPG, PNG o WebP. Máximo 2 MB.
+            {t("JPG, PNG o WebP. Máximo 2 MB.")}
           </p>
           {error && (
             <p role="alert" className={styles.error}>
-              {error}
+              {t(error)}
             </p>
           )}
           {preview && (
             <img
               className={styles.preview}
               src={preview}
-              alt="Vista previa de la imagen seleccionada"
+              alt={t("Vista previa de la imagen seleccionada")}
             />
           )}
         </>

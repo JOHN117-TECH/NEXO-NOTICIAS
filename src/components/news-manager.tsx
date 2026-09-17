@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import { useRef, useState } from "react";
 import managerStyles from "./News-manager.module.css";
 import { useAdminKey } from "@/hooks/useAdminKey";
@@ -8,6 +9,8 @@ import { DeleteNewsPanel } from "./DeleteNewsPanel";
 import type { NewsManagementState } from "@/lib/newsManagement";
 
 export function NewsManager() {
+  const { t } = useI18n();
+
   const { key, keyStorageError, updateAdminKey } = useAdminKey();
   const keyInput = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState("");
@@ -28,13 +31,13 @@ export function NewsManager() {
   };
   return (
     <details className={managerStyles.management}>
-      <summary>Administrar noticias</summary>
+      <summary>{t("Administrar noticias")}</summary>
       <AdminKeyField
         adminKey={key}
         keyInput={keyInput}
         updateAdminKey={updateAdminKey}
         keyStorageError={keyStorageError}
-        status={status}
+        status={t(status)}
       />
       <div className={managerStyles.managementColumns}>
         <CreateNewsForm {...state} />

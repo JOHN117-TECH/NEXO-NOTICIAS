@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import buttonStyles from "@/components/ui/Button.module.css";
 import formStyles from "@/components/ui/FormField.module.css";
 import noticeStyles from "@/components/ui/Notice.module.css";
@@ -19,6 +20,8 @@ export function CreateNewsForm({
   pending,
   setPending,
 }: NewsManagementState) {
+  const { t } = useI18n();
+
   const { reload } = useNews();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageFieldVersion, setImageFieldVersion] = useState(0);
@@ -62,26 +65,28 @@ export function CreateNewsForm({
   return (
     <form onSubmit={create}>
       <h2 className={[typographyStyles.sectionTitle, "mb-4"].join(" ")}>
-        Crear noticia
+        {t("Crear noticia")}
       </h2>
       <label className={formStyles.field}>
-        Título
+        {t("Título")}
         <input name="title" required minLength={5} maxLength={180} />
       </label>
       <label className={formStyles.field}>
-        Categoría
+        {t("Categoría")}
         <select name="category">
           {categories.map((c) => (
-            <option key={c}>{c}</option>
+            <option key={c} value={c}>
+              {t(c)}
+            </option>
           ))}
         </select>
       </label>
       <label className={formStyles.field}>
-        Resumen
+        {t("Resumen")}
         <textarea name="summary" required minLength={10} maxLength={400} />
       </label>
       <label className={formStyles.field}>
-        Contenido
+        {t("Contenido")}
         <textarea name="content" required minLength={30} maxLength={20000} />
       </label>
       <ImageField
@@ -90,11 +95,11 @@ export function CreateNewsForm({
         disabled={pending}
       />
       <button disabled={pending || !key} className={buttonStyles.button}>
-        {pending ? "Guardando…" : "Crear noticia"}
+        {t(pending ? "Guardando…" : "Crear noticia")}
       </button>
       {status && statusAction === "create" && key.trim() && (
         <p role="status" className={noticeStyles.notice}>
-          {status}
+          {t(status)}
         </p>
       )}
     </form>

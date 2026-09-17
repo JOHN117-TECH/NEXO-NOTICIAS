@@ -1,5 +1,11 @@
 "use client";
-import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  type ReactNode,
+} from "react";
 import { NewsContext } from "@/contexts/NewsContext";
 import type { News } from "@/lib/types";
 export function Providers({ children }: { children: ReactNode }) {
@@ -10,7 +16,9 @@ export function Providers({ children }: { children: ReactNode }) {
     [favorites, setFavorites] = useState<string[]>([]);
   const reload = useCallback(async () => {
     const request = ++latestRequest.current;
-    const minimumDisplay = new Promise<void>((resolve) => setTimeout(resolve, 3000));
+    const minimumDisplay = new Promise<void>((resolve) =>
+      setTimeout(resolve, 3000),
+    );
     setLoading(true);
     setError("");
     try {

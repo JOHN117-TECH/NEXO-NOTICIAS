@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import Header from "@/components/Header";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import { SkipLink } from "@/components/SkipLink";
 import Footer from "@/components/Footer";
 import { themeInitializationScript } from "@/lib/theme";
 
@@ -19,19 +21,21 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
       </head>
       <body>
-        <a className={layoutStyles.skipLink} href="#contenido">
-          Saltar al contenido
-        </a>
-        <Providers>
-          <div className={layoutStyles.siteShell}>
-            <Header />
-            {children}
-            <Footer />
-          </div>
-        </Providers>
+        <LanguageProvider>
+          <SkipLink />
+          <Providers>
+            <div className={layoutStyles.siteShell}>
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </Providers>
+        </LanguageProvider>
       </body>
     </html>
   );

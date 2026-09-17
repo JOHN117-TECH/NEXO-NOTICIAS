@@ -1,4 +1,5 @@
 "use client";
+import { useI18n } from "@/hooks/useI18n";
 import buttonStyles from "./ui/Button.module.css";
 type Props = {
   currentPage: number;
@@ -6,10 +7,12 @@ type Props = {
   onPageChange: (page: number) => void;
 };
 export function NewsPagination({ currentPage, pages, onPageChange }: Props) {
+  const { t } = useI18n();
+
   if (pages <= 1) return null;
   return (
     <nav
-      aria-label="Páginas de noticias"
+      aria-label={t("Páginas de noticias")}
       className="mt-5 flex items-center justify-center gap-5 text-sm"
     >
       <button
@@ -17,17 +20,15 @@ export function NewsPagination({ currentPage, pages, onPageChange }: Props) {
         onClick={() => onPageChange(currentPage - 1)}
         className={[buttonStyles.textLink, "disabled:opacity-40"].join(" ")}
       >
-        Anterior
+        {t("Anterior")}
       </button>
-      <span>
-        Página {currentPage} de {pages}
-      </span>
+      <span>{t("Página {page} de {pages}", { page: currentPage, pages })}</span>
       <button
         disabled={currentPage === pages}
         onClick={() => onPageChange(currentPage + 1)}
         className={[buttonStyles.textLink, "disabled:opacity-40"].join(" ")}
       >
-        Siguiente
+        {t("Siguiente")}
       </button>
     </nav>
   );
