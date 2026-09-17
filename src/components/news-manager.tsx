@@ -36,6 +36,7 @@ export function NewsManager() {
     [pending, setPending] = useState(false),
     [deleting, setDeleting] = useState("");
   const [keyStorageError, setKeyStorageError] = useState(false);
+  const [keyHelpOpen, setKeyHelpOpen] = useState(false);
   useEffect(() => {
     try {
       setKey(sessionStorage.getItem(ADMIN_KEY_STORAGE) || "");
@@ -173,6 +174,7 @@ export function NewsManager() {
     <details className={managerStyles.management}>
       <summary>Administrar noticias</summary>
       <div className="mt-4 max-w-xl">
+        <div className={managerStyles.keyRow}>
         <label className={formStyles.field}>
           Clave de administración
           <input
@@ -185,10 +187,31 @@ export function NewsManager() {
             required
           />
         </label>
-        <p id="admin-key-help" className="text-sm text-gray-700">
+        <div
+          className={managerStyles.keyHelp}
+          onMouseEnter={() => setKeyHelpOpen(true)}
+          onMouseLeave={() => setKeyHelpOpen(false)}
+          onFocus={() => setKeyHelpOpen(true)}
+          onBlur={() => setKeyHelpOpen(false)}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setKeyHelpOpen(false);
+          }}
+        >
+          <button
+            type="button"
+            className={managerStyles.helpButton}
+            aria-label="Ayuda sobre la clave de administración"
+            aria-describedby="admin-key-help"
+            onClick={() => setKeyHelpOpen(true)}
+          >
+            <span aria-hidden="true">?</span>
+          </button>
+        <p id="admin-key-help" role="tooltip" hidden={!keyHelpOpen} className={managerStyles.keyTooltip}>
           La clave es necesaria para crear y eliminar noticias. Se conserva al
           recargar durante la sesión de esta pestaña. Vacía el campo para olvidarla.
         </p>
+        </div>
+        </div>
         {keyStorageError && <p role="alert" className="text-sm text-red-700">
           El navegador no permite guardar la clave en esta sesión. Puedes usarla,
           pero tendrás que introducirla nuevamente al recargar.
