@@ -42,7 +42,7 @@ Categorías dirige al filtro del listado, sin agregar una sexta ruta. Los favori
 
 ## Mini CRUD
 
-En Noticias, abrir **Administrar noticias** e introducir el valor de `ADMIN_API_KEY` de `Backend/.env`. Permite crear y eliminar; la eliminación exige una confirmación dentro de la interfaz. La clave se mantiene solo en memoria del navegador y se valida en NestJS. El servidor escucha únicamente en localhost. Para un despliegue público debe sustituirse esta clave compartida por autenticación de administradores.
+En Noticias, abrir **Administrar noticias** e introducir el valor de `ADMIN_API_KEY` de `Backend/.env`. Permite crear y eliminar; la eliminación exige una confirmación dentro de la interfaz. La clave se conserva en `sessionStorage` durante la sesión de la pestaña, incluso al recargar, y se valida en NestJS. Vaciar el campo elimina la clave guardada. Si el navegador bloquea el almacenamiento, se informa al usuario y la clave sigue funcionando en memoria. El servidor escucha únicamente en localhost. Para un despliegue público debe sustituirse esta clave compartida por autenticación de administradores.
 
 ## Diseño y requisitos
 

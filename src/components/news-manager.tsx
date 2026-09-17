@@ -8,6 +8,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { categories } from "@/lib/types";
 import { useNews } from "./Providers";
 import { ImageField, readImage } from "./ImageField";
+const ADMIN_KEY_STORAGE = "nexo-admin-key";
 export function NewsManager() {
   const { news, reload } = useNews();
   const keyInput = useRef<HTMLInputElement>(null);
@@ -34,6 +35,24 @@ export function NewsManager() {
     [status, setStatus] = useState(""),
     [pending, setPending] = useState(false),
     [deleting, setDeleting] = useState("");
+  const [keyStorageError, setKeyStorageError] = useState(false);
+  useEffect(() => {
+    try {
+      setKey(sessionStorage.getItem(ADMIN_KEY_STORAGE) || "");
+    } catch {
+      setKeyStorageError(true);
+    }
+  }, []);
+  function updateAdminKey(value: string) {
+    setKey(value);
+    try {
+      if (value) sessionStorage.setItem(ADMIN_KEY_STORAGE, value);
+      else sessionStorage.removeItem(ADMIN_KEY_STORAGE);
+      setKeyStorageError(false);
+    } catch {
+      setKeyStorageError(true);
+    }
+  }
   async function create(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatusAction("create");
@@ -160,15 +179,20 @@ export function NewsManager() {
             ref={keyInput}
             type="password"
             value={key}
-            onChange={(e) => setKey(e.target.value)}
+            onChange={(e) => updateAdminKey(e.target.value)}
             autoComplete="off"
+            aria-describedby="admin-key-help"
             required
           />
         </label>
-        <p className="text-sm text-gray-700">
-          La clave es necesaria para crear y eliminar noticias. Debes volver a
-          introducirla si recargas la página.
+        <p id="admin-key-help" className="text-sm text-gray-700">
+          La clave es necesaria para crear y eliminar noticias. Se conserva al
+          recargar durante la sesión de esta pestaña. Vacía el campo para olvidarla.
         </p>
+        {keyStorageError && <p role="alert" className="text-sm text-red-700">
+          El navegador no permite guardar la clave en esta sesión. Puedes usarla,
+          pero tendrás que introducirla nuevamente al recargar.
+        </p>}
         {status && !key.trim() && (
           <p role="alert" className={noticeStyles.notice}>
             {status}
