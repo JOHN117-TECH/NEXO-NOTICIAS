@@ -1,12 +1,12 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useAdminKey } from "@/hooks";
 import { useRef, useState } from "react";
 import managerStyles from "./News-manager.module.css";
-import { useAdminKey } from "@/hooks/useAdminKey";
+
 import { AdminKeyField } from "./AdminKeyField";
 import { CreateNewsForm } from "./CreateNewsForm";
 import { DeleteNewsPanel } from "./DeleteNewsPanel";
-import type { NewsManagementState } from "@/lib/newsManagement";
+import type { NewsManagementState } from "@/lib";
 
 export function NewsManager() {
   const { t } = useI18n();

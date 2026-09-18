@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import noticeStyles from "@/components/ui/Notice.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
-import { useNews } from "@/hooks/useNews";
-import type { NewsManagementState } from "@/lib/newsManagement";
+
+import type { NewsManagementState } from "@/lib";
 
 import managerStyles from "./DeleteNewsPanel.module.css";
 import { useEffect, useRef, useState } from "react";

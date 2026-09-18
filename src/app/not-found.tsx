@@ -1,5 +1,5 @@
 import { Catamaran, Montserrat } from "next/font/google";
-import { NotFoundPage } from "@/components/NotFoundPage";
+import { NotFoundPage } from "@/components";
 
 const digitsFont = Catamaran({
   subsets: ["latin"],

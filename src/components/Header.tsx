@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import headerStyles from "@/components/Header.module.css";
-import worldIcon from "@/assets/svg/world.svg";
+import { worldIcon } from "@/assets/svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";

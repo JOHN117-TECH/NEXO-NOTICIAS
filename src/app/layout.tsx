@@ -1,12 +1,9 @@
 import layoutStyles from "@/app/layout.module.css";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
-import Header from "@/components/Header";
-import { LanguageProvider } from "@/components/LanguageProvider";
-import { SkipLink } from "@/components/SkipLink";
-import Footer from "@/components/Footer";
-import { themeInitializationScript } from "@/lib/theme";
+import { Providers, Header, LanguageProvider, SkipLink, Footer } from "@/components";
+
+import { themeInitializationScript } from "@/lib";
 
 export const metadata: Metadata = {
   title: { default: "Nexo Noticias", template: "%s | Nexo Noticias" },

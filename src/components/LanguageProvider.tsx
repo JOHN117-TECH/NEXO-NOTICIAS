@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useRef, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { LanguageContext } from "@/contexts/LanguageContext";
-import { LANGUAGE_KEY, type Locale } from "@/lib/i18n";
-import { localeFromPath, localizedPath } from "@/lib/localizedRoutes";
+import { LanguageContext } from "@/contexts";
+import { LANGUAGE_KEY, type Locale, localeFromPath, localizedPath } from "@/lib";
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname() || "/";
   const router = useRouter();

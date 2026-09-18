@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useI18n } from "@/hooks/useI18n";
-import type { Opinion } from "@/lib/opinion";
+import { useI18n } from "@/hooks";
+import type { Opinion } from "@/lib";
 import styles from "./OpinionCard.module.css";
 export function OpinionCard({ opinion }: { opinion: Opinion }) {
   const { t } = useI18n();

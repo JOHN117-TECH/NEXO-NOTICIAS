@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import contactStyles from "@/app/contacto/page.module.css";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components";
 export default function Contact() {
   const { t } = useI18n();
 

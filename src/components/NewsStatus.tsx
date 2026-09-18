@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import buttonStyles from "./ui/Button.module.css";
-import { useNews } from "@/hooks/useNews";
+
 import { NewsLoader } from "./NewsLoader";
 export function NewsStatus() {
   const { t } = useI18n();

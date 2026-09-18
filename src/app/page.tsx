@@ -1,18 +1,21 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import homeStyles from "@/app/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
 
-import { NewsStatus } from "@/components/NewsStatus";
-import { MentalGamesSection } from "@/components/MentalGamesSection";
-import { IndicatorsSection } from "@/components/IndicatorsSection";
-import { CartoonsSection } from "@/components/CartoonsSection";
-import { MostReadSection } from "@/components/MostReadSection";
-import { OpinionsSection } from "@/components/OpinionsSection";
-import { VideoSlider } from "@/components/VideoSlider";
-import { HomeNewsGrid } from "@/components/HomeNewsGrid";
+import {
+  NewsStatus,
+  MentalGamesSection,
+  IndicatorsSection,
+  CartoonsSection,
+  MostReadSection,
+  OpinionsSection,
+  VideoSlider,
+  HomeNewsGrid,
+} from "@/components";
+
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
 

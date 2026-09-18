@@ -1,6 +1,6 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import type { MentalGame } from "@/lib/mental-games";
+import { useI18n } from "@/hooks";
+import type { MentalGame } from "@/lib";
 import { MentalGameImage } from "./MentalGameImage";
 import { MentalGameAction } from "./MentalGameAction";
 import styles from "./MentalGameCard.module.css";

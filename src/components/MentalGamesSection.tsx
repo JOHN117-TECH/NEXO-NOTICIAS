@@ -1,6 +1,6 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import { mentalGames } from "@/lib/mental-games";
+import { useI18n } from "@/hooks";
+import { mentalGames } from "@/lib";
 import { MentalGameCard } from "./MentalGameCard";
 import styles from "./MentalGamesSection.module.css";
 export function MentalGamesSection() {

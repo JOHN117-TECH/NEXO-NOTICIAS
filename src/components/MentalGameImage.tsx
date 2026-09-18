@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import type { MentalGame } from "@/lib/mental-games";
+import type { MentalGame } from "@/lib";
 import styles from "./MentalGameImage.module.css";
 export function MentalGameImage({ game }: { game: MentalGame }) {
   const [failedImage, setFailedImage] = useState<string | null>(null);

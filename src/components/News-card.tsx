@@ -1,10 +1,10 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import cardStyles from "./News-card.module.css";
 import buttonStyles from "./ui/Button.module.css";
 import typographyStyles from "./ui/Typography.module.css";
 import Link from "next/link";
-import type { News } from "@/lib/types";
+import type { News } from "@/lib";
 import { NewsImage } from "./NewsImage";
 import { FavoriteButton } from "./FavoriteButton";
 export function NewsCard({

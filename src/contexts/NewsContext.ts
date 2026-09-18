@@ -1,6 +1,6 @@
 "use client";
 import { createContext } from "react";
-import type { News } from "@/lib/types";
+import type { News } from "@/lib";
 export const NewsContext = createContext<{
   news: News[];
   loading: boolean;

@@ -1,5 +1,5 @@
 "use client";
-import { useNews } from "@/hooks/useNews";
+import { useNews } from "@/hooks";
 import { NewsCard } from "./News-card";
 import styles from "./HomeNewsGrid.module.css";
 

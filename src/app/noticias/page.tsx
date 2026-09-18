@@ -1,15 +1,17 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import layoutStyles from "@/app/layout.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import newsPageStyles from "./page.module.css";
-import { NewsFilters } from "@/components/NewsFilters";
-import { NewsPagination } from "@/components/NewsPagination";
+import {
+  NewsFilters,
+  NewsPagination,
+  NewsCard,
+  NewsStatus,
+  NewsManager,
+} from "@/components";
 import { useState } from "react";
-import { useNews } from "@/hooks/useNews";
-import { NewsCard } from "@/components/News-card";
-import { NewsStatus } from "@/components/NewsStatus";
-import { NewsManager } from "@/components/News-manager";
+
 export default function Noticias() {
   const { t, locale } = useI18n();
 

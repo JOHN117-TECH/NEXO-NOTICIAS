@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useI18n } from "@/hooks/useI18n";
-import type { Video } from "@/lib/video";
+import { useI18n } from "@/hooks";
+import type { Video } from "@/lib";
 import styles from "./VideoModal.module.css";
 export function VideoModal({
   video,

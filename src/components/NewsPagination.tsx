@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import buttonStyles from "./ui/Button.module.css";
 type Props = {
   currentPage: number;

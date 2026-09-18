@@ -2,6 +2,23 @@
 
 Cada archivo TSX declara un único componente. Las páginas de `app/` componen la interfaz y conservan únicamente el estado que coordina sus controles.
 
+## Imports mediante barriles
+
+Los imports entre carpetas utilizan las exportaciones explícitas de sus archivos `index.ts`:
+
+```tsx
+import { Header, NewsCard, NewsStatus } from "@/components";
+import { useI18n, useNews } from "@/hooks";
+import { NewsContext } from "@/contexts";
+import { categories, type News } from "@/lib";
+```
+
+También existen barriles en `@/locales` y `@/assets/svg`. Al agregar un módulo público, añadir su exportación al barril correspondiente; los tipos se reexportan con `export type`.
+
+Dentro de una misma carpeta se mantienen imports directos entre archivos hermanos (por ejemplo, `News-card.tsx` importa `./NewsImage`). Importar desde el propio barril crearía dependencias circulares. Los CSS se importan directamente para conservar su orden de carga. Los archivos especiales de `app/` y las páginas que reutilizan otras rutas conservan las convenciones de Next.js.
+
+Los barriles no agregan `"use client"`: cada módulo conserva su propia frontera de cliente. `@/lib` contiene utilidades y tipos compartidos, sin reexportar componentes, hooks ni contextos.
+
 - `News-card.tsx`: tarjeta de noticia; utiliza `NewsImage`, `FavoriteButton` y los estilos de tarjeta.
 - `NewsImage.tsx`: imagen o marcador de posición, con variantes para inicio y detalle.
 - `FavoriteButton.tsx`: icono, estado y acción de añadir o quitar favoritos.

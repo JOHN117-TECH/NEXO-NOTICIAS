@@ -1,13 +1,13 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import layoutStyles from "@/app/layout.module.css";
 import favoritesStyles from "@/app/favoritos/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
-import { useNews } from "@/hooks/useNews";
-import { NewsCard } from "@/components/News-card";
-import { NewsStatus } from "@/components/NewsStatus";
+
+import { NewsCard, NewsStatus } from "@/components";
+
 export default function Favoritos() {
   const { t, href: localizedHref } = useI18n();
 

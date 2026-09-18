@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import { useState, type RefObject } from "react";
 import managerStyles from "./AdminKeyField.module.css";
 import formStyles from "./ui/FormField.module.css";

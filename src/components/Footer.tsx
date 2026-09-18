@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import footerStyles from "@/components/Footer.module.css";
 import Link from "next/link";
 

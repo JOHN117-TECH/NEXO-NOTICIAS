@@ -1,7 +1,7 @@
 "use client";
 
-import { useI18n } from "@/hooks/useI18n";
-import type { Indicator } from "@/lib/indicators";
+import { useI18n } from "@/hooks";
+import type { Indicator } from "@/lib";
 import styles from "./IndicatorCard.module.css";
 
 export function IndicatorCard({ indicator, compact = false }: { indicator: Indicator; compact?: boolean }) {

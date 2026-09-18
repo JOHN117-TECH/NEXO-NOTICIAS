@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import styles from "./NotFoundPage.module.css";
 
 export function NotFoundPage({ className = "" }: { className?: string }) {

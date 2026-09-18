@@ -1,8 +1,8 @@
 "use client";
 import { useContext, useCallback } from "react";
-import { LanguageContext } from "@/contexts/LanguageContext";
-import { localizedPath } from "@/lib/localizedRoutes";
-import { translate } from "@/lib/i18n";
+import { LanguageContext } from "@/contexts";
+import { localizedPath, translate } from "@/lib";
+
 export function useI18n() {
   const { locale, setLocale } = useContext(LanguageContext);
   const t = useCallback(

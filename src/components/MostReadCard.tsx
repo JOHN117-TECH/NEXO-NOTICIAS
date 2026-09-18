@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useI18n } from "@/hooks/useI18n";
-import type { MostReadStory } from "@/lib/most-read";
+import { useI18n } from "@/hooks";
+import type { MostReadStory } from "@/lib";
 import styles from "./MostReadCard.module.css";
 
 export function MostReadCard({ story, rank }: { story: MostReadStory; rank: number }) {

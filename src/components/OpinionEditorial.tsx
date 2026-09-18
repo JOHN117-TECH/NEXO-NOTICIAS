@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import styles from "./OpinionEditorial.module.css";
 export function OpinionEditorial() {
   const { t } = useI18n();

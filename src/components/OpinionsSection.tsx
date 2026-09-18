@@ -1,6 +1,6 @@
 "use client";
-import { useOpinions } from "@/hooks/useOpinions";
-import { useI18n } from "@/hooks/useI18n";
+import { useOpinions, useI18n } from "@/hooks";
+
 import { OpinionCard } from "./OpinionCard";
 import { OpinionEditorial } from "./OpinionEditorial";
 import { NewsLoader } from "./NewsLoader";

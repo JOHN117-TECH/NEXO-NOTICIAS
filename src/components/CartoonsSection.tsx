@@ -1,7 +1,7 @@
 "use client";
 
-import { useI18n } from "@/hooks/useI18n";
-import { cartoons } from "@/lib/cartoons";
+import { useI18n } from "@/hooks";
+import { cartoons } from "@/lib";
 import { CartoonCard } from "./CartoonCard";
 import styles from "./CartoonsSection.module.css";
 

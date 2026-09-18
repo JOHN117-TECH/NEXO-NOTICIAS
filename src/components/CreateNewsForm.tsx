@@ -1,16 +1,16 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import buttonStyles from "@/components/ui/Button.module.css";
 import formStyles from "@/components/ui/FormField.module.css";
 import noticeStyles from "@/components/ui/Notice.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
-import { useNews } from "@/hooks/useNews";
-import type { NewsManagementState } from "@/lib/newsManagement";
+
+import type { NewsManagementState } from "@/lib";
 
 import { useState, type FormEvent } from "react";
-import { categories } from "@/lib/types";
+import { categories, readImage } from "@/lib";
 import { ImageField } from "./ImageField";
-import { readImage } from "@/lib/readImage";
+
 export function CreateNewsForm({
   adminKey: key,
   status,
