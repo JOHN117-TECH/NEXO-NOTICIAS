@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useI18n } from "@/hooks";
 import type { Cartoon } from "@/lib";
-import styles from "./CartoonCard.module.css";
+import styles from "@/styles/components/CartoonCard.module.css";
 
 export function CartoonCard({ cartoon }: { cartoon: Cartoon }) {
   const { t } = useI18n();

@@ -1,6 +1,6 @@
 "use client";
 import { useI18n } from "@/hooks";
-import headerStyles from "@/components/Header.module.css";
+import headerStyles from "@/styles/components/Header.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";

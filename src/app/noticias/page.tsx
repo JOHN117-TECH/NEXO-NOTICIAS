@@ -1,7 +1,7 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
 import layoutStyles from "@/app/layout.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import newsPageStyles from "./page.module.css";
 import {
   NewsFilters,

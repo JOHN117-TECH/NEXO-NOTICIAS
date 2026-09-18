@@ -1,6 +1,6 @@
 "use client";
 import { useI18n } from "@/hooks";
-import styles from "./NewsLoader.module.css";
+import styles from "@/styles/components/NewsLoader.module.css";
 
 export function NewsLoader({
   label = "Cargando Noticias…",

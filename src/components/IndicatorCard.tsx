@@ -2,7 +2,7 @@
 
 import { useI18n } from "@/hooks";
 import type { Indicator } from "@/lib";
-import styles from "./IndicatorCard.module.css";
+import styles from "@/styles/components/IndicatorCard.module.css";
 
 export function IndicatorCard({ indicator, compact = false }: { indicator: Indicator; compact?: boolean }) {
   const { t, locale } = useI18n();

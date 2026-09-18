@@ -1,7 +1,7 @@
 "use client";
 import { useI18n, useAdminKey } from "@/hooks";
 import { useRef, useState } from "react";
-import managerStyles from "./News-manager.module.css";
+import managerStyles from "@/styles/components/News-manager.module.css";
 
 import { AdminKeyField } from "./AdminKeyField";
 import { CreateNewsForm } from "./CreateNewsForm";

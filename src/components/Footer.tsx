@@ -1,6 +1,6 @@
 "use client";
 import { useI18n } from "@/hooks";
-import footerStyles from "@/components/Footer.module.css";
+import footerStyles from "@/styles/components/Footer.module.css";
 import Link from "next/link";
 
 const Footer = () => {

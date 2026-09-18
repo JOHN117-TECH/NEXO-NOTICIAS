@@ -1,6 +1,6 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
-import favoriteStyles from "./FavoriteButton.module.css";
+import favoriteStyles from "@/styles/components/FavoriteButton.module.css";
 
 export function FavoriteButton({
   id,

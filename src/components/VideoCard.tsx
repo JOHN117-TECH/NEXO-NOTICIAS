@@ -2,7 +2,7 @@
 import type { Video } from "@/lib";
 import { videoDuration } from "@/lib";
 import { useI18n } from "@/hooks";
-import styles from "./VideoCard.module.css";
+import styles from "@/styles/components/VideoCard.module.css";
 export function VideoCard({
   video,
   onPlay,

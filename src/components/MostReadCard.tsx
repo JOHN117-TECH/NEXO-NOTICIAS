@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useI18n } from "@/hooks";
 import type { MostReadStory } from "@/lib";
-import styles from "./MostReadCard.module.css";
+import styles from "@/styles/components/MostReadCard.module.css";
 
 export function MostReadCard({ story, rank }: { story: MostReadStory; rank: number }) {
   const { t } = useI18n();

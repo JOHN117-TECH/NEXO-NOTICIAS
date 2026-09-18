@@ -1,8 +1,8 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
 import detailStyles from "@/app/noticias/[id]/page.module.css";
-import buttonStyles from "@/components/ui/Button.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import { use } from "react";
 import Link from "next/link";
 

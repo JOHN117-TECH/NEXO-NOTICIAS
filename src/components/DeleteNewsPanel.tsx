@@ -1,11 +1,11 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
-import noticeStyles from "@/components/ui/Notice.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import noticeStyles from "@/styles/components/ui/Notice.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 
 import type { NewsManagementState } from "@/lib";
 
-import managerStyles from "./DeleteNewsPanel.module.css";
+import managerStyles from "@/styles/components/DeleteNewsPanel.module.css";
 import { useEffect, useRef, useState } from "react";
 export function DeleteNewsPanel({
   adminKey: key,

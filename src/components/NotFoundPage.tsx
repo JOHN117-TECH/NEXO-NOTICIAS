@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useI18n } from "@/hooks";
-import styles from "./NotFoundPage.module.css";
+import styles from "@/styles/components/NotFoundPage.module.css";
 
 export function NotFoundPage({ className = "" }: { className?: string }) {
   const { t, href } = useI18n();

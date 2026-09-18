@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useI18n } from "@/hooks";
 import type { Opinion } from "@/lib";
-import styles from "./OpinionCard.module.css";
+import styles from "@/styles/components/OpinionCard.module.css";
 export function OpinionCard({ opinion }: { opinion: Opinion }) {
   const { t } = useI18n();
   const [failedImage, setFailedImage] = useState<string | null>(null);

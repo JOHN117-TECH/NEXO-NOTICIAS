@@ -2,7 +2,7 @@
 import { useI18n } from "@/hooks";
 import { mentalGames } from "@/lib";
 import { MentalGameCard } from "./MentalGameCard";
-import styles from "./MentalGamesSection.module.css";
+import styles from "@/styles/components/MentalGamesSection.module.css";
 export function MentalGamesSection() {
   const { t } = useI18n();
   return (

@@ -2,8 +2,8 @@
 import { useI18n, useNews } from "@/hooks";
 import layoutStyles from "@/app/layout.module.css";
 import favoritesStyles from "@/app/favoritos/page.module.css";
-import buttonStyles from "@/components/ui/Button.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import Link from "next/link";
 
 import { NewsCard, NewsStatus } from "@/components";

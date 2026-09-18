@@ -1,9 +1,9 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
-import buttonStyles from "@/components/ui/Button.module.css";
-import formStyles from "@/components/ui/FormField.module.css";
-import noticeStyles from "@/components/ui/Notice.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import formStyles from "@/styles/components/ui/FormField.module.css";
+import noticeStyles from "@/styles/components/ui/Notice.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 
 import type { NewsManagementState } from "@/lib";
 

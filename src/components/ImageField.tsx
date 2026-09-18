@@ -1,8 +1,8 @@
 "use client";
 import { useI18n } from "@/hooks";
 import { useEffect, useState, useRef, type ChangeEvent } from "react";
-import styles from "./ImageField.module.css";
-import formStyles from "./ui/FormField.module.css";
+import styles from "@/styles/components/ImageField.module.css";
+import formStyles from "@/styles/components/ui/FormField.module.css";
 
 const maxSize = 2 * 1024 * 1024;
 const allowedTypes = ["image/jpeg", "image/png", "image/webp"];

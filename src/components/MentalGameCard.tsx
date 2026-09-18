@@ -3,7 +3,7 @@ import { useI18n } from "@/hooks";
 import type { MentalGame } from "@/lib";
 import { MentalGameImage } from "./MentalGameImage";
 import { MentalGameAction } from "./MentalGameAction";
-import styles from "./MentalGameCard.module.css";
+import styles from "@/styles/components/MentalGameCard.module.css";
 export function MentalGameCard({ game, featured = false }: { game: MentalGame; featured?: boolean }) {
   const { t } = useI18n();
   return (

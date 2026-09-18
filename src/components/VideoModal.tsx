@@ -3,7 +3,7 @@ import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "@/hooks";
 import type { Video } from "@/lib";
-import styles from "./VideoModal.module.css";
+import styles from "@/styles/components/VideoModal.module.css";
 export function VideoModal({
   video,
   onClose,

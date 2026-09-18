@@ -6,8 +6,8 @@ import type { Video } from "@/lib";
 import { NewsLoader } from "./NewsLoader";
 import { VideoCard } from "./VideoCard";
 import { VideoModal } from "./VideoModal";
-import styles from "./VideoSlider.module.css";
-import buttonStyles from "./ui/Button.module.css";
+import styles from "@/styles/components/VideoSlider.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
 export function VideoSlider() {
   const { videos, loading, error, retry } = useVideos();
   const { t } = useI18n();

@@ -3,7 +3,7 @@
 import { useI18n } from "@/hooks";
 import { cartoons } from "@/lib";
 import { CartoonCard } from "./CartoonCard";
-import styles from "./CartoonsSection.module.css";
+import styles from "@/styles/components/CartoonsSection.module.css";
 
 export function CartoonsSection() {
   const { t } = useI18n();

@@ -1,7 +1,7 @@
 "use client";
 import { useNews } from "@/hooks";
 import { NewsCard } from "./News-card";
-import styles from "./HomeNewsGrid.module.css";
+import styles from "@/styles/components/HomeNewsGrid.module.css";
 
 export function HomeNewsGrid() {
   const { news } = useNews();

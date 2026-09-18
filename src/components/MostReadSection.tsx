@@ -3,7 +3,7 @@
 import { useI18n } from "@/hooks";
 import { mostReadStories } from "@/lib";
 import { MostReadCard } from "./MostReadCard";
-import styles from "./MostReadSection.module.css";
+import styles from "@/styles/components/MostReadSection.module.css";
 
 export function MostReadSection() {
   const { t } = useI18n();

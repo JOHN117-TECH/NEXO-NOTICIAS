@@ -1,6 +1,6 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
-import buttonStyles from "./ui/Button.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
 
 import { NewsLoader } from "./NewsLoader";
 export function NewsStatus() {
