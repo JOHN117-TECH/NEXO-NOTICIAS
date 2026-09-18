@@ -148,3 +148,26 @@ test('English administration translates fields and removal controls', () => {
   assert.equal(translate('Nexo Noticias', 'en'), 'Nexo News');
   assert.equal(translate('Inicio', 'es'), 'Inicio');
 });
+
+test('Event rendering is stable without runtime locale formatting', () => {
+  const { formatEventDate, formatEventTime } = require('../src/lib/eventFormatting.ts');
+  assert.equal(formatEventTime('00:05', 'es'), '12:05 a. m.');
+  assert.equal(formatEventTime('12:00', 'es'), '12:00 p. m.');
+  assert.equal(formatEventTime('16:30', 'en'), '4:30 PM');
+  assert.deepEqual(formatEventDate('2026-09-23', 'es'), {
+    day: '23', month: 'sept', fullDate: '23 de septiembre de 2026',
+  });
+  const { EventsSection } = require('../src/components/EventsSection.tsx');
+  const original = Intl.DateTimeFormat;
+  try {
+    Intl.DateTimeFormat = function () { throw new Error('Environment-dependent formatting'); };
+    const spanish = render(EventsSection, {}, 'es');
+    const english = render(EventsSection, {}, 'en');
+    assert.equal((spanish.match(/<li[ >]/g) || []).length, 6);
+    assert.match(spanish, /10:00 a\. m\. – 11:30 a\. m\./);
+    assert.match(english, /10:00 AM – 11:30 AM/);
+    assert.match(english, /September 23, 2026/);
+  } finally {
+    Intl.DateTimeFormat = original;
+  }
+});

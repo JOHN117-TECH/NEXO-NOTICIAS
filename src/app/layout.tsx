@@ -1,5 +1,6 @@
 import layoutStyles from "@/app/layout.module.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { siteIcon } from "@/assets/images";
 import "./globals.css";
 import { Providers, Header, LanguageProvider, SkipLink, Footer } from "@/components";
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="theme-initialization"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
         />
       </head>
