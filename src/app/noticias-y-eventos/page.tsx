@@ -11,13 +11,30 @@ import {
   NewsManager,
   EventsSection,
 } from "@/components";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { categories } from "@/lib/types";
 
 export default function Noticias() {
+  return (
+    <Suspense fallback={<NewsStatus />}>
+      <NewsWithCategory />
+    </Suspense>
+  );
+}
+
+function NewsWithCategory() {
+  const params = useSearchParams();
+  const requested = params.get("category");
+  const category = categories.find((value) => value === requested) || "Todas";
+  return <NewsListing key={category} initialCategory={category} />;
+}
+
+function NewsListing({ initialCategory }: { initialCategory: string }) {
   const { t, locale } = useI18n();
 
   const { news, loading, error } = useNews();
-  const [category, setCategory] = useState("Todas");
+  const [category, setCategory] = useState(initialCategory);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(3);
   const filtered = news

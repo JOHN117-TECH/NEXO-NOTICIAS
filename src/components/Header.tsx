@@ -10,7 +10,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const links = [
   ["Inicio", "/"],
   ["Noticias", "/noticias-y-eventos"],
-  ["Categorías", "/noticias-y-eventos#categorias"],
+  ["Categorías", "/categorias"],
   ["Favoritos", "/favoritos"],
   ["Contacto", "/contacto"],
 ];
@@ -80,14 +80,6 @@ const Header = () => {
             className="no-underline!"
             key={name}
             href={localizedHref(href)}
-            scroll={name === "Categorías" ? false : undefined}
-            onNavigate={
-              name === "Categorías"
-                ? () => {
-                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-                }
-                : undefined
-            }
             onClick={() => setMenuOpen(false)}
             aria-current={pathname === localizedHref(href) ? "page" : undefined}
           >

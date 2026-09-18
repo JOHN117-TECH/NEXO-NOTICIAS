@@ -171,3 +171,17 @@ test('Event rendering is stable without runtime locale formatting', () => {
     Intl.DateTimeFormat = original;
   }
 });
+
+test('Category pages localize routes and link to canonical news filters', () => {
+  assert.equal(localizedPath('/categorias', 'en'), '/categories');
+  assert.equal(localizedPath('/categories', 'es'), '/categorias');
+  assert.equal(localeFromPath('/categories'), 'en');
+  const { CategoriesPage } = require('../src/components/CategoriesPage.tsx');
+  const english = render(CategoriesPage);
+  const spanish = render(CategoriesPage, {}, 'es');
+  assert.match(english, /href="\/news-and-events\?category=Turismo"/);
+  assert.match(spanish, /href="\/noticias-y-eventos\?category=Tecnolog%C3%ADa"/);
+  assert.match(english, /Current affairs/);
+  assert.match(spanish, /Actualidad/);
+  assert.equal((english.match(/<li>/g) || []).length, 4);
+});
