@@ -9,7 +9,6 @@ import { DeleteNewsPanel } from "./DeleteNewsPanel";
 import type { NewsManagementState } from "@/lib/newsManagement";
 
 export function NewsManager() {
-
   const { t } = useI18n();
 
   const { key, keyStorageError, updateAdminKey } = useAdminKey();
@@ -19,7 +18,7 @@ export function NewsManager() {
     "create",
   );
   const [pending, setPending] = useState(false);
-  // Both actions share a pending flag to prevent concurrent mutations.
+
   const state: NewsManagementState = {
     adminKey: key,
     keyInput,

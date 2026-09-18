@@ -15,12 +15,11 @@ export function NewsFilters({
   onCategoryChange,
   onPageSizeChange,
 }: Props) {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
 
   return (
     <div className={newsStyles.toolbar}>
       <div
-        id={locale === "en" ? "categories" : "categorias"}
         aria-label={t("Filtrar noticias por categoría")}
         className="flex flex-wrap gap-2"
       >

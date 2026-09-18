@@ -1,0 +1,4 @@
+.categoryStart {
+  /* Compensa el mt-20 del layout y el pt-6 de esta página al seguir el ancla. */
+  scroll-margin-top: calc(5rem + 1.5rem);
+}

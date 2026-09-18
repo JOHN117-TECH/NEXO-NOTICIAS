@@ -17,6 +17,7 @@ export function NewsImage({
     <img
       src={news.image}
       alt={t(news.title)}
+      loading="lazy"
       className={[
         cardStyles.newsImage,
         large ? cardStyles.largeImage : "",

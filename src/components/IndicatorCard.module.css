@@ -1,0 +1,89 @@
+.card {
+  min-width: 0;
+  text-align: center;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 8px;
+  background: var(--notice-bg);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.body {
+  padding: 8px 4px 12px;
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow {
+  display: block;
+  width: 22px;
+  height: 14px;
+}
+
+.value {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.change, .changePercent {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.changePercent {
+  color: var(--link);
+}
+
+.up { color: var(--indicator-up); }
+.down { color: var(--indicator-down); }
+
+.compact .name {
+  min-height: 40px;
+}
+
+.compact .body {
+  padding-block: 6px;
+}
+
+.compact .quote {
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.compact .arrow {
+  width: 18px;
+  height: 12px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

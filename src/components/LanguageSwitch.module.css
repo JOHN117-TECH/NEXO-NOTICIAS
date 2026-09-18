@@ -19,10 +19,10 @@
     background-color 0.2s,
     color 0.2s;
 }
-.switch button[aria-pressed='true'] {
+.switch button[aria-pressed="true"] {
   background: white;
   color: var(--chrome-bg);
 }
-.switch button[aria-pressed='false']:hover {
+.switch button[aria-pressed="false"]:hover {
   background: var(--nav-hover-bg);
 }

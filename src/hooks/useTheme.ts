@@ -8,8 +8,15 @@ export function useTheme() {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const sync = () => {
       let saved: string | null = null;
-      try { saved = localStorage.getItem(THEME_STORAGE_KEY); } catch {}
-      const next = saved === "light" || saved === "dark" ? saved : media.matches ? "dark" : "light";
+      try {
+        saved = localStorage.getItem(THEME_STORAGE_KEY);
+      } catch {}
+      const next =
+        saved === "light" || saved === "dark"
+          ? saved
+          : media.matches
+            ? "dark"
+            : "light";
       document.documentElement.dataset.theme = next;
       setTheme(next);
     };
@@ -25,10 +32,13 @@ export function useTheme() {
     };
   }, []);
   function toggleTheme() {
-    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    const next =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     setTheme(next);
-    try { localStorage.setItem(THEME_STORAGE_KEY, next); } catch {}
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+    } catch {}
   }
   return { theme, toggleTheme };
 }

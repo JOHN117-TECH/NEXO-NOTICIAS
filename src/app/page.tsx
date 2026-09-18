@@ -4,14 +4,18 @@ import homeStyles from "@/app/page.module.css";
 import buttonStyles from "@/components/ui/Button.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
-import { useNews } from "@/hooks/useNews";
 
 import { NewsStatus } from "@/components/NewsStatus";
-import { NewsCard } from "@/components/News-card";
+import { MentalGamesSection } from "@/components/MentalGamesSection";
+import { IndicatorsSection } from "@/components/IndicatorsSection";
+import { CartoonsSection } from "@/components/CartoonsSection";
+import { MostReadSection } from "@/components/MostReadSection";
+import { OpinionsSection } from "@/components/OpinionsSection";
+import { VideoSlider } from "@/components/VideoSlider";
+import { HomeNewsGrid } from "@/components/HomeNewsGrid";
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
 
-  const { news } = useNews();
   return (
     <main id="contenido">
       <section className={homeStyles.hero}>
@@ -30,14 +34,7 @@ export default function Home() {
           {t("Noticias principales")}
         </h2>
         <NewsStatus />
-        <div className="grid gap-[18px] md:grid-cols-3">
-          {news
-            .filter((n) => n.featured)
-            .slice(0, 3)
-            .map((n) => (
-              <NewsCard key={n.id} news={n} home />
-            ))}
-        </div>
+        <HomeNewsGrid />
       </section>
       <section className={homeStyles.why}>
         <h2>{t("¿Por qué utilizar Nexo Noticias?")}</h2>
@@ -47,12 +44,18 @@ export default function Home() {
           )}
         </p>
       </section>
+      <VideoSlider />
       <section className={homeStyles.cta}>
         <h2>{t("¿Te gustaría conocer todas nuestras noticias?")}</h2>
         <Link className={buttonStyles.button} href={localizedHref("/noticias")}>
           {t("Ver todas las noticias")}
         </Link>
       </section>
+      <OpinionsSection />
+      <MentalGamesSection />
+      <IndicatorsSection />
+      <CartoonsSection />
+      <MostReadSection />
     </main>
   );
 }

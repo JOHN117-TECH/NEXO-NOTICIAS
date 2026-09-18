@@ -4,7 +4,7 @@ Aplicación académica en español basada en los cinco mockups de Figma y los re
 
 ## Requisitos
 
-Node.js 22 o superior, npm y Docker Desktop con el motor Linux iniciado. La base de datos se publica solo en `127.0.0.1:5433`; el backend usa 3001 y el frontend 3000.
+Node.js 22 o superior, npm y Docker Desktop con el motor Linux iniciado. La base de datos se publica solo en `127.0.0.1:5433`; el backend usa 3000 y el frontend 3002.
 
 ## Ejecutar
 
@@ -26,17 +26,17 @@ Copy-Item .env.example .env.local
 npm run dev
 ```
 
-Abrir http://127.0.0.1:3000. No sobrescribir los archivos `.env` existentes si ya están configurados. Se preparó una clave aleatoria en `Backend/.env` durante la implementación; no se guarda en Git.
+Abrir http://127.0.0.1:3002. La variable `API_URL` del frontend debe apuntar al backend (`http://127.0.0.1:3000`), nunca al propio frontend, para evitar un bucle en el proxy. No sobrescribir los archivos `.env` existentes si ya están configurados. Se preparó una clave aleatoria en `Backend/.env` durante la implementación; no se guarda en Git.
 
 ## Las cinco rutas
 
-| Ruta | Vista |
-| --- | --- |
-| `/` | Bienvenida, tres noticias principales y llamados a la acción |
-| `/noticias` | Listado, filtros y mini CRUD desplegable |
-| `/noticias/[id]` | Lectura completa y favoritos |
-| `/favoritos` | Noticias guardadas y estado vacío condicional |
-| `/contacto` | Formulario validado |
+| Ruta             | Vista                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| `/`              | Bienvenida, tres noticias principales y llamados a la acción |
+| `/noticias`      | Listado, filtros y mini CRUD desplegable                     |
+| `/noticias/[id]` | Lectura completa y favoritos                                 |
+| `/favoritos`     | Noticias guardadas y estado vacío condicional                |
+| `/contacto`      | Formulario validado                                          |
 
 Categorías dirige al filtro del listado, sin agregar una sexta ruta. Los favoritos persisten por navegador en localStorage. Las noticias y los mensajes persisten en PostgreSQL. El formulario registra mensajes en la base de datos; no envía correos electrónicos.
 

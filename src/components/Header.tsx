@@ -30,7 +30,7 @@ const Header = () => {
       }}
       className={[
         headerStyles.siteHeader,
-        "flex flex-wrap items-center justify-between gap-5 px-6 py-5",
+        "flex flex-wrap items-center justify-between gap-5 px-6 py-5 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:z-50",
       ].join(" ")}
     >
       <Link
@@ -75,13 +75,21 @@ const Header = () => {
             className="no-underline!"
             key={name}
             href={localizedHref(href)}
+            scroll={name === "Categorías" ? false : undefined}
+            onNavigate={
+              name === "Categorías"
+                ? () => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                }
+                : undefined
+            }
             onClick={() => setMenuOpen(false)}
             aria-current={pathname === localizedHref(href) ? "page" : undefined}
           >
             {t(name)}
           </Link>
         ))}
-        <div className={`-ml-2 gap-x-4! ${headerStyles.preferences}`}>
+        <div className={`-ml-1 gap-x-4! ${headerStyles.preferences}`}>
           <LanguageSwitch />
           <ThemeToggle />
         </div>

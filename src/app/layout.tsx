@@ -31,7 +31,9 @@ export default function RootLayout({
           <Providers>
             <div className={layoutStyles.siteShell}>
               <Header />
-              {children}
+              <section className="sm:mt-20">
+                {children}
+              </section>
               <Footer />
             </div>
           </Providers>

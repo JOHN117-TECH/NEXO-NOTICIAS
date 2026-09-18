@@ -1,0 +1,6 @@
+ .button { display: inline-flex; justify-content: center; align-items: center; min-width: 100px; min-height: 40px; border: 1px solid var(--text); border-radius: 24px; padding: 8px 20px; background: transparent; color: var(--text); font-weight: 700; font-size: 12px; text-transform: uppercase; text-decoration: none; }
+.button:hover:not(:disabled), .button:focus-visible { background: var(--notice-bg); color: var(--link); border-color: var(--link); text-decoration: none; }
+.button:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.button:disabled { cursor: not-allowed; color: var(--text-muted); border-color: var(--border); }
+.pending { display: grid; justify-items: center; gap: 6px; }
+.hint { font-size: 11px; color: var(--text-muted); }
