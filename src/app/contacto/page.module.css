@@ -181,7 +181,7 @@
   }
 
   .socialGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
@@ -193,6 +193,35 @@
 
   .socialName {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 321px) {
+  .socialGrid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 220px;
+    margin-inline: auto;
+    gap: 18px;
+  }
+
+  .socialLink {
+    margin: 0px 0px 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .socialIcon {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+  }
+
+  .socialName {
+    text-align: left;
   }
 }
 
