@@ -1,6 +1,6 @@
 "use client";
 import { useI18n, useNews } from "@/hooks";
-import detailStyles from "@/app/noticias/[id]/page.module.css";
+import detailStyles from "@/app/noticias-y-eventos/[id]/page.module.css";
 import buttonStyles from "@/styles/components/ui/Button.module.css";
 import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import { use } from "react";
@@ -46,7 +46,7 @@ export default function Detail({
             <FavoriteButton id={item.id} full />
             <Link
               className={buttonStyles.textLink}
-              href={localizedHref("/noticias")}
+              href={localizedHref("/noticias-y-eventos")}
             >
               {t("← Regresar a noticias")}
             </Link>
@@ -58,7 +58,7 @@ export default function Detail({
           <p>{t("Esta publicación no existe o fue eliminada.")}</p>
           <Link
             className={[buttonStyles.button, "mt-6"].join(" ")}
-            href={localizedHref("/noticias")}
+            href={localizedHref("/noticias-y-eventos")}
           >
             {t("Regresar a noticias")}
           </Link>

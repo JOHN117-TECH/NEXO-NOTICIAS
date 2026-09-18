@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/noticias/:path*",
+        destination: "/noticias-y-eventos/:path*",
+        permanent: true,
+      },
+      {
+        source: "/news/:path*",
+        destination: "/news-and-events/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

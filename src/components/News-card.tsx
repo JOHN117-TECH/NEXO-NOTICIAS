@@ -44,7 +44,7 @@ export function NewsCard({
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
           <Link
             className={`no-underline! ${[buttonStyles.textLink, cardStyles.readMore].join(" ")}`}
-            href={localizedHref(`/noticias/${news.id}`)}
+            href={localizedHref(`/noticias-y-eventos/${news.id}`)}
           >
             {t("Ver más")}
             <span className="sr-only">: {t(news.title)}</span>

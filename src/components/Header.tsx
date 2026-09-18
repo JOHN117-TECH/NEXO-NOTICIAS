@@ -9,8 +9,8 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   ["Inicio", "/"],
-  ["Noticias", "/noticias"],
-  ["Categorías", "/noticias#categorias"],
+  ["Noticias", "/noticias-y-eventos"],
+  ["Categorías", "/noticias-y-eventos#categorias"],
   ["Favoritos", "/favoritos"],
   ["Contacto", "/contacto"],
 ];

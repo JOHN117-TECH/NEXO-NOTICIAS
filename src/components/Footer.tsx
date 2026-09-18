@@ -18,7 +18,7 @@ const Footer = () => {
           >
             {[
               ["Inicio", "/"],
-              ["Noticias", "/noticias"],
+              ["Noticias", "/noticias-y-eventos"],
               ["Favoritos", "/favoritos"],
               ["Contacto", "/contacto"],
             ].map(([name, href], index) => (

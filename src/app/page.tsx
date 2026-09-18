@@ -28,7 +28,7 @@ export default function Home() {
             "Encuentra las noticias más relevantes de tecnología, educación, turismo y actualidad en un solo lugar.",
           )}
         </p>
-        <Link href={localizedHref("/noticias")} className={buttonStyles.button}>
+        <Link href={localizedHref("/noticias-y-eventos")} className={buttonStyles.button}>
           {t("Explorar noticias")}
         </Link>
       </section>
@@ -50,7 +50,7 @@ export default function Home() {
       <VideoSlider />
       <section className={homeStyles.cta}>
         <h2>{t("¿Te gustaría conocer todas nuestras noticias?")}</h2>
-        <Link className={buttonStyles.button} href={localizedHref("/noticias")}>
+        <Link className={buttonStyles.button} href={localizedHref("/noticias-y-eventos")}>
           {t("Ver todas las noticias")}
         </Link>
       </section>

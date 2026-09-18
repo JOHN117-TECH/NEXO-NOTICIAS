@@ -1,12 +1,12 @@
 import type { Locale } from "./i18n";
 const routes: Record<string, string> = {
   "/": "/en",
-  "/noticias": "/news",
+  "/noticias-y-eventos": "/news-and-events",
   "/favoritos": "/favorites",
   "/contacto": "/contact",
 };
 export function localeFromPath(pathname: string): Locale {
-  return /^\/(en|news|favorites|contact)(\/|$)/.test(pathname) ? "en" : "es";
+  return /^\/(en|news-and-events|news|favorites|contact)(\/|$)/.test(pathname) ? "en" : "es";
 }
 export function localizedPath(href: string, locale: Locale): string {
   if (

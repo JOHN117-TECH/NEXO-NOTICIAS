@@ -91,19 +91,19 @@ const {
 } = require('../src/lib/localizedRoutes.ts');
 test('Localized routes preserve article IDs, queries and category anchors', () => {
   assert.equal(
-    localizedPath('/noticias/abc?x=1#categorias', 'en'),
-    '/news/abc?x=1#categories',
+    localizedPath('/noticias-y-eventos/abc?x=1#categorias', 'en'),
+    '/news-and-events/abc?x=1#categories',
   );
   assert.equal(
-    localizedPath('/news/abc?x=1#categories', 'es'),
-    '/noticias/abc?x=1#categorias',
+    localizedPath('/news-and-events/abc?x=1#categories', 'es'),
+    '/noticias-y-eventos/abc?x=1#categorias',
   );
   assert.equal(localizedPath('/favoritos', 'en'), '/favorites');
   assert.equal(localizedPath('/contact', 'es'), '/contacto');
   assert.equal(localizedPath('/', 'en'), '/en');
   assert.equal(localizedPath('/en', 'es'), '/');
-  assert.equal(localeFromPath('/news/abc'), 'en');
-  assert.equal(localeFromPath('/noticias/abc'), 'es');
+  assert.equal(localeFromPath('/news-and-events/abc'), 'en');
+  assert.equal(localeFromPath('/noticias-y-eventos/abc'), 'es');
   assert.equal(localizedPath('/api/noticias', 'en'), '/api/noticias');
 });
 test('Unknown routes switch the 404 language without losing their path', () => {

@@ -41,7 +41,7 @@ export default function Favoritos() {
             )}
           </p>
           <Link
-            href={localizedHref("/noticias")}
+            href={localizedHref("/noticias-y-eventos")}
             className={buttonStyles.button}
           >
             {t("Explorar noticias")}
