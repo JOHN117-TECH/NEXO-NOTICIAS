@@ -2,6 +2,7 @@
 import { useI18n } from "@/hooks";
 import footerStyles from "@/styles/components/Footer.module.css";
 import Link from "next/link";
+import { AppDownloadButtons } from "./AppDownloadButtons";
 
 const Footer = () => {
   const { t, href: localizedHref } = useI18n();
@@ -45,6 +46,7 @@ const Footer = () => {
             {t("© 2026 Nexo Noticias. Proyecto académico.")}
           </p>
         </div>
+        <AppDownloadButtons />
       </footer>
     </>
   );
