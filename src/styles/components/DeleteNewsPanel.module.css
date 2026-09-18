@@ -31,18 +31,14 @@
 .deleteSelected:disabled {
   cursor: not-allowed;
 }
+
+.dialogBorder {
+  border-radius: 26px;
+}
+
 @media (max-width: 320px) {
   .selectionToolbar {
     flex-direction: column;
     align-items: flex-start;
   }
-}
-.bulkConfirmation {
-  background: var(--danger-bg);
-  border-radius: 8px;
-  padding: 12px;
-  margin: 12px 0;
-}
-.bulkConfirmation p {
-  margin-bottom: 10px;
 }

@@ -7,6 +7,7 @@ import type { NewsManagementState } from "@/lib";
 
 import managerStyles from "@/styles/components/DeleteNewsPanel.module.css";
 import { useEffect, useRef, useState } from "react";
+import Swal from "sweetalert2";
 export function DeleteNewsPanel({
   adminKey: key,
   keyInput,
@@ -20,12 +21,10 @@ export function DeleteNewsPanel({
   const { t } = useI18n();
 
   const { news, reload } = useNews();
-  const [deleting, setDeleting] = useState("");
+  const confirming = useRef(false);
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
   const selectAllInput = useRef<HTMLInputElement>(null);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const [bulkConfirmation, setBulkConfirmation] = useState<string[] | null>(
-    null,
-  );
   const selected = news
     .filter((item) => selectedIds.includes(item.id))
     .map((item) => item.id);
@@ -35,6 +34,59 @@ export function DeleteNewsPanel({
       selectAllInput.current.indeterminate =
         selected.length > 0 && !allSelected;
   }, [selected.length, allSelected]);
+  async function confirmDeletion(ids: string[], individual = false) {
+    if (pending || confirming.current || ids.length === 0) return;
+    confirming.current = true;
+    setConfirmationOpen(true);
+    try {
+      const result = await Swal.fire({
+        titleText: individual
+          ? t("¿Eliminar esta noticia?")
+          : t(
+            ids.length === 1
+              ? "¿Eliminar {count} noticia seleccionada?"
+              : "¿Eliminar {count} noticias seleccionadas?",
+            { count: ids.length },
+          ),
+        text: t("Esta acción no se puede deshacer."),
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: t("Confirmar eliminación"),
+        cancelButtonText: t("Cancelar"),
+        confirmButtonColor: "#b91c1c",
+        cancelButtonColor: "#475569",
+        background: "var(--surface)",
+        color: "var(--text)",
+        focusCancel: true,
+        customClass: {
+          popup: managerStyles.dialogBorder,
+        },
+      });
+      if (!result.isConfirmed) return;
+      if (individual) await remove(ids[0]);
+      else await removeSelected(ids);
+    } finally {
+      confirming.current = false;
+      setConfirmationOpen(false);
+    }
+  }
+  async function showDeletionSuccess(count: number) {
+    await Swal.fire({
+      icon: "success",
+      titleText:
+        count === 1
+          ? t("Noticia eliminada.")
+          : t("{count} noticias eliminadas.", { count }),
+      confirmButtonText: t("Aceptar"),
+      confirmButtonColor: "var(--button-bg)",
+      background: "var(--surface)",
+      color: "var(--text)",
+      timer: 3000,
+      customClass: {
+        popup: managerStyles.dialogBorder,
+      },
+    });
+  }
   async function remove(id: string) {
     setStatusAction("delete");
     if (!key.trim()) {
@@ -58,9 +110,8 @@ export function DeleteNewsPanel({
             : "No se pudo eliminar la noticia.",
         );
       await reload();
-      setStatus("Noticia eliminada.");
       setSelectedIds((ids) => ids.filter((value) => value !== id));
-      setDeleting("");
+      await showDeletionSuccess(1);
     } catch (e) {
       setStatus(
         e instanceof Error ? e.message : "No se pudo conectar con el servidor.",
@@ -69,8 +120,8 @@ export function DeleteNewsPanel({
       setPending(false);
     }
   }
-  async function removeSelected() {
-    if (pending || !bulkConfirmation?.length) return;
+  async function removeSelected(idsToDelete: string[]) {
+    if (pending || !idsToDelete.length) return;
     setStatusAction("delete");
     if (!key.trim()) {
       setStatus(
@@ -85,7 +136,7 @@ export function DeleteNewsPanel({
       const response = await fetch("/api/noticias", {
         method: "DELETE",
         headers: { "Content-Type": "application/json", "X-Admin-Key": key },
-        body: JSON.stringify({ ids: bulkConfirmation }),
+        body: JSON.stringify({ ids: idsToDelete }),
       });
       if (!response.ok)
         throw new Error(
@@ -94,16 +145,10 @@ export function DeleteNewsPanel({
             : "No se pudieron eliminar las noticias seleccionadas. Intenta nuevamente.",
         );
       const result: { deleted: number } = await response.json();
-      setSelectedIds((ids) =>
-        ids.filter((id) => !bulkConfirmation.includes(id)),
-      );
-      setBulkConfirmation(null);
+      setSelectedIds((ids) => ids.filter((id) => !idsToDelete.includes(id)));
+
       await reload();
-      setStatus(
-        result.deleted === 1
-          ? "Noticia eliminada."
-          : `${result.deleted} noticias eliminadas.`,
-      );
+      await showDeletionSuccess(result.deleted);
     } catch (error) {
       setStatus(
         error instanceof Error
@@ -129,12 +174,12 @@ export function DeleteNewsPanel({
               ref={selectAllInput}
               type="checkbox"
               checked={allSelected}
-              disabled={pending || bulkConfirmation !== null}
+              disabled={pending || confirmationOpen}
               onChange={(event) => {
                 setSelectedIds(
                   event.target.checked ? news.map((item) => item.id) : [],
                 );
-                setDeleting("");
+
                 setStatus("");
               }}
             />
@@ -144,51 +189,12 @@ export function DeleteNewsPanel({
           <button
             type="button"
             className={managerStyles.deleteSelected}
-            disabled={
-              pending || selected.length === 0 || bulkConfirmation !== null
-            }
-            onClick={() => {
-              setBulkConfirmation([...selected]);
-              setDeleting("");
-              setStatus("");
-              setStatusAction("delete");
-            }}
+            disabled={pending || selected.length === 0 || confirmationOpen}
+            onClick={() => void confirmDeletion([...selected])}
           >
             {t("Eliminar seleccionadas (")}
             {selected.length})
           </button>
-        </div>
-      )}
-      {bulkConfirmation && (
-        <div className={managerStyles.bulkConfirmation}>
-          <p>
-            {t(
-              bulkConfirmation.length === 1
-                ? "¿Eliminar {count} noticia seleccionada?"
-                : "¿Eliminar {count} noticias seleccionadas?",
-              { count: bulkConfirmation.length },
-            )}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              type="button"
-              className="text-[var(--danger)]"
-              disabled={pending}
-              onClick={() => void removeSelected()}
-            >
-              {t(pending ? "Eliminando…" : "Confirmar eliminación")}
-            </button>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={() => {
-                setBulkConfirmation(null);
-                setStatus("");
-              }}
-            >
-              {t("Cancelar")}
-            </button>
-          </div>
         </div>
       )}
       <ul className="divide-y divide-[var(--border)]">
@@ -202,65 +208,27 @@ export function DeleteNewsPanel({
                 type="checkbox"
                 aria-label={t("Seleccionar: {title}", { title: t(n.title) })}
                 checked={selectedIds.includes(n.id)}
-                disabled={pending || bulkConfirmation !== null}
+                disabled={pending || confirmationOpen}
                 onChange={(event) => {
                   setSelectedIds((ids) =>
                     event.target.checked
                       ? [...ids, n.id]
                       : ids.filter((id) => id !== n.id),
                   );
-                  setDeleting("");
+
                   setStatus("");
                 }}
               />
               <span className="min-w-0 break-words">{t(n.title)}</span>
             </label>
-            {deleting === n.id ? (
-              <div className="flex w-full flex-wrap items-center gap-4">
-                <span>{t("¿Eliminar esta noticia?")}</span>
-                <button
-                  type="button"
-                  disabled={pending}
-                  onClick={() => void remove(n.id)}
-                  className="text-[var(--danger)]"
-                >
-                  {t(pending ? "Eliminando…" : "Confirmar eliminación")}
-                </button>
-                <button
-                  disabled={pending}
-                  onClick={() => {
-                    setDeleting("");
-                    setStatus("");
-                  }}
-                >
-                  {t("Cancelar")}
-                </button>
-                {!key.trim() && (
-                  <p className="w-full text-sm text-[var(--danger)]">
-                    {t("Falta introducir la clave de administración.")}
-                  </p>
-                )}
-                {status && statusAction === "delete" && key.trim() && (
-                  <p
-                    role="alert"
-                    className="w-full text-sm text-[var(--danger)]"
-                  >
-                    {t(status)}
-                  </p>
-                )}
-              </div>
-            ) : (
-              <button
-                className="shrink-0 text-[var(--danger)]"
-                disabled={pending || bulkConfirmation !== null}
-                onClick={() => {
-                  setDeleting(n.id);
-                  setStatus("");
-                }}
-              >
-                {t("Eliminar")}
-              </button>
-            )}
+            <button
+              type="button"
+              className="shrink-0 text-[var(--danger)]"
+              disabled={pending || confirmationOpen}
+              onClick={() => void confirmDeletion([n.id], true)}
+            >
+              {t("Eliminar")}
+            </button>
           </li>
         ))}
       </ul>
@@ -269,7 +237,7 @@ export function DeleteNewsPanel({
           {t("No hay noticias para eliminar.")}
         </p>
       )}
-      {status && statusAction === "delete" && !deleting && key.trim() && (
+      {status && statusAction === "delete" && (
         <p role="status" className={noticeStyles.notice}>
           {t(status)}
         </p>

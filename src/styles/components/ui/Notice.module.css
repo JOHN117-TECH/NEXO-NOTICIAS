@@ -5,3 +5,9 @@
   margin: 12px 0;
   color: var(--text);
 }
+
+.error {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+}

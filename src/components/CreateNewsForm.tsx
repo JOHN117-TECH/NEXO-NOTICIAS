@@ -4,10 +4,12 @@ import buttonStyles from "@/styles/components/ui/Button.module.css";
 import formStyles from "@/styles/components/ui/FormField.module.css";
 import noticeStyles from "@/styles/components/ui/Notice.module.css";
 import typographyStyles from "@/styles/components/ui/Typography.module.css";
+import managerStyles from "@/styles/components/DeleteNewsPanel.module.css";
 
 import type { NewsManagementState } from "@/lib";
 
 import { useState, type FormEvent } from "react";
+import Swal from "sweetalert2";
 import { categories, readImage } from "@/lib";
 import { ImageField } from "./ImageField";
 
@@ -53,7 +55,18 @@ export function CreateNewsForm({
       setImageFile(null);
       setImageFieldVersion((version) => version + 1);
       await reload();
-      setStatus("Noticia creada correctamente.");
+      await Swal.fire({
+        icon: "success",
+        titleText: t("Noticia creada correctamente."),
+        confirmButtonText: t("Aceptar"),
+        confirmButtonColor: "var(--button-bg)",
+        background: "var(--surface)",
+        color: "var(--text)",
+        timer: 3000,
+        customClass: {
+          popup: managerStyles.dialogBorder,
+        },
+      });
     } catch (e) {
       setStatus(
         e instanceof Error ? e.message : "No se pudo conectar con el servidor.",
