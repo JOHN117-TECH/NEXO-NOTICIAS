@@ -15,7 +15,7 @@
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  background-color: var(--nav-hover-text);
+  background-color: var(--brand-icon-color);
   -webkit-mask: url('../assets/svg/world.svg') center / contain no-repeat;
   mask: url('../assets/svg/world.svg') center / contain no-repeat;
 }
