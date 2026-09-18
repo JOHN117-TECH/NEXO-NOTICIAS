@@ -1,0 +1,18 @@
+.editorial {
+  background: var(--surface-muted);
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  border-radius: 20px;
+}
+.editorial p {
+  max-width: 850px;
+  margin-inline: auto;
+}
+.title {
+  color: var(--text);
+  font-size: 18px;
+  margin-bottom: 4px;
+}

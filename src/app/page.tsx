@@ -6,6 +6,8 @@ import typographyStyles from "@/components/ui/Typography.module.css";
 import Link from "next/link";
 
 import { NewsStatus } from "@/components/NewsStatus";
+import { MentalGamesSection } from "@/components/MentalGamesSection";
+import { OpinionsSection } from "@/components/OpinionsSection";
 import { VideoSlider } from "@/components/VideoSlider";
 import { HomeNewsGrid } from "@/components/HomeNewsGrid";
 export default function Home() {
@@ -46,6 +48,8 @@ export default function Home() {
           {t("Ver todas las noticias")}
         </Link>
       </section>
+      <OpinionsSection />
+      <MentalGamesSection />
     </main>
   );
 }

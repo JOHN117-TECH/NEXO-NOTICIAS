@@ -51,6 +51,7 @@ test("manual video seed skips missing IDs and upserts without changing creation 
       NotFoundException: Error,
     },
     "./video-duration": load(path.resolve("../Backend/src/video-duration.ts")),
+    "./opinion-seed": { opinionSeed: [] },
     pg: { Pool },
     "./dto": {},
     "./seed": { seed: [] },
@@ -103,6 +104,7 @@ test("all final video titles, descriptions and categories have English translati
     "@/locales/en.json": require("../src/locales/en.json"),
     "@/locales/articles.en.json": require("../src/locales/articles.en.json"),
     "@/locales/videos.en.json": require("../src/locales/videos.en.json"),
+    "@/locales/opinions.en.json": require("../src/locales/opinions.en.json"),
   });
   assert.equal(videoSeed.length, 10);
   for (const video of videoSeed) {
@@ -114,4 +116,30 @@ test("all final video titles, descriptions and categories have English translati
   assert.equal(translate("Videos", "en"), "Videos");
   assert.equal(translate("Cargando videos…", "en"), "Loading videos…");
   assert.equal(translate("Cerrar video", "en"), "Close video");
+});
+
+test("opinion seed inserts and updates stable IDs only when requested", async () => {
+  const { opinionSeed } = load(path.resolve("../Backend/src/opinion-seed.ts"));
+  const queries = [];
+  const client = { query: async (sql, values) => { queries.push({ sql, values }); return { rowCount: 1 }; }, release() {} };
+  class Pool { async connect() { return client; } async query(sql) { queries.push({ sql }); return { rows: [] }; } }
+  const { Database } = load(path.resolve("../Backend/src/database.ts"), {
+    "@nestjs/common": { Injectable: () => (target) => target, NotFoundException: Error },
+    "pg": { Pool }, "./dto": {}, "./seed": { seed: [] },
+    "./video-seed": { videoSeed: [] }, "./opinion-seed": { opinionSeed },
+    "./video-duration": load(path.resolve("../Backend/src/video-duration.ts")),
+  });
+  const database = new Database();
+  await database.initialize();
+  assert.equal(queries.filter((q) => q.sql.includes("INSERT INTO opinions")).length, 0);
+  await database.initialize(true);
+  const inserts = queries.filter((q) => q.sql.includes("INSERT INTO opinions"));
+  assert.equal(inserts.length, 6);
+  assert.equal(new Set(inserts.map((q) => q.values[0])).size, 6);
+  assert.ok(inserts.every((q) => q.sql.includes("ON CONFLICT (id) DO UPDATE")));
+  assert.ok(inserts.every((q) => q.values[3] === ""));
+  await database.listOpinions();
+  assert.ok(queries.at(-1).sql.includes("SELECT id,name,phrase,image FROM opinions"));
+  const english = require("../src/locales/opinions.en.json");
+  for (const opinion of opinionSeed) assert.ok(english[opinion.phrase], opinion.phrase);
 });
