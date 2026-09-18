@@ -16,7 +16,7 @@
   padding: 0;
 }
 .card::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -80,6 +80,18 @@
   border: 1px solid currentColor;
   border-radius: 50%;
 }
+
+.duration {
+  --duration-color: var(--link);
+  color: var(--duration-color);
+}
+
+:global([data-theme='dark']) {
+  .duration {
+    --duration-color: #93c5fd;
+  }
+}
+
 @media (max-width: 375px) {
   .card {
     flex-basis: 100%;

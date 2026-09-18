@@ -17,9 +17,17 @@
   font-weight: 700;
 }
 .controls {
+  --arrow-color: var(--link);
   display: flex;
   gap: 8px;
 }
+
+:global([data-theme='dark']) {
+  .controls {
+    --arrow-color: #fff;
+  }
+}
+
 .controls button {
   display: grid;
   place-items: center;
@@ -28,7 +36,7 @@
   font-size: 28px;
   border-radius: 50%;
   background: var(--surface-muted);
-  color: var(--text);
+  color: var(--arrow-color);
   border: 1px solid var(--border);
   cursor: pointer;
 }

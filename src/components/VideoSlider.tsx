@@ -7,13 +7,12 @@ import { NewsLoader } from "./NewsLoader";
 import { VideoCard } from "./VideoCard";
 import { VideoModal } from "./VideoModal";
 import styles from "./VideoSlider.module.css";
-import { useTheme } from "@/hooks/useTheme";
+import buttonStyles from "./ui/Button.module.css";
 export function VideoSlider() {
   const { videos, loading, error, retry } = useVideos();
   const { t } = useI18n();
   const track = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<Video | null>(null);
-  const { theme } = useTheme();
   const scroll = (direction: number) => {
     const element = track.current;
     if (element)
@@ -38,18 +37,18 @@ export function VideoSlider() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill={theme === "dark" ? "#ffff" : "#2563eb"}
+                fill="currentColor"
                 viewBox="0 0 16 16"
                 id="Left--Streamline-Block-Free"
                 height="16"
                 width="16"
               >
                 <path
-                  fill={theme === "dark" ? "#ffff" : "#2563eb"}
-                  fill-rule="evenodd"
+                  fill="currentColor"
+                  fillRule="evenodd"
                   d="m11.9198 0.16 0.0002 15.68 -7.84 -7.8401L11.9198 0.16Z"
-                  clip-rule="evenodd"
-                  stroke-width="1"
+                  clipRule="evenodd"
+                  strokeWidth="1"
                 ></path>
               </svg>
             </button>
@@ -68,11 +67,11 @@ export function VideoSlider() {
                 width="16"
               >
                 <path
-                  fill={theme === "dark" ? "#ffff" : "#2563eb"}
-                  fill-rule="evenodd"
+                  fill="currentColor"
+                  fillRule="evenodd"
                   d="M4.0802 0.16 4.08 15.84l7.84 -7.8401L4.0802 0.16Z"
-                  clip-rule="evenodd"
-                  stroke-width="1"
+                  clipRule="evenodd"
+                  strokeWidth="1"
                 ></path>
               </svg>
             </button>
@@ -84,7 +83,7 @@ export function VideoSlider() {
       ) : error ? (
         <div role="alert">
           <p>{t("No pudimos cargar los videos.")}</p>
-          <button type="button" className={styles.retry} onClick={retry}>
+          <button className={`${buttonStyles.button} mt-3`} onClick={retry}>
             {t("Reintentar")}
           </button>
         </div>

@@ -32,7 +32,7 @@ export function VideoCard({
         <h3>{t(video.titulo)}</h3>
         {video.descripcion && <p>{t(video.descripcion)}</p>}
         <div className={styles.meta}>
-          <span aria-label={t("Duración")}>
+          <span className={styles.duration} aria-label={t("Duración")}>
             {videoDuration(video.duracion)}
           </span>
           <time dateTime={video.fecha_creacion}>
