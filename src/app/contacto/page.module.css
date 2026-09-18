@@ -225,6 +225,12 @@
   }
 }
 
+@media (max-width: 251px) {
+  .socialLink {
+    margin: 0px 0px 0px 0px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .socialLink {
     transition: none;

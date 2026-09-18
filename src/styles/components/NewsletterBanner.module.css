@@ -1,4 +1,11 @@
 .newsletter {
+  --banner-text: #ffffff;
+  --banner-muted: #eff6ff;
+  --banner-button-bg: #ffffff;
+  --banner-button-text: #172554;
+  --banner-button-hover: #e8edff;
+  --phone-frame: #3c4555;
+  --phone-border: #576174;
   position: relative;
 
   display: grid;
@@ -12,11 +19,13 @@
   margin: 40px auto;
   padding: 36px 48px;
 
-  background-image: url('../../assets/images/degradoDark.jpg');
+  background-image:
+    linear-gradient(rgb(15 23 42 / 22%), rgb(15 23 42 / 22%)),
+    url("../../assets/images/degradoLight.jpg");
   background-size: cover;
   background-position: center;
 
-  color: #ffffff;
+  color: var(--banner-text);
 
   overflow: hidden;
   border-radius: 18px;
@@ -50,7 +59,7 @@
   font-weight: 700;
   line-height: 1.2;
 
-  color: #ffffff;
+  color: var(--banner-text);
 }
 
 .description {
@@ -59,7 +68,7 @@
   font-size: 16px;
   line-height: 1.5;
 
-  color: #ffffff;
+  color: var(--banner-muted);
 }
 
 /* BOTÓN */
@@ -74,8 +83,9 @@
   min-height: 56px;
   padding: 16px 24px;
 
-  background: #ffffff;
-  color: #172554;
+  background: var(--banner-button-bg);
+  color: var(--banner-button-text);
+  max-width: 100%;
 
   border-radius: 5px;
 
@@ -90,12 +100,12 @@
 }
 
 .subscribeButton:hover {
-  background: #e8edff;
+  background: var(--banner-button-hover);
   transform: translateY(-5px);
 }
 
 .subscribeButton:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid var(--banner-text);
   outline-offset: 4px;
 }
 
@@ -128,9 +138,9 @@
 
   padding: 9px;
 
-  background: #3c4555;
+  background: var(--phone-frame);
 
-  border: 4px solid #576174;
+  border: 4px solid var(--phone-border);
   border-radius: 38px;
 
   box-shadow: 0 12px 35px rgb(0 0 0 / 25%);
@@ -151,7 +161,7 @@
   width: 90px;
   height: 20px;
 
-  background: #3c4555;
+  background: var(--phone-frame);
 
   border-radius: 0 0 14px 14px;
 }
@@ -166,7 +176,7 @@
 
   height: 95px;
 
-  background: linear-gradient(120deg, #4056ae, #172554);
+  background: var(--chrome-bg);
 
   color: #ffffff;
 
@@ -179,6 +189,7 @@
 }
 
 .phoneHeader span:last-child {
+  text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 2px;
 }
@@ -190,7 +201,7 @@
 
   padding: 15px 10px;
 
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .phoneTitle {
@@ -199,7 +210,7 @@
 
   margin-bottom: 20px;
 
-  background: #cbd5e1;
+  background: var(--border);
   border-radius: 4px;
 }
 
@@ -216,7 +227,7 @@
 
   flex-shrink: 0;
 
-  background: #cbd5e1;
+  background: var(--border);
   border-radius: 5px;
 }
 
@@ -234,7 +245,7 @@
 
   height: 7px;
 
-  background: #dbe2ea;
+  background: var(--border);
   border-radius: 4px;
 }
 
@@ -242,8 +253,19 @@
   width: 65%;
 }
 
-[data-theme='light'] .newsletter {
-  background-image: url('../../assets/images/degradoLight.jpg');
+:global([data-theme="dark"]) .newsletter {
+  --banner-text: #e5edff;
+  --banner-muted: #cbd5e1;
+  --banner-button-bg: #1e293b;
+  --banner-button-text: #e5edff;
+  --banner-button-hover: #334155;
+  --phone-frame: #0f172a;
+  --phone-border: #64748b;
+  background-image: url("../../assets/images/degradoDark.jpg");
+}
+
+.subscribeButton svg {
+  flex-shrink: 0;
 }
 
 /* TABLET */

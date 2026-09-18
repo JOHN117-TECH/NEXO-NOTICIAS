@@ -208,3 +208,16 @@ test('Category query values translate both ways without changing the news filter
   assert.equal(categoryFromQuery(null), undefined);
   assert.equal(localizedPath('/api/noticias?category=Turismo', 'en'), '/api/noticias?category=Turismo');
 });
+
+test('Newsletter translates its copy, phone label and contact destination', () => {
+  const { NewsletterBanner } = require('../src/components/NewsletterBanner.tsx');
+  const english = render(NewsletterBanner);
+  const spanish = render(NewsletterBanner, {}, 'es');
+  assert.match(english, /The stories that matter most, straight to your inbox\./);
+  assert.match(english, /Request your subscription/);
+  assert.match(english, /href="\/contact"/);
+  assert.match(english, /<span>News<\/span>/);
+  assert.match(spanish, /Solicita tu suscripción/);
+  assert.match(spanish, /href="\/contacto"/);
+  assert.match(spanish, /<span>Noticias<\/span>/);
+});
