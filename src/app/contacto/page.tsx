@@ -5,6 +5,7 @@ import { useI18n } from "@/hooks";
 import { ContactForm } from "@/components";
 import contactStyles from "./page.module.css";
 import { socialNetworks } from "@/lib/socialNetworks";
+import Link from "next/link";
 
 export default function Contact() {
   const { t } = useI18n();
@@ -46,7 +47,7 @@ export default function Contact() {
               const Icon = network.icon;
 
               return (
-                <a
+                <Link
                   key={network.name}
                   href={network.href}
                   target="_blank"
@@ -66,7 +67,7 @@ export default function Contact() {
                   <span className={contactStyles.socialName}>
                     {network.name}
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>

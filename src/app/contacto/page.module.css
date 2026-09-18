@@ -80,14 +80,14 @@
 
   min-width: 0;
 
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--text);
 
   transition: transform 0.2s ease;
 }
 
 .socialLink:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
 }
 
 .socialLink:focus-visible {
