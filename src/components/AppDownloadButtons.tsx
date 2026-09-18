@@ -3,7 +3,7 @@
 import Swal from "sweetalert2";
 import { useI18n } from "@/hooks";
 import styles from "@/styles/components/Footer.module.css";
-
+import managerStyles from "@/styles/components/DeleteNewsPanel.module.css";
 export function AppDownloadButtons() {
   const { t } = useI18n();
   async function showAvailability() {
@@ -15,6 +15,9 @@ export function AppDownloadButtons() {
       confirmButtonColor: "var(--button-bg)",
       background: "var(--surface)",
       color: "var(--text)",
+      customClass: {
+        popup: managerStyles.dialogBorder,
+      },
     });
   }
   return (
