@@ -9,6 +9,7 @@ import {
   NewsCard,
   NewsStatus,
   NewsManager,
+  EventsSection,
 } from "@/components";
 import { useState } from "react";
 
@@ -36,7 +37,7 @@ export default function Noticias() {
           newsPageStyles.categoryStart,
         ].join(" ")}
       >
-        <h1>{t("Últimas noticias")}</h1>
+        <h1>{t("Últimas noticias y eventos")}</h1>
         <p>
           {t("Mantente al día de tecnología, educación, turismo y actualidad.")}
         </p>
@@ -71,6 +72,7 @@ export default function Noticias() {
           {t("No hay noticias en esta categoría.")}
         </p>
       )}
+      <EventsSection />
       <NewsManager />
     </main>
   );

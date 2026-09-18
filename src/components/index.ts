@@ -4,6 +4,7 @@ export { CartoonsSection } from "./CartoonsSection";
 export { ContactForm } from "./ContactForm";
 export { CreateNewsForm } from "./CreateNewsForm";
 export { DeleteNewsPanel } from "./DeleteNewsPanel";
+export { EventsSection } from "./EventsSection";
 export { FavoriteButton } from "./FavoriteButton";
 export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";
