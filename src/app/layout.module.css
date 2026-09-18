@@ -9,6 +9,14 @@
 .siteShell > .listingPage {
   flex: 1 0 auto;
 }
+/* La página 404 ocupa la pantalla sin la navegación del sitio. */
+.siteShell:has([data-not-found]) > header,
+.siteShell:has([data-not-found]) > footer {
+  display: none;
+}
+.siteShell:has([data-not-found]) > section {
+  margin-top: 0;
+}
 .listingPage + footer {
   flex: 0 0 auto;
 }

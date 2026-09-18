@@ -8,7 +8,7 @@ export function NotFoundPage({ className = "" }: { className?: string }) {
   const { t, href } = useI18n();
 
   return (
-    <main id="contenido" className={`${styles.page} ${className}`}>
+    <main id="contenido" data-not-found className={`${styles.page} ${className}`}>
       <h1 className={styles.title}>{t("404 · Página no encontrada")}</h1>
       <p className={styles.description}>
         {t("Lo sentimos, la página que buscas no existe o cambió de dirección.")}
