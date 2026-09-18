@@ -32,7 +32,7 @@ export default function Home() {
           {t("Explorar noticias")}
         </Link>
       </section>
-      <section className="px-6 pt-6">
+      <section className="px-6 pt-2">
         <h2 className={[typographyStyles.sectionTitle, "mb-3"].join(" ")}>
           {t("Noticias principales")}
         </h2>

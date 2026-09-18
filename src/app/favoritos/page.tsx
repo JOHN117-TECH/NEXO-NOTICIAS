@@ -16,7 +16,7 @@ export default function Favoritos() {
   return (
     <main
       id="contenido"
-      className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
+      className={[layoutStyles.listingPage, "px-6 pb-7 pt-2"].join(" ")}
     >
       <div className={typographyStyles.pageIntro}>
         <h1>{t("Mis noticias favoritas")}</h1>

@@ -1,5 +1,5 @@
 .page {
-  padding: 28px 24px 40px;
+  padding: 2px 24px 40px 24px;
 }
 .grid {
   display: grid;
@@ -78,7 +78,7 @@
     gap: 20px;
   }
   .page {
-    padding: 24px 20px 32px;
+    padding: 2px 20px 32px 20px;
   }
   .visual {
     min-height: 160px;
