@@ -14,6 +14,7 @@ import {
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { categoryFromQuery } from "@/lib/categoryRoutes";
+import { NewsletterBanner } from "@/components/NewsletterBanner";
 
 export default function Noticias() {
   return (
@@ -90,6 +91,7 @@ function NewsListing({ initialCategory }: { initialCategory: string }) {
         </p>
       )}
       <EventsSection />
+      <NewsletterBanner />
       <NewsManager />
     </main>
   );
