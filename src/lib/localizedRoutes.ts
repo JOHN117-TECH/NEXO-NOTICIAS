@@ -19,18 +19,29 @@ export function localizedPath(href: string, locale: Locale): string {
   if (!match) return href;
   let [, pathname, query = "", hash = ""] = match;
   pathname = pathname.replace(/\/$/, "") || "/";
+  let matched = false;
   for (const [es, en] of Object.entries(routes)) {
     if (pathname === es || pathname === en) {
       pathname = locale === "es" ? es : en;
+      matched = true;
       break;
     }
     if (
-      es === "/noticias" &&
+      es !== "/" &&
       (pathname.startsWith(es + "/") || pathname.startsWith(en + "/"))
     ) {
       pathname =
         (locale === "es" ? es : en) + pathname.slice(pathname.indexOf("/", 1));
+      matched = true;
       break;
+    }
+  }
+  // Preserve an unknown URL when switching languages on the 404 page.
+  if (!matched) {
+    if (pathname.startsWith("/en/")) {
+      if (locale === "es") pathname = pathname.slice(3);
+    } else if (locale === "en") {
+      pathname = "/en" + pathname;
     }
   }
   if (hash === "#categorias" || hash === "#categories")

@@ -1,6 +1,7 @@
 "use client";
 import { useI18n } from "@/hooks/useI18n";
 import headerStyles from "@/components/Header.module.css";
+import worldIcon from "@/assets/svg/world.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
@@ -39,7 +40,14 @@ const Header = () => {
         onClick={() => setMenuOpen(false)}
       >
         {t("Nexo Noticias")}
-        <span className={headerStyles.brandIcon} aria-hidden="true" />
+        <img
+          className={headerStyles.brandIcon}
+          src={worldIcon.src}
+          alt="Icon"
+          width={28}
+          height={28}
+          loading="lazy"
+        />
       </Link>
 
       <button

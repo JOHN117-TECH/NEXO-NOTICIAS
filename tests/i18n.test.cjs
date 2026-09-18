@@ -106,6 +106,30 @@ test('Localized routes preserve article IDs, queries and category anchors', () =
   assert.equal(localeFromPath('/noticias/abc'), 'es');
   assert.equal(localizedPath('/api/noticias', 'en'), '/api/noticias');
 });
+test('Unknown routes switch the 404 language without losing their path', () => {
+  assert.equal(
+    localizedPath('/pagina-inexistente?source=menu#detalle', 'en'),
+    '/en/pagina-inexistente?source=menu#detalle',
+  );
+  assert.equal(
+    localizedPath('/en/pagina-inexistente?source=menu#detalle', 'es'),
+    '/pagina-inexistente?source=menu#detalle',
+  );
+  assert.equal(localizedPath('/en/pagina-inexistente', 'en'), '/en/pagina-inexistente');
+  assert.equal(localeFromPath('/en/pagina-inexistente'), 'en');
+  assert.equal(localizedPath('/favorites/inexistente', 'es'), '/favoritos/inexistente');
+  assert.equal(localizedPath('https://example.com/game', 'en'), 'https://example.com/game');
+});
+test('The 404 message and home link follow the selected language', () => {
+  const { NotFoundPage } = require('../src/components/NotFoundPage.tsx');
+  const english = render(NotFoundPage);
+  assert.match(english, /404 · Page not found/);
+  assert.match(english, /Sorry, the page you are looking for does not exist or has moved\./);
+  assert.match(english, /href="\/en"[^>]*>Back to home<\/a>/);
+  const spanish = render(NotFoundPage, {}, 'es');
+  assert.match(spanish, /404 · Página no encontrada/);
+  assert.match(spanish, /href="\/"[^>]*>Volver al inicio<\/a>/);
+});
 test('English administration translates fields and removal controls', () => {
   const { NewsManager } = require('../src/components/News-manager.tsx');
   const html = render(NewsManager);
