@@ -29,7 +29,10 @@ export default function Noticias() {
     >
       <div
         id={locale === "en" ? "categories" : "categorias"}
-        className={[typographyStyles.pageIntro, newsPageStyles.categoryStart].join(" ")}
+        className={[
+          typographyStyles.pageIntro,
+          newsPageStyles.categoryStart,
+        ].join(" ")}
       >
         <h1>{t("Últimas noticias")}</h1>
         <p>

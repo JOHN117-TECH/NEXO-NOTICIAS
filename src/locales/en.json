@@ -193,5 +193,11 @@
   "Sube": "Up",
   "Baja": "Down",
   "Variación diaria": "Daily change",
-  "Datos de ejemplo": "Sample data"
+  "Datos de ejemplo": "Sample data",
+  "Caricaturas": "Cartoons",
+  "Se sostiene": "Holding on",
+  "Cambiando de rumbo": "Changing course",
+  "Guerras modernas": "Modern wars",
+  "Caricatura: {title}": "Cartoon: {title}",
+  "Imagen de la caricatura próximamente": "Cartoon image coming soon"
 }

@@ -18,7 +18,7 @@ export function NewsManager() {
     "create",
   );
   const [pending, setPending] = useState(false);
-  // Both actions share a pending flag to prevent concurrent mutations.
+
   const state: NewsManagementState = {
     adminKey: key,
     keyInput,

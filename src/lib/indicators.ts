@@ -8,7 +8,6 @@ export interface Indicator {
   changePercent?: number;
 }
 
-// Datos de ejemplo para la sección; no representan cotizaciones en tiempo real.
 export const indicators: Indicator[] = [
   { id: "dollar", name: "Dólar", value: 4150.75, format: "COP", direction: "down", change: -18.3, changePercent: -0.44 },
   { id: "trm", name: "TRM", value: 4185.6, format: "COP", direction: "up", change: 12.2, changePercent: 0.29 },

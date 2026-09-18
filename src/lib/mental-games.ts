@@ -6,7 +6,7 @@ export interface MentalGame {
   href: string;
   symbol: string;
 }
-// Agrega cada imagen en image y el enlace del juego en href.
+
 export const mentalGames: MentalGame[] = [
   {
     id: "entertainment", title: "¿Te apasiona el cine, la música y el mundo del entretenimiento?",
