@@ -30,7 +30,7 @@ const Header = () => {
       }}
       className={[
         headerStyles.siteHeader,
-        "flex flex-wrap items-center justify-between gap-5 px-6 py-5",
+        "flex flex-wrap items-center justify-between gap-5 px-6 py-5 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:z-50",
       ].join(" ")}
     >
       <Link

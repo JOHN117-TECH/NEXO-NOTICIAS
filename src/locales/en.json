@@ -178,5 +178,20 @@
   "Encuentra las palabras ocultas. ¿Aceptas el desafío?": "Find the hidden words. Are you up for the challenge?",
   "Juega": "Play",
   "Jugar: {title}": "Play: {title}",
-  "Próximamente": "Coming soon"
+  "Próximamente": "Coming soon",
+  "Indicadores": "Indicators",
+  "Dólar": "Dollar",
+  "TRM": "Exchange rate (TRM)",
+  "Euro": "Euro",
+  "Bolívar": "Bolivar",
+  "Peso mexicano": "Mexican peso",
+  "Café": "Coffee",
+  "Oro": "Gold",
+  "Tasa de usura en Colombia": "Colombian usury rate",
+  "Tasa de interés del Banrep": "Banrep interest rate",
+  "ICOLCAP": "ICOLCAP",
+  "Sube": "Up",
+  "Baja": "Down",
+  "Variación diaria": "Daily change",
+  "Datos de ejemplo": "Sample data"
 }

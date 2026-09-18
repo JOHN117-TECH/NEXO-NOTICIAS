@@ -2,6 +2,7 @@
 import { useI18n } from "@/hooks/useI18n";
 import layoutStyles from "@/app/layout.module.css";
 import typographyStyles from "@/components/ui/Typography.module.css";
+import newsPageStyles from "./page.module.css";
 import { NewsFilters } from "@/components/NewsFilters";
 import { NewsPagination } from "@/components/NewsPagination";
 import { useState } from "react";
@@ -10,7 +11,7 @@ import { NewsCard } from "@/components/News-card";
 import { NewsStatus } from "@/components/NewsStatus";
 import { NewsManager } from "@/components/News-manager";
 export default function Noticias() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   const { news, loading, error } = useNews();
   const [category, setCategory] = useState("Todas");
@@ -26,7 +27,10 @@ export default function Noticias() {
       id="contenido"
       className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
     >
-      <div className={typographyStyles.pageIntro}>
+      <div
+        id={locale === "en" ? "categories" : "categorias"}
+        className={[typographyStyles.pageIntro, newsPageStyles.categoryStart].join(" ")}
+      >
         <h1>{t("Últimas noticias")}</h1>
         <p>
           {t("Mantente al día de tecnología, educación, turismo y actualidad.")}
