@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { siteIcon } from "@/assets/images";
 import "./globals.css";
-import { Providers, Header, LanguageProvider, SkipLink, Footer } from "@/components";
-
+import { Breadcrumbs, Providers, Header, LanguageProvider, SkipLink, Footer } from "@/components";
 import { themeInitializationScript } from "@/lib";
 
 export const metadata: Metadata = {
@@ -39,9 +38,10 @@ export default function RootLayout({
           <Providers>
             <div className={layoutStyles.siteShell}>
               <Header />
-              <section className="sm:mt-20">
-                {children}
+              <section className="sm:mt-20!">
+                <Breadcrumbs />
               </section>
+              {children}
               <Footer />
             </div>
           </Providers>

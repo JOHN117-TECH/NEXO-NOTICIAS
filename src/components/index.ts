@@ -1,4 +1,5 @@
 export { AdminKeyField } from "./AdminKeyField";
+export { Breadcrumbs } from "./Breadcrumbs";
 export { CartoonCard } from "./CartoonCard";
 export { CartoonsSection } from "./CartoonsSection";
 export { ContactForm } from "./ContactForm";
@@ -25,6 +26,7 @@ export { NewsManager } from "./News-manager";
 export { NewsFilters } from "./NewsFilters";
 export { NewsImage } from "./NewsImage";
 export { NewsLoader } from "./NewsLoader";
+export { NewsletterBanner } from "./NewsletterBanner";
 export { NewsPagination } from "./NewsPagination";
 export { NewsStatus } from "./NewsStatus";
 export { NotFoundPage } from "./NotFoundPage";
