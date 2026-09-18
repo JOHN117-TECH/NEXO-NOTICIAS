@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import type { Opinion } from "@/lib/opinion";
+import type { Opinion } from "@/lib";
 export function useOpinions() {
   const [opinions, setOpinions] = useState<Opinion[]>([]);
   const [loading, setLoading] = useState(true);

@@ -1,7 +1,8 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import footerStyles from "@/components/Footer.module.css";
+import { useI18n } from "@/hooks";
+import footerStyles from "@/styles/components/Footer.module.css";
 import Link from "next/link";
+import { AppDownloadButtons } from "./AppDownloadButtons";
 
 const Footer = () => {
   const { t, href: localizedHref } = useI18n();
@@ -18,7 +19,8 @@ const Footer = () => {
           >
             {[
               ["Inicio", "/"],
-              ["Noticias", "/noticias"],
+              ["Noticias", "/noticias-y-eventos"],
+              ["Categorías", "/categorias"],
               ["Favoritos", "/favoritos"],
               ["Contacto", "/contacto"],
             ].map(([name, href], index) => (
@@ -44,6 +46,7 @@ const Footer = () => {
             {t("© 2026 Nexo Noticias. Proyecto académico.")}
           </p>
         </div>
+        <AppDownloadButtons />
       </footer>
     </>
   );

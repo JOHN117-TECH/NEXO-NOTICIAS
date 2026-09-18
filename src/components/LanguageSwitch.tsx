@@ -1,6 +1,6 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import styles from "./LanguageSwitch.module.css";
+import { useI18n } from "@/hooks";
+import styles from "@/styles/components/LanguageSwitch.module.css";
 export function LanguageSwitch() {
   const { locale, setLocale, t } = useI18n();
   return (

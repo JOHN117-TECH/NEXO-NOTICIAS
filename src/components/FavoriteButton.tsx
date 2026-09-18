@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import favoriteStyles from "./FavoriteButton.module.css";
-import { useNews } from "@/hooks/useNews";
+import { useI18n, useNews } from "@/hooks";
+import favoriteStyles from "@/styles/components/FavoriteButton.module.css";
+
 export function FavoriteButton({
   id,
   full = false,

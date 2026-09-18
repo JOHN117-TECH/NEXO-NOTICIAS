@@ -1,9 +1,9 @@
 "use client";
 
-import { useI18n } from "@/hooks/useI18n";
-import { indicators, interestRate, stockIndex } from "@/lib/indicators";
+import { useI18n } from "@/hooks";
+import { indicators, interestRate, stockIndex } from "@/lib";
 import { IndicatorCard } from "./IndicatorCard";
-import styles from "./IndicatorsSection.module.css";
+import styles from "@/styles/components/IndicatorsSection.module.css";
 
 export function IndicatorsSection() {
   const { t } = useI18n();

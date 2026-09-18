@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import { useTheme } from "@/hooks/useTheme";
-import styles from "./ThemeToggle.module.css";
+import { useI18n, useTheme } from "@/hooks";
+
+import styles from "@/styles/components/ThemeToggle.module.css";
 
 export function ThemeToggle() {
   const { t } = useI18n();

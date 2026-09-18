@@ -1,10 +1,10 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import cardStyles from "./News-card.module.css";
-import buttonStyles from "./ui/Button.module.css";
-import typographyStyles from "./ui/Typography.module.css";
+import { useI18n } from "@/hooks";
+import cardStyles from "@/styles/components/News-card.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import Link from "next/link";
-import type { News } from "@/lib/types";
+import type { News } from "@/lib";
 import { NewsImage } from "./NewsImage";
 import { FavoriteButton } from "./FavoriteButton";
 export function NewsCard({
@@ -44,7 +44,7 @@ export function NewsCard({
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
           <Link
             className={`no-underline! ${[buttonStyles.textLink, cardStyles.readMore].join(" ")}`}
-            href={localizedHref(`/noticias/${news.id}`)}
+            href={localizedHref(`/noticias-y-eventos/${news.id}`)}
           >
             {t("Ver más")}
             <span className="sr-only">: {t(news.title)}</span>

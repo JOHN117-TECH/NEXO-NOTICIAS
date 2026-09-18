@@ -1,0 +1,40 @@
+.siteFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: var(--chrome-bg);
+  color: #fff;
+  flex: 1;
+  min-height: 100px;
+}
+.siteFooter > div:first-child { min-width: 0; overflow-wrap: anywhere; }
+.downloads { display: flex; flex-direction: column; gap: 12px; flex: 0 0 290px; }
+.downloadButton {
+  --download-bg: var(--chrome-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 60px;
+  padding: 14px 24px;
+  border: 1px solid var(--brand-icon-color);
+  border-radius: 999px;
+  background: var(--download-bg);
+  color: var(--brand-icon-color);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+.downloadButton:hover { --download-bg: var(--nav-hover-bg); }
+.downloadButton:focus-visible { outline: 3px solid var(--brand-icon-color); outline-offset: 4px; }
+.downloadButton svg { flex-shrink: 0; }
+.appStoreMark { stroke: var(--download-bg); }
+@media (max-width: 700px) {
+  .siteFooter { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .downloads { flex: none; width: 100%; max-width: 320px; }
+}
+.siteFooter p {
+  color: #cbd5e1;
+}

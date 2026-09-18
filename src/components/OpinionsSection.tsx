@@ -1,11 +1,11 @@
 "use client";
-import { useOpinions } from "@/hooks/useOpinions";
-import { useI18n } from "@/hooks/useI18n";
+import { useOpinions, useI18n } from "@/hooks";
+
 import { OpinionCard } from "./OpinionCard";
 import { OpinionEditorial } from "./OpinionEditorial";
 import { NewsLoader } from "./NewsLoader";
-import styles from "./OpinionsSection.module.css";
-import buttonStyles from "./ui/Button.module.css";
+import styles from "@/styles/components/OpinionsSection.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
 export function OpinionsSection() {
   const { opinions, loading, error, retry } = useOpinions();
   const { t } = useI18n();

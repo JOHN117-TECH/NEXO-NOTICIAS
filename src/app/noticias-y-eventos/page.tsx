@@ -1,20 +1,41 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n, useNews } from "@/hooks";
 import layoutStyles from "@/app/layout.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import newsPageStyles from "./page.module.css";
-import { NewsFilters } from "@/components/NewsFilters";
-import { NewsPagination } from "@/components/NewsPagination";
-import { useState } from "react";
-import { useNews } from "@/hooks/useNews";
-import { NewsCard } from "@/components/News-card";
-import { NewsStatus } from "@/components/NewsStatus";
-import { NewsManager } from "@/components/News-manager";
+import {
+  NewsFilters,
+  NewsPagination,
+  NewsCard,
+  NewsStatus,
+  NewsManager,
+  EventsSection,
+} from "@/components";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { categoryFromQuery } from "@/lib/categoryRoutes";
+import { NewsletterBanner } from "@/components/NewsletterBanner";
+
 export default function Noticias() {
+  return (
+    <Suspense fallback={<NewsStatus />}>
+      <NewsWithCategory />
+    </Suspense>
+  );
+}
+
+function NewsWithCategory() {
+  const params = useSearchParams();
+  const requested = params.get("category");
+  const category = categoryFromQuery(requested) || "Todas";
+  return <NewsListing key={category} initialCategory={category} />;
+}
+
+function NewsListing({ initialCategory }: { initialCategory: string }) {
   const { t, locale } = useI18n();
 
   const { news, loading, error } = useNews();
-  const [category, setCategory] = useState("Todas");
+  const [category, setCategory] = useState(initialCategory);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(3);
   const filtered = news
@@ -25,7 +46,7 @@ export default function Noticias() {
   return (
     <main
       id="contenido"
-      className={[layoutStyles.listingPage, "px-6 pb-7 pt-6"].join(" ")}
+      className={[layoutStyles.listingPage, "px-6 pb-7 pt-2"].join(" ")}
     >
       <div
         id={locale === "en" ? "categories" : "categorias"}
@@ -34,7 +55,7 @@ export default function Noticias() {
           newsPageStyles.categoryStart,
         ].join(" ")}
       >
-        <h1>{t("Últimas noticias")}</h1>
+        <h1>{t("Últimas noticias y eventos")}</h1>
         <p>
           {t("Mantente al día de tecnología, educación, turismo y actualidad.")}
         </p>
@@ -69,6 +90,8 @@ export default function Noticias() {
           {t("No hay noticias en esta categoría.")}
         </p>
       )}
+      <EventsSection />
+      <NewsletterBanner />
       <NewsManager />
     </main>
   );

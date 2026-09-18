@@ -12,8 +12,8 @@ Pruebas: `node --test tests/i18n.test.cjs`.
 
 ## Rutas
 
-Español: `/`, `/noticias`, `/noticias/[id]`, `/favoritos`, `/contacto`.
+Español: `/`, `/noticias-y-eventos`, `/noticias-y-eventos/[id]`, `/favoritos`, `/contacto`.
 
-Inglés: `/en`, `/news`, `/news/[id]`, `/favorites`, `/contact`.
+Inglés: `/en`, `/news-and-events`, `/news-and-events/[id]`, `/favorites`, `/contact`.
 
 `lib/localizedRoutes.ts` mantiene las equivalencias y conserva identificadores, consultas y enlaces a categorías. Los endpoints `/api/*` no se traducen.

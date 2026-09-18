@@ -1,6 +1,6 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import buttonStyles from "./ui/Button.module.css";
+import { useI18n } from "@/hooks";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
 type Props = {
   currentPage: number;
   pages: number;

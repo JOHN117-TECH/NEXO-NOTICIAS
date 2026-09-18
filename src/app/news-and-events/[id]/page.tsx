@@ -1,4 +1,4 @@
-export { default } from "../../noticias/[id]/page";
+export { default } from "../../noticias-y-eventos/[id]/page";
 
 export const metadata = {
   title: { absolute: "Nexo News 📰" },

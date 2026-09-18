@@ -1,9 +1,0 @@
-.siteFooter {
-  background: var(--chrome-bg);
-  color: #fff;
-  flex: 1;
-  min-height: 100px;
-}
-.siteFooter p {
-  color: #cbd5e1;
-}

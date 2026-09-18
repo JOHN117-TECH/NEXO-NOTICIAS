@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useI18n } from "@/hooks/useI18n";
-import type { Cartoon } from "@/lib/cartoons";
-import styles from "./CartoonCard.module.css";
+import { useI18n } from "@/hooks";
+import type { Cartoon } from "@/lib";
+import styles from "@/styles/components/CartoonCard.module.css";
 
 export function CartoonCard({ cartoon }: { cartoon: Cartoon }) {
   const { t } = useI18n();

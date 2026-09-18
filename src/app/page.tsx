@@ -1,18 +1,21 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import homeStyles from "@/app/page.module.css";
-import buttonStyles from "@/components/ui/Button.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import Link from "next/link";
 
-import { NewsStatus } from "@/components/NewsStatus";
-import { MentalGamesSection } from "@/components/MentalGamesSection";
-import { IndicatorsSection } from "@/components/IndicatorsSection";
-import { CartoonsSection } from "@/components/CartoonsSection";
-import { MostReadSection } from "@/components/MostReadSection";
-import { OpinionsSection } from "@/components/OpinionsSection";
-import { VideoSlider } from "@/components/VideoSlider";
-import { HomeNewsGrid } from "@/components/HomeNewsGrid";
+import {
+  NewsStatus,
+  MentalGamesSection,
+  IndicatorsSection,
+  CartoonsSection,
+  MostReadSection,
+  OpinionsSection,
+  VideoSlider,
+  HomeNewsGrid,
+} from "@/components";
+
 export default function Home() {
   const { t, href: localizedHref } = useI18n();
 
@@ -25,11 +28,11 @@ export default function Home() {
             "Encuentra las noticias más relevantes de tecnología, educación, turismo y actualidad en un solo lugar.",
           )}
         </p>
-        <Link href={localizedHref("/noticias")} className={buttonStyles.button}>
+        <Link href={localizedHref("/noticias-y-eventos")} className={buttonStyles.button}>
           {t("Explorar noticias")}
         </Link>
       </section>
-      <section className="px-6 pt-6">
+      <section className="px-6 pt-2">
         <h2 className={[typographyStyles.sectionTitle, "mb-3"].join(" ")}>
           {t("Noticias principales")}
         </h2>
@@ -47,7 +50,7 @@ export default function Home() {
       <VideoSlider />
       <section className={homeStyles.cta}>
         <h2>{t("¿Te gustaría conocer todas nuestras noticias?")}</h2>
-        <Link className={buttonStyles.button} href={localizedHref("/noticias")}>
+        <Link className={buttonStyles.button} href={localizedHref("/noticias-y-eventos")}>
           {t("Ver todas las noticias")}
         </Link>
       </section>

@@ -1,6 +1,6 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import headerStyles from "@/components/Header.module.css";
+import { useI18n } from "@/hooks";
+import headerStyles from "@/styles/components/Header.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
@@ -9,8 +9,8 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   ["Inicio", "/"],
-  ["Noticias", "/noticias"],
-  ["Categorías", "/noticias#categorias"],
+  ["Noticias", "/noticias-y-eventos"],
+  ["Categorías", "/categorias"],
   ["Favoritos", "/favoritos"],
   ["Contacto", "/contacto"],
 ];
@@ -38,8 +38,13 @@ const Header = () => {
         href={localizedHref("/")}
         onClick={() => setMenuOpen(false)}
       >
-        {t("Nexo Noticias 📰")}
+        {t("Nexo Noticias")}
+        <span
+          className={headerStyles.brandIcon}
+          aria-hidden="true"
+        />
       </Link>
+
       <button
         ref={menuButton}
         type="button"
@@ -75,14 +80,6 @@ const Header = () => {
             className="no-underline!"
             key={name}
             href={localizedHref(href)}
-            scroll={name === "Categorías" ? false : undefined}
-            onNavigate={
-              name === "Categorías"
-                ? () => {
-                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-                }
-                : undefined
-            }
             onClick={() => setMenuOpen(false)}
             aria-current={pathname === localizedHref(href) ? "page" : undefined}
           >

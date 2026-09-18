@@ -1,8 +1,8 @@
 "use client";
-import type { Video } from "@/lib/video";
-import { videoDuration } from "@/lib/video";
-import { useI18n } from "@/hooks/useI18n";
-import styles from "./VideoCard.module.css";
+import type { Video } from "@/lib";
+import { videoDuration } from "@/lib";
+import { useI18n } from "@/hooks";
+import styles from "@/styles/components/VideoCard.module.css";
 export function VideoCard({
   video,
   onPlay,

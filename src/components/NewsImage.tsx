@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import cardStyles from "./NewsImage.module.css";
-import type { News } from "@/lib/types";
+import { useI18n } from "@/hooks";
+import cardStyles from "@/styles/components/NewsImage.module.css";
+import type { News } from "@/lib";
 export function NewsImage({
   news,
   large = false,

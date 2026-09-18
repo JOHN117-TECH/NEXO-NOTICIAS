@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 import { useState, type RefObject } from "react";
-import managerStyles from "./AdminKeyField.module.css";
-import formStyles from "./ui/FormField.module.css";
-import noticeStyles from "./ui/Notice.module.css";
+import managerStyles from "@/styles/components/AdminKeyField.module.css";
+import formStyles from "@/styles/components/ui/FormField.module.css";
+import noticeStyles from "@/styles/components/ui/Notice.module.css";
 type Props = {
   adminKey: string;
   keyInput: RefObject<HTMLInputElement | null>;

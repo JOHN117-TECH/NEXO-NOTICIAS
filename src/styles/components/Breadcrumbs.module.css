@@ -1,0 +1,121 @@
+/* CONTENEDOR GENERAL */
+
+.breadcrumbs {
+  width: 100%;
+
+  padding: 14px 24px;
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* LISTA DE MIGAS DE PAN */
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* CADA ELEMENTO */
+
+.item {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ENLACES */
+
+.link {
+  color: var(--link);
+
+  text-decoration: none !important;
+
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 70%;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* SEPARADOR */
+
+.separator {
+  color: var(--text-muted);
+
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* PÁGINA ACTIVA */
+
+.current {
+  color: var(--text);
+
+  font-weight: 700;
+
+  overflow-wrap: anywhere;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 767px) {
+  .breadcrumbs {
+    padding: 12px 20px;
+  }
+
+  .list {
+    gap: 6px;
+  }
+
+  .item {
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .separator {
+    font-size: 17px;
+  }
+}
+
+/* MÓVILES PEQUEÑOS */
+
+@media (max-width: 375px) {
+  .breadcrumbs {
+    padding: 10px 16px;
+  }
+
+  .item {
+    font-size: 12px;
+  }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

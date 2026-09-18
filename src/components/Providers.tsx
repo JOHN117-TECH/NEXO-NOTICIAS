@@ -6,8 +6,8 @@ import {
   useRef,
   type ReactNode,
 } from "react";
-import { NewsContext } from "@/contexts/NewsContext";
-import type { News } from "@/lib/types";
+import { NewsContext } from "@/contexts";
+import type { News } from "@/lib";
 export function Providers({ children }: { children: ReactNode }) {
   const latestRequest = useRef(0);
   const [news, setNews] = useState<News[]>([]),

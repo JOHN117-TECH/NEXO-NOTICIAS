@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useI18n } from "@/hooks/useI18n";
-import type { MentalGame } from "@/lib/mental-games";
-import styles from "./MentalGameAction.module.css";
+import { useI18n } from "@/hooks";
+import type { MentalGame } from "@/lib";
+import styles from "@/styles/components/MentalGameAction.module.css";
 export function MentalGameAction({ game }: { game: MentalGame }) {
   const { t, href } = useI18n();
   return game.href ? (

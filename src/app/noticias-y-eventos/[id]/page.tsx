@@ -1,14 +1,13 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import detailStyles from "@/app/noticias/[id]/page.module.css";
-import buttonStyles from "@/components/ui/Button.module.css";
-import typographyStyles from "@/components/ui/Typography.module.css";
+import { useI18n, useNews } from "@/hooks";
+import detailStyles from "@/app/noticias-y-eventos/[id]/page.module.css";
+import buttonStyles from "@/styles/components/ui/Button.module.css";
+import typographyStyles from "@/styles/components/ui/Typography.module.css";
 import { use } from "react";
 import Link from "next/link";
-import { useNews } from "@/hooks/useNews";
-import { NewsImage } from "@/components/NewsImage";
-import { FavoriteButton } from "@/components/FavoriteButton";
-import { NewsStatus } from "@/components/NewsStatus";
+
+import { NewsImage, FavoriteButton, NewsStatus } from "@/components";
+
 export default function Detail({
   params,
 }: {
@@ -47,7 +46,7 @@ export default function Detail({
             <FavoriteButton id={item.id} full />
             <Link
               className={buttonStyles.textLink}
-              href={localizedHref("/noticias")}
+              href={localizedHref("/noticias-y-eventos")}
             >
               {t("← Regresar a noticias")}
             </Link>
@@ -59,7 +58,7 @@ export default function Detail({
           <p>{t("Esta publicación no existe o fue eliminada.")}</p>
           <Link
             className={[buttonStyles.button, "mt-6"].join(" ")}
-            href={localizedHref("/noticias")}
+            href={localizedHref("/noticias-y-eventos")}
           >
             {t("Regresar a noticias")}
           </Link>

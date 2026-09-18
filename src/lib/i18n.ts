@@ -1,7 +1,5 @@
-import english from "@/locales/en.json";
-import articles from "@/locales/articles.en.json";
-import videos from "@/locales/videos.en.json";
-import opinions from "@/locales/opinions.en.json";
+import { english, articles, videos, opinions } from "@/locales";
+
 export type Locale = "es" | "en";
 export const LANGUAGE_KEY = "nexo-language";
 const catalog: Record<string, string> = { ...english, ...articles, ...videos, ...opinions };

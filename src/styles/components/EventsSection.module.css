@@ -1,0 +1,94 @@
+.section {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.header {
+  margin-bottom: 22px;
+}
+.header > p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.header .note {
+  font-size: 12px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-muted);
+  color: var(--text);
+  min-width: 0;
+}
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--button-bg);
+  color: #fff;
+  font-weight: 700;
+}
+.month {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.day {
+  font-size: 28px;
+  line-height: 1.2;
+}
+.details {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.details h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.hours {
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.location {
+  margin-top: 3px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .card {
+    gap: 12px;
+    padding: 18px 14px;
+  }
+  .date {
+    flex-basis: 64px;
+    width: 64px;
+    height: 64px;
+  }
+}

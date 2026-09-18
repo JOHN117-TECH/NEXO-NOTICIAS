@@ -1,6 +1,6 @@
 "use client";
 import styles from "@/app/layout.module.css";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/hooks";
 export function SkipLink() {
   const { t } = useI18n();
   return (

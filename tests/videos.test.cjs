@@ -101,10 +101,12 @@ test("seed durations accept minutes:seconds and reject invalid input", () => {
 test("all final video titles, descriptions and categories have English translations", () => {
   const { videoSeed } = load(path.resolve("../Backend/src/video-seed.ts"));
   const { translate } = load(path.resolve("src/lib/i18n.ts"), {
-    "@/locales/en.json": require("../src/locales/en.json"),
-    "@/locales/articles.en.json": require("../src/locales/articles.en.json"),
-    "@/locales/videos.en.json": require("../src/locales/videos.en.json"),
-    "@/locales/opinions.en.json": require("../src/locales/opinions.en.json"),
+    "@/locales": {
+      english: require("../src/locales/en.json"),
+      articles: require("../src/locales/articles.en.json"),
+      videos: require("../src/locales/videos.en.json"),
+      opinions: require("../src/locales/opinions.en.json"),
+    },
   });
   assert.equal(videoSeed.length, 10);
   for (const video of videoSeed) {

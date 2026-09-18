@@ -1,7 +1,7 @@
 "use client";
-import { useI18n } from "@/hooks/useI18n";
-import newsStyles from "./NewsFilters.module.css";
-import { categories } from "@/lib/types";
+import { useI18n } from "@/hooks";
+import newsStyles from "@/styles/components/NewsFilters.module.css";
+import { categories } from "@/lib";
 const pageSizes = [2, 3, 4, 6, 8, 10];
 type Props = {
   category: string;
