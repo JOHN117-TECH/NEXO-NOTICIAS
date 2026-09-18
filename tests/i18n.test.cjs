@@ -179,9 +179,32 @@ test('Category pages localize routes and link to canonical news filters', () => 
   const { CategoriesPage } = require('../src/components/CategoriesPage.tsx');
   const english = render(CategoriesPage);
   const spanish = render(CategoriesPage, {}, 'es');
-  assert.match(english, /href="\/news-and-events\?category=Turismo"/);
+  assert.match(english, /href="\/news-and-events\?category=Travel"/);
   assert.match(spanish, /href="\/noticias-y-eventos\?category=Tecnolog%C3%ADa"/);
   assert.match(english, /Current affairs/);
   assert.match(spanish, /Actualidad/);
   assert.equal((english.match(/<li>/g) || []).length, 4);
+});
+
+test('Category query values translate both ways without changing the news filter', () => {
+  const { categoryFromQuery } = require('../src/lib/categoryRoutes.ts');
+  for (const [es, en] of [
+    ['Tecnología', 'Technology'], ['Educación', 'Education'],
+    ['Turismo', 'Travel'], ['Actualidad', 'Current affairs'],
+  ]) {
+    const english = localizedPath('/noticias-y-eventos?category=' + encodeURIComponent(es) + '&page=2#categorias', 'en');
+    const parsed = new URL(english, 'http://localhost');
+    assert.equal(parsed.pathname, '/news-and-events');
+    assert.equal(parsed.searchParams.get('category'), en);
+    assert.equal(parsed.searchParams.get('page'), '2');
+    assert.equal(parsed.hash, '#categories');
+    assert.equal(categoryFromQuery(parsed.searchParams.get('category')), es);
+    const spanish = new URL(localizedPath(english, 'es'), 'http://localhost');
+    assert.equal(spanish.searchParams.get('category'), es);
+    assert.equal(spanish.hash, '#categorias');
+    assert.equal(categoryFromQuery(es), es);
+  }
+  assert.equal(categoryFromQuery('Unknown'), undefined);
+  assert.equal(categoryFromQuery(null), undefined);
+  assert.equal(localizedPath('/api/noticias?category=Turismo', 'en'), '/api/noticias?category=Turismo');
 });

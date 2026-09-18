@@ -1,4 +1,5 @@
 import type { Locale } from "./i18n";
+import { localizedCategory } from "./categoryRoutes";
 const routes: Record<string, string> = {
   "/": "/en",
   "/noticias-y-eventos": "/news-and-events",
@@ -47,5 +48,16 @@ export function localizedPath(href: string, locale: Locale): string {
   }
   if (hash === "#categorias" || hash === "#categories")
     hash = locale === "es" ? "#categorias" : "#categories";
+  if (query && (pathname === "/noticias-y-eventos" || pathname === "/news-and-events")) {
+    const params = new URLSearchParams(query);
+    const category = params.get("category");
+    if (category !== null) {
+      const translated = localizedCategory(category, locale);
+      if (translated !== category) {
+        params.set("category", translated);
+        query = `?${params.toString()}`;
+      }
+    }
+  }
   return pathname + query + hash;
 }

@@ -13,7 +13,7 @@ import {
 } from "@/components";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { categories } from "@/lib/types";
+import { categoryFromQuery } from "@/lib/categoryRoutes";
 
 export default function Noticias() {
   return (
@@ -26,7 +26,7 @@ export default function Noticias() {
 function NewsWithCategory() {
   const params = useSearchParams();
   const requested = params.get("category");
-  const category = categories.find((value) => value === requested) || "Todas";
+  const category = categoryFromQuery(requested) || "Todas";
   return <NewsListing key={category} initialCategory={category} />;
 }
 
