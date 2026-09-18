@@ -113,6 +113,7 @@ export function ImageField({
               className={styles.preview}
               src={preview}
               alt={t("Vista previa de la imagen seleccionada")}
+              loading="lazy"
             />
           )}
         </>
