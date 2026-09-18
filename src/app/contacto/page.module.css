@@ -1,20 +1,203 @@
+/* CONTENEDOR GENERAL */
+
 .contact {
-  max-width: 520px;
   width: 100%;
-  margin: auto;
-  padding: 27px 0 38px;
+  padding: 48px 24px 64px;
 }
-.contact h1 {
-  font-size: 26px;
+
+/* GRID PRINCIPAL: DOS COLUMNAS */
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(0, 0.8fr);
+
+  align-items: start;
+  gap: 64px;
+}
+
+/* COLUMNA IZQUIERDA */
+
+.formSection {
+  min-width: 0;
+  width: 100%;
+}
+
+.formSection h1 {
+  font-size: 30px;
   font-weight: 700;
-}
-.contact .intro {
   line-height: 1.2;
-  margin: 4px 0 20px;
+}
+
+.intro {
+  line-height: 1.5;
+  margin: 12px 0 24px;
   color: var(--text-muted);
 }
-@media (max-width: 767px) {
+
+.formSection form {
+  width: 100%;
+}
+
+/* COLUMNA DERECHA */
+
+.socialSection {
+  min-width: 0;
+  width: 100%;
+}
+
+.socialSection h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.socialDescription {
+  margin: 12px 0 28px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* GRID DE REDES SOCIALES */
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 16px;
+}
+
+/* ENLACES */
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+
+  text-decoration: none;
+  color: var(--text);
+
+  transition: transform 0.2s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-3px);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 5px;
+  border-radius: 6px;
+}
+
+/* ICONOS */
+
+.socialIcon {
+  width: 64px;
+  height: 64px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  color: #fff;
+  font-size: 30px;
+}
+
+.socialName {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* COLORES DE CADA RED */
+
+.whatsapp {
+  background: #25d366;
+}
+
+.youtube {
+  background: #ff0033;
+}
+
+.instagram {
+  background: #d62976;
+}
+
+.tiktok {
+  background: #000;
+}
+
+.facebook {
+  background: #4267b2;
+}
+
+.twitter {
+  background: #000;
+}
+
+/* TABLETS Y MOVILES */
+
+@media (max-width: 900px) {
   .contact {
-    padding: 28px 20px;
+    padding: 32px 20px 48px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .formSection,
+  .socialSection {
+    width: 100%;
+  }
+}
+
+/* MOVILES PEQUEÑOS */
+
+@media (max-width: 480px) {
+  .container {
+    gap: 36px;
+  }
+
+  .formSection h1 {
+    font-size: 26px;
+  }
+
+  .socialSection h2 {
+    font-size: 24px;
+  }
+
+  .socialGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .socialIcon {
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+  }
+
+  .socialName {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink {
+    transition: none;
   }
 }
