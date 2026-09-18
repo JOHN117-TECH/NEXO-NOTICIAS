@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { themeInitializationScript } from "@/lib/theme";
 
 export const metadata: Metadata = {
-  title: { default: "Nexo Noticias 📰", template: "%s | Nexo Noticias 📰" },
+  title: { default: "Nexo Noticias", template: "%s | Nexo Noticias" },
   description:
     "Información que te conecta con el mundo. Noticias de tecnología, educación, turismo y actualidad.",
 };

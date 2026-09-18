@@ -4,8 +4,20 @@
   color: white;
 }
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 24px;
   font-weight: 700;
+}
+.brandIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background-color: var(--nav-hover-text);
+  -webkit-mask: url('../assets/svg/world.svg') center / contain no-repeat;
+  mask: url('../assets/svg/world.svg') center / contain no-repeat;
 }
 .siteHeader nav {
   font-size: 14px;
@@ -84,7 +96,7 @@
     gap: 0;
   }
 
-  .siteHeader nav[data-open="true"] {
+  .siteHeader nav[data-open='true'] {
     display: flex;
   }
 
@@ -107,7 +119,7 @@
 }
 
 @media (max-width: 376px) {
-  .siteHeader nav[data-open="true"] {
+  .siteHeader nav[data-open='true'] {
     display: flex;
     align-items: center;
   }

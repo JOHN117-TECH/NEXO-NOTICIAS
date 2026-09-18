@@ -38,8 +38,10 @@ const Header = () => {
         href={localizedHref("/")}
         onClick={() => setMenuOpen(false)}
       >
-        {t("Nexo Noticias 📰")}
+        {t("Nexo Noticias")}
+        <span className={headerStyles.brandIcon} aria-hidden="true" />
       </Link>
+
       <button
         ref={menuButton}
         type="button"
