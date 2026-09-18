@@ -42,7 +42,9 @@
   color: var(--link);
 }
 
-.copy { min-width: 0; }
+.copy {
+  min-width: 0;
+}
 
 .title {
   color: var(--text);
@@ -62,13 +64,56 @@
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .card { grid-template-columns: 24px 100px minmax(0, 1fr); gap: 10px; }
-  .title { font-size: 18px; }
+  .card {
+    grid-template-columns: 24px 100px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .title {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 479px) {
-  .card { grid-template-columns: 22px 84px minmax(0, 1fr); gap: 8px; }
-  .rank { width: 22px; height: 22px; }
-  .title { font-size: 16px; line-height: 1.4; }
-  .author { font-size: 11px; }
+  .card {
+    grid-template-columns: 22px 84px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .rank {
+    width: 22px;
+    height: 22px;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .author {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 376px) {
+  .card {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .rank {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+    background: var(--surface);
+  }
+
+  .imageFrame,
+  .copy {
+    grid-column: 1;
+  }
+  .title {
+    font-size: 18px;
+  }
 }
