@@ -9,6 +9,7 @@ import { NewsStatus } from "@/components/NewsStatus";
 import { MentalGamesSection } from "@/components/MentalGamesSection";
 import { IndicatorsSection } from "@/components/IndicatorsSection";
 import { CartoonsSection } from "@/components/CartoonsSection";
+import { MostReadSection } from "@/components/MostReadSection";
 import { OpinionsSection } from "@/components/OpinionsSection";
 import { VideoSlider } from "@/components/VideoSlider";
 import { HomeNewsGrid } from "@/components/HomeNewsGrid";
@@ -54,6 +55,7 @@ export default function Home() {
       <MentalGamesSection />
       <IndicatorsSection />
       <CartoonsSection />
+      <MostReadSection />
     </main>
   );
 }

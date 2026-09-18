@@ -79,8 +79,8 @@ const Header = () => {
             onNavigate={
               name === "Categorías"
                 ? () => {
-                    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-                  }
+                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                }
                 : undefined
             }
             onClick={() => setMenuOpen(false)}
@@ -89,7 +89,7 @@ const Header = () => {
             {t(name)}
           </Link>
         ))}
-        <div className={`-ml-2 gap-x-4! ${headerStyles.preferences}`}>
+        <div className={`-ml-1 gap-x-4! ${headerStyles.preferences}`}>
           <LanguageSwitch />
           <ThemeToggle />
         </div>
